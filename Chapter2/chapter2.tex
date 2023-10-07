@@ -3,108 +3,286 @@
 %****************************** Second Chapter *********************************
 %*******************************************************************************
 
-\chapter{My second chapter}
+\chapter{MacroMap sQTL}
 
 \ifpdf
     \graphicspath{{Chapter2/Figs/Raster/}{Chapter2/Figs/PDF/}{Chapter2/Figs/}}
 \else
     \graphicspath{{Chapter2/Figs/Vector/}{Chapter2/Figs/}}
 \fi
+\tracingcommands=1
+\section{Introduction}
+Genome wide association studies (GWAS) have uncovered thousands of genetic loci associated with susceptibility to immune-mediated diseases (IMD). Over 90\% of these loci are located in non-coding regions of the genome \cite{Maurano2012-yw}, making it difficult to gain insights into causal disease biology. These non-coding disease-associated loci are enriched in gene regulatory regions, and are therefore thought to modulate gene expression \cite{Schaub2012-cy}. Expression quantitative trait loci (eQTL) mapping has been widely used to characterise the downstream effects of genetic variants on gene expression \cite{Vosa2021-pb,The_GTEx_Consortium2020-gg}. Despite the increasing number of available eQTL datasets \cite{Kerimov2021-gh}, IMD-associated loci have remained largely unexplained by existing QTL maps. For example, Chun et al. 2017 (ref: \cite{Chun2017-uz}) found that only 25\% of IMD-associated loci colocalised with eQTLs from three immune cell types. \\
 
+Multiple explanations have been put forward to justify the incomplete overlap between GWAS loci and existing eQTL maps, including a need for more diverse molecular QTL maps across disease-relevant cell types and environmental conditions. Moreover, it has recently been suggested that common variants driving complex diseases and gene expression are systematically different, and that alternative molecular QTLs (such as those affecting splicing, chromatin accessibility and chromatin interactions) may be more likely to colocalise with disease associated loci \cite{Mostafavi2022-tg}. Unfortunately, most QTL mapping studies have focussed on associating genetic variation with overall levels of gene expression without considering, for example, variation in transcript isoforms. The few studies that have mapped genetic variants associated with alternative splicing (splicing quantitative trait loci or sQTLs) have shown their promise for understanding disease \cite{Li2016-wu,Kim-Hellmuth2020-gz}. There is thus an urgent need for sQTL maps to be constructed across a broad range of environmental contexts for disease relevant cell types. \\
 
-\section[Short title]{Reasonably long section title}
+Here, we mapped sQTLs in iPSC-derived macrophages in 12 different cellular conditions obtained from 209 individuals at two timepoints after stimulation. We quantify the extent to which alternative splicing responds to macrophage stimulation, and how sQTLs and response sQTLs (re-sQTLs) are shared across environmental contexts. We also explore the contribution of alternative splicing and sQTLs to IMD risk. Finally, we contextualise our findings within an ongoing scientific debate about the functional and evolutionary relevance of low-usage splicing events and discuss the implications of our work on the design of future transcriptomics studies. \\
 
-% Uncomment this line, when you have siunitx package loaded.
-%The SI Units for dynamic viscosity is \si{\newton\second\per\metre\squared}.
-I'm going to randomly include a picture Figure~\ref{fig:minion}.
+\section{Results}
 
+\subsection{MacroMap: a resource for studying macrophage transcriptome}
 
-If you have trouble viewing this document contact Krishna at: \href{mailto:kks32@cam.ac.uk}{kks32@cam.ac.uk} or raise an issue at \url{https://github.com/kks32/phd-thesis-template/}
-
-
-\begin{figure}[htbp!] 
-\centering    
-\includegraphics[width=1.0\textwidth]{minion}
-\caption[Minion]{This is just a long figure caption for the minion in Despicable Me from Pixar}
-\label{fig:minion}
-\end{figure}
-
-
-\section*{Enumeration}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae laoreet lectus. Donec lacus quam, malesuada ut erat vel, consectetur eleifend tellus. Aliquam non feugiat lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque a dolor sit amet dui malesuada malesuada id ac metus. Phasellus posuere egestas mauris, sed porta arcu vulputate ut. Donec arcu erat, ultrices et nisl ut, ultricies facilisis urna. Quisque iaculis, lorem non maximus pretium, dui eros auctor quam, sed sodales libero felis vel orci. Aliquam neque nunc, elementum id accumsan eu, varius eu enim. Aliquam blandit ante et ligula tempor pharetra. Donec molestie porttitor commodo. Integer rutrum turpis ac erat tristique cursus. Sed venenatis urna vel tempus venenatis. Nam eu rhoncus eros, et condimentum elit. Quisque risus turpis, aliquam eget euismod id, gravida in odio. Nunc elementum nibh risus, ut faucibus mauris molestie eu.
- Vivamus quis nunc nec nisl vulputate fringilla. Duis tempus libero ac justo laoreet tincidunt. Fusce sagittis gravida magna, pharetra venenatis mauris semper at. Nullam eleifend felis a elementum sagittis. In vel turpis eu metus euismod tempus eget sit amet tortor. Donec eu rhoncus libero, quis iaculis lectus. Aliquam erat volutpat. Proin id ullamcorper tortor. Fusce vestibulum a enim non volutpat. Nam ut interdum nulla. Proin lacinia felis malesuada arcu aliquet fringilla. Aliquam condimentum, tellus eget maximus porttitor, quam sem luctus massa, eu fermentum arcu diam ac massa. Praesent ut quam id leo molestie rhoncus. Praesent nec odio eget turpis bibendum eleifend non sit amet mi. Curabitur placerat finibus velit, eu ultricies risus imperdiet ut. Suspendisse lorem orci, luctus porta eros a, commodo maximus nisi.
-
-Nunc et dolor diam. Phasellus eu justo vitae diam vehicula tristique. Vestibulum vulputate cursus turpis nec commodo. Etiam elementum sit amet erat et pellentesque. In eu augue sed tortor mollis tincidunt. Mauris eros dui, sagittis vestibulum vestibulum vitae, molestie a velit. Donec non felis ut velit aliquam convallis sit amet sit amet velit. Aliquam vulputate, elit in lacinia lacinia, odio lacus consectetur quam, sit amet facilisis mi justo id magna. Curabitur aliquet pulvinar eros. Cras metus enim, tristique ut magna a, interdum egestas nibh. Aenean lorem odio, varius a sollicitudin non, cursus a odio. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; 
-\begin{enumerate}
-\item The first topic is dull
-\item The second topic is duller
-\begin{enumerate}
-\item The first subtopic is silly
-\item The second subtopic is stupid
-\end{enumerate}
-\item The third topic is the dullest
-\end{enumerate}
-Morbi bibendum est aliquam, hendrerit dolor ac, pretium sem. Nunc molestie, dui in euismod finibus, nunc enim viverra enim, eu mattis mi metus id libero. Cras sed accumsan justo, ut volutpat ipsum. Nam faucibus auctor molestie. Morbi sit amet eros a justo pretium aliquet. Maecenas tempor risus sit amet tincidunt tincidunt. Curabitur dapibus gravida gravida. Vivamus porta ullamcorper nisi eu molestie. Ut pretium nisl eu facilisis tempor. Nulla rutrum tincidunt justo, id placerat lacus laoreet et. Sed cursus lobortis vehicula. Donec sed tortor et est cursus pellentesque sit amet sed velit. Proin efficitur posuere felis, porta auctor nunc. Etiam non porta risus. Pellentesque lacinia eros at ante iaculis, sed aliquet ipsum volutpat. Suspendisse potenti.
-
-Ut ultrices lectus sed sagittis varius. Nulla facilisi. Nullam tortor sem, placerat nec condimentum eu, tristique eget ex. Nullam pretium tellus ut nibh accumsan elementum. Aliquam posuere gravida tellus, id imperdiet nulla rutrum imperdiet. Nulla pretium ullamcorper quam, non iaculis orci consectetur eget. Curabitur non laoreet nisl. Maecenas lacinia, lorem vel tincidunt cursus, odio lorem aliquet est, gravida auctor arcu urna id enim. Morbi accumsan bibendum ipsum, ut maximus dui placerat vitae. Nullam pretium ac tortor nec venenatis. Nunc non aliquet neque. 
-
-\section*{Itemize}
-\begin{itemize}
-\item The first topic is dull
-\item The second topic is duller
-\begin{itemize}
-\item The first subtopic is silly
-\item The second subtopic is stupid
-\end{itemize}
-\item The third topic is the dullest
-\end{itemize}
-
-\section*{Description}
-\begin{description}
-\item[The first topic] is dull
-\item[The second topic] is duller
-\begin{description}
-\item[The first subtopic] is silly
-\item[The second subtopic] is stupid
-\end{description}
-\item[The third topic] is the dullest
-\end{description}
-
-
-\clearpage
-
-\tochide\section{Hidden section}
-\textbf{Lorem ipsum dolor sit amet}, \textit{consectetur adipiscing elit}. In magna nisi, aliquam id blandit id, congue ac est. Fusce porta consequat leo. Proin feugiat at felis vel consectetur. Ut tempus ipsum sit amet congue posuere. Nulla varius rutrum quam. Donec sed purus luctus, faucibus velit id, ultrices sapien. Cras diam purus, tincidunt eget tristique ut, egestas quis nulla. Curabitur vel iaculis lectus. Nunc nulla urna, ultrices et eleifend in, accumsan ut erat. In ut ante leo. Aenean a lacinia nisl, sit amet ullamcorper dolor. Maecenas blandit, tortor ut scelerisque congue, velit diam volutpat metus, sed vestibulum eros justo ut nulla. Etiam nec ipsum non enim luctus porta in in massa. Cras arcu urna, malesuada ut tellus ut, pellentesque mollis risus.Morbi vel tortor imperdiet arcu auctor mattis sit amet eu nisi. Nulla gravida urna vel nisl egestas varius. Aliquam posuere ante quis malesuada dignissim. Mauris ultrices tristique eros, a dignissim nisl iaculis nec. Praesent dapibus tincidunt mauris nec tempor. Curabitur et consequat nisi. Quisque viverra egestas risus, ut sodales enim blandit at. Mauris quis odio nulla. Cras euismod turpis magna, in facilisis diam congue non. Mauris faucibus nisl a orci dictum, et tempus mi cursus.
-
-Etiam elementum tristique lacus, sit amet eleifend nibh eleifend sed \footnote{My footnote goes blah blah blah! \dots}. Maecenas dapibu augue ut urna malesuada, non tempor nibh mollis. Donec sed sem sollicitudin, convallis velit aliquam, tincidunt diam. In eu venenatis lorem. Aliquam non augue porttitor tellus faucibus porta et nec ante. Proin sodales, libero vitae commodo sodales, dolor nisi cursus magna, non tincidunt ipsum nibh eget purus. Nam rutrum tincidunt arcu, tincidunt vulputate mi sagittis id. Proin et nisi nec orci tincidunt auctor et porta elit. Praesent eu dolor ac magna cursus euismod. Integer non dictum nunc.
-
-
-\begin{landscape}
-
-\section*{Subplots}
-I can cite Wall-E (see Fig.~\ref{fig:WallE}) and Minions in despicable me (Fig.~\ref{fig:Minnion}) or I can cite the whole figure as Fig.~\ref{fig:animations}
-
+Induced pluripotent stem cell lines (iPSC) from 209 healthy unrelated individuals, generated as part of the HipSci project \cite{Kilpinen2017-qm}, were differentiated into iPSC-derived macrophages (experimental protocol described in Supplementary note in Panousis et al. 2023). RNA was harvested from macrophage precursors at day 0 (Prec\_D0) and day 2 (Prec\_D2). \linebreak
+Naïve macrophages were exposed to a panel of 10 stimuli, and RNA was obtained and processed 6 and 24 hours after stimulation (in addition to unstimulated controls; Ctrl\_6 and Ctrl\_24), resulting in a total of 24 different conditions. I quantified alternative splicing from split reads (reads mapping across two splice junctions) using Leafcutter, which quantifies alternative splicing as intron usage ratios \cite{Li2018-ll}. I derived an intron usage ratio matrix for each of the 24 conditions and used this for differential splicing analysis and sQTL mapping.\\
 
 \begin{figure}
   \centering
-  \begin{subfigure}[b]{0.3\textwidth}
-    \includegraphics[width=\textwidth]{TomandJerry}
-    \caption{Tom and Jerry}
-    \label{fig:TomJerry}   
-  \end{subfigure}             
-  \begin{subfigure}[b]{0.3\textwidth}
-    \includegraphics[width=\textwidth]{WallE}
-    \caption{Wall-E}
-    \label{fig:WallE}
-  \end{subfigure}             
-  \begin{subfigure}[b]{0.3\textwidth}
-    \includegraphics[width=\textwidth]{minion}
-    \caption{Minions}
-    \label{fig:Minnion}
+  \includegraphics[width=\textwidth]{study_desc}
+  \caption{Overview of study: (a) Genotyped iPSC cell lines were differentiated into macrophages, and RNA was harvested before differentiation (Prec\_D0) and 2 days after starting differentiation (Prec\_D2). RNA was also harvested from differentiated macrophages at 6 and 24 hours (Ctrl\_6 and Ctrl\_24). Naive macrophages were then exposed to a panel of 10 stimuli and RNA was harvested at 6 and 24 hours after stimulation. (b) Split reads were used to quantify intron usage ratios on an individual level using LeafCutter. Split reads were then used for differential splicing analysis between naive and stimulated conditions, and as a quantitative trait to map splicing quantitative trait loci (sQTLs). sQTLs were then colocalised with 21 immune-mediated disease GWAS summary statistics.}
+  \label{fig:study_desc}   
+\end{figure}
+
+\subsection{Macrophage response genes are differentially spliced upon stimulation}
+
+Macrophage precursors (Prec\_D0) clustered separately from all other conditions in a UMAP projection of intron usage ratios across conditions (Figure \ref{fig:ds}a,b; Pearson correlation coefficient between Prec\_D0/Prec\_D2=0.74). \\
+
+Precursors at day 2 (Prec\_D2) clustered together with the fully differentiated conditions, suggesting that macrophage splicing programmes are activated early in the seven day long differentiation process (Supplementary note in Panousis et al. 2023; Pearson correlation coefficient between Prec\_D2/Ctrl\_6=0.88 and Prec\_D2/Ctrl\_24=0.92; Supplementary Figure 1). I also observed a clear separation between cells harvested after 6 and 24 hours, an effect that was not clearly detected for unstimulated macrophages (Ctrl\_6 and Ctrl\_24; Figure \ref{fig:ds}c). These findings demonstrate that both differentiation of iPSCs into macrophages and macrophage stimulation initiate profound and temporal alternative splicing changes. \\
+
+To identify genes that are differentially spliced upon immune stimulation, I undertook differential splicing analysis using LeafCutter (Methods). I identified a total of 3,464 genes with altered splicing in stimulated versus unstimulated macrophages after either 6 or 24 hours (adjusted P-value < 0.05 and |log effect size| > 0.5). Macrophages stimulated with IL4 had the fewest differentially spliced genes (110 and 94 genes after 6 and 24 hours, respectively; Figure \ref{fig:ds}c), in line with previous reports that showed stimulating macrophages with IL4 had little impact on splicing \cite{Liu2018-fh}. \\
+
+I next undertook pathway enrichment analysis to identify REACTOME pathways enriched with differential spliced genes following stimulation. Six hours after bacterial stimulation with LPS (sLPS\_6), differentially spliced genes were enriched for pathways relevant to macrophage response, including "Cytokine Signalling" (84 genes; P-value=$9.1\times10^{-8}$), "Vesicle-mediated transport" (68 genes; P-value=$10^{-6}$) and "Class I MHC mediated antigen processing and presentation" (47 genes; P-value=$7.95\times10^{-6}$ Supplementary Table S1).\\
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{ds}
+  \caption{ UMAP of intron usage ratios in different stimulation conditions, coloured both by (A) different stimulation conditions and (B) by time point. (C) Number of differentially spliced genes between naive and stimulated macrophages after 6 hours (yellow) and 24 hours (blue) (D) Volcano plot showing differentially spliced genes 6 hours after sLPS stimulation, with log effect size on the x-axis (for each gene the intron with the largest absolute effect size is shown) and -log10 of adjusted P-value on the y-axis. Colours indicate the direction of intron usage change (blue indicating reduced usage and red indicating greater usage in stimulated cells versus naive cells). Genes that belong to the "vesicle-mediated transport" REACTOME pathway are indicated.}
+  \label{fig:ds}   
+\end{figure}
+Several genes coding for members of the RAB family of proteins were enriched within the vesicle-mediated transport pathway, which is also known to be regulated via alternative splicing \cite{Green2020-lf} (including \textit{RAB1B, RAB4A, RAB9A, RAB11A, RAB13, RAB14} and \textit{RABEPK}; Figure \ref{fig:ds}d, Supplementary Table S1). RABs are GTPases that regulate membrane trafficking by controlling  the formation, movement and recycling of vesicles \cite{Stenmark2009-ju}. For example, I observed greater usage of the first exon of a non-canonical transcript of \textit{RAB13} (\textit{RAB13-205}), coupled with lower usage of the canonical first exon (\textit{RAB13-201}) (Difference in Percentage Spliced In ($\Delta$PSI) =0.046 and -0.05, respectively). The two annotated transcripts RAB13-201 and \textit{RAB13-205} result in protein products of 203 and 122 amino acids respectively, which indicates that a different \textit{RAB13} protein isoform is produced following stimulation with LPS.\\
+
+The stimulation panel also included viral stimuli, which enabled me to explore if viral response genes were differentially spliced upon stimulation. I observed that six hours after stimulation with dsRNA viral mimic PolyI:C (PIC\_6), genes involved in viral sensing and RIG-I/MDA5-mediated activation of the antiviral cytokine Interferon $\beta$ (IFN$\beta$) are differentially spliced (Supplementary Table 1). RIG-I/MDA5 belong to the RIG-I-like family of receptors which sense dsRNA and activate type I interferons in response (e.g. IFN$\beta$) \cite{Yoneyama2005-ba,Kato2005-ie}. Differentially spliced genes include genes coding for the RIG-I and MDA5 receptors themselves (\textit{DDX58} and \textit{IFIH1} respectively), but also genes involved in IFN$\beta$ regulation, such as \textit{TRIM25} \cite{Castanier2012-io}, \textit{TANK} \cite{Al_Hamrashdi2022-pr}, and \textit{RIPK1} \cite{Saleh2017-fv}. These findings are supported by previous work showing  that regulatory components of the RIG-I/MDA5-mediated IFN$\beta$ activation pathway have different isoforms that modify antiviral response \cite{Gack2009-nw,Liao2021-aj,Lad2008-jd}. \\
+
+The differential splicing analysis reinforces the role of alternative splicing in regulating important innate immunity processes (e.g. vesicle-mediated transport and viral sensing and response), but also highlights the specificity of splicing junction usage in response to specific stimuli. Although the role of alternative splicing in response to stimuli has been previously reported \cite{Wagner2021-fl}, this comprehensive and well-powered screen captures pathway-level changes in splice junction usage in response to a broad range of stimuli. Furthermore, these findings demonstrate that iPSC derived macrophages can faithfully recapitulate known biological pathways activated by different stimuli. This motivated me to investigate how genetic variation affects alternative splicing in macrophages and how such genetic variation may, in turn, predispose to IMDs.\\
+
+\subsection{Macrophage stimulation increases the number of genes with significant sQTL effects }
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{sqtl}
+  \caption{(a) cumulative number of genes with significant splicing QTL effects, with unstimulated conditions indicated in grey (b) Total number of significant sQTLs per condition and proportion of response sQTLs within each condition (sQTLs with LFSR < 0.05; Methods). (c) Number of genes, per condition, with at least one response sQTL at 6 hours, 24 hours or both.}
+  \label{fig:sqtl}   
+\end{figure}
+To understand which alternative splicing events were affected by genetic variation, I mapped splicing QTLs using intron usage ratios as a quantitative trait. Intron usage ratios were normalised (quantile normalised and rank-based inverse normal transformed) and introns with low variance (standard deviation < 0.005), or intron clusters without split reads in more than 40\% of samples, were excluded (Methods). I identified a median of 82,058 introns (75,987-105,841 introns across conditions with the greatest  number of introns seen in Prec\_D0; Figure \ref{fig:qc_introns_num} in Methods). Each gene had a median of 7 introns and up to 10,851 genes were quantified per condition. \\
+
+I mapped sQTLs within a $\pm$ 1 Mbp window centred around the transcription start site (TSS) of each gene. I also used multivariate adaptive shrinkage (mash \cite{Urbut2019-gf}) to compare sQTL effect sizes between naive and stimulated conditions (I used Ctrl\_24 as a baseline condition). Mash reports a significance measure known as local false sign rate (LFSR; Methods), which I used to identify sQTLs whose effect sizes change significantly upon stimulation (response sQTLs). \\
+
+I called significant sQTLs at a false discovery rate (FDR) < 0.05. Across all conditions, I detected a total of 5,734 sGenes (median number of sGenes per condition=1580 and Prec\_D2 had the most sGenes=1,881) (Figure \ref{fig:sqtl}a,b). Of these, 878 sGenes (15.3\%) had at least one response sQTL (LFSR < 0.05).  I then asked which of the two stimulation timepoints (6 and 24 hours) was more likely to have response sQTL effects across stimulation conditions. Up to 29\% of response sGenes per condition had a response sQTL after 24 hours that was not detected after 6 hours. Conversely, up to 72\% of response sGenes per condition had a response sQTL after 6 hours that was  undetectable after 24 hours. This suggests that response sQTLs are more likely to be detected 6 hours after stimulation (Figure \ref{fig:sqtl}c), in agreement with previous work that suggested 4-6 hours for optimal detection of transcriptomic changes following macrophage stimulation \cite{Unuvar_Purcu2022-zq,Sharif2007-np}. \\
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{intron_tss}
+      \caption{}
+      \label{fig:intron_tss}
   \end{subfigure}
-  \caption{Best Animations}
-  \label{fig:animations}
+  \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{esqtl}
+      \caption{}
+      \label{fig:esqtl}
+  \end{subfigure}
+
+
+     \caption{(a) Distribution of the distance between the lead SNPs of significant sQTL effects (across all conditions) and transcription start site (TSS; in black) of the sQTL gene, 5'intron boundary (in blue) and 3' intron boundary (in red). (b) Proportion of significant sQTL effects that share a single causalvariant (PP4 $\geq$ 0.1) with the same eQTL gene in the same condition. Red line indicates the average proportion of sQTLs with sQTL/eQTL colocalisation $\geq$ 0.1 across conditions.}
+     \label{fig:tss_esqtl}
+\end{figure}
+Similar to previous reports \cite{Garrido-Martin2021-sk}, I found that lead sQTL SNPs are located closer to intron boundaries than to the TSS of their genes. On average per condition, 24.5\% of sGenes had a lead SNP within 10 kbp of their TSS, compared to 46.8\% within 10 kbp of either the 5' or 3' intron boundaries (Figure \ref{fig:tss_esqtl}a). Previous sQTL mapping efforts have also shown that sQTL signals are largely independent from eQTL signals, and therefore overall levels of gene expression and alternative splicing are genetically regulated via distinct mechanisms \cite{Kim-Hellmuth2020-gz,Wang2008-fb,Lappalainen2013-mz}. To verify this, I performed statistical colocalisation (Methods; ref \cite{Giambartolomei2014-yl}) between sQTLs and eQTLs derived from the same data (Panousis et. al. 2023 \cite{macromap-eqtl}). In line with previous findings, I found that on average across conditions, only 25\% of sGenes likely share a single causal variant with an eGene in the same condition (PP4 $\geq$ 0.1; Figure \ref{fig:tss_esqtl}b; Methods), indicating that the majority of sQTL signals are largely independent from eQTL signals. I therefore hypothesised that colocalisation of sQTLs with disease-associated loci may identify additional disease effector genes distinct from those already implicated via eQTLs. \\
+
+
+
+
+\subsection{Splicing QTLs identify GWAS effector genes undetected by expression QTLs}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{coloc_sqtl}
+  \caption{(a) Cumulative number of genes with a GWAS-sQTL (PP4 $\geq$ 0.75) across different conditions, with unstimulated conditions shown in grey on the left (b) Heatmap and hierarchical clustering of LFSR values for all the colocalised sQTL effects (PP4 $\geq$ 0.75) across all 21 IMDs. On top of the heatmap is a barplot showing the proportion of colocalised sQTL effects that are response sQTLs (LFSR < 0.05) (c) Proportion of genome-wide significant loci that share a single causal variant (PP4 $\geq$ 0.75) with an eQTL only, an sQTL only or both }
+  \label{fig:coloc}   
+\end{figure}
+Macrophage sQTL maps can also be used to build hypotheses about how IMD risk loci confer risk by dysregulating alternative splicing. To this end, I used statistical colocalisation (using coloc; Methods) between sQTL and GWAS association signals to quantify the probability of a sQTL sharing a causal variant with genetic association signals from 21 IMD GWAS summary statistics (downloaded from GWAS catalogue \cite{Buniello2019-wb}; Methods and Supplementary Table 2). \\
+
+Across all 21 IMDs, I identified 707 unique genes (1,337 introns) with an sQTL signal in at least one condition that likely shares a causal variant with an IMD risk locus (PP4 $\geq$ 0.75; Figure \ref{fig:coloc}a). Moreover, for 68 (9.6\%) of these genes, the risk locus colocalised with a response sQTL, indicating that the genetic effects of these variants on alternative splicing could not be detected in unstimulated macrophages. Based on hierarchical clustering of LFSR values, Prec\_D2, IL4\_6 and IL4\_24 had the fewest response sQTLs that colocalised with GWAS signals, while sLPS\_6, CIL\_6 and LIL10\_6 (all stimulated with LPS) yielded the most, recapitulating results from the differential splicing analysis (Figure \ref{fig:coloc}b). \\
+
+I then compared how many tested loci colocalised with each type of molecular QTL and found that 50.4\% (771/1,528) of tested loci were likely to share a single causal variant with either an eQTL, sQTL or both. Recently, Mountjoy et al. 2021 (ref: \cite{Mountjoy2021-fc}) colocalised 50.7\% of tested GWAS loci with protein and expression QTLs from 92 tissues and cell types. In comparison, this high colocalisation yield from a single cell type shows the promise of profiling the transcriptome of a relevant cell type in understanding the effects of GWAS loci. Moreover, unlike other tissue-level QTL maps, interpreting these colocalisations in the context of macrophages potentially aids the interpretation and functional follow-up of these loci. \\
+
+Approximately half of the colocalised loci (385 loci or 25.2\% of tested loci) colocalised solely with an sQTL (sQTL PP4 $\geq$ 0.75 > eQTL PP4), clearly demonstrating both the value of sQTLs for identifying GWAS effector genes and the important role that alternative splicing plays in complex disease risk (Figure \ref{fig:coloc}c). \\
+
+\subsection{Lowly-used alternative splicing events underlie complex disease risk}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{low_sj}
+  \caption{(a) distribution of mean intron usage ratio for colocalised introns, showing a peak close to 0, and (b) coloured by annotation in GENCODE v27, showing an enrichment of unannotated introns among introns with low mean usage ratio (c) number of samples in which the intron is supported by at least one split read (y-axis) shown against the mean intron usage ratio of each sample (x-axis). Red vertical line at mean intron usage ration  = 0.1.}
+  \label{fig:low_sj}   
+\end{figure}
+I next sought to characterise the colocalised sQTL introns, by asking how often colocalised sQTL splicing events are used in observed transcripts. There is ample evidence that lowly-observed aberrant splicing underpins several inherited diseases such as Spinal Muscular Atrophy and Duchenne Muscular Dystrophy \cite{Symoens2011-ew,Abramowicz2018-by,Sanz2017-re}, but it is unclear to what extent lowly-observed splicing events contribute to complex diseases. \\
+
+I observed that 53.4\% of colocalised sQTL introns have a mean intron usage ratio (IUR) < 0.1 across samples (Figure \ref{fig:low_sj}a). Over 96\% of these introns had non-zero usage in at least 30 samples (Figure \ref{fig:low_sj}c), indicating that these splicing events can be reliably observed in multiple RNA-seq samples and individuals, but with relatively low IUR. Moreover, 50.6\% of these introns are not found in any annotated transcripts in GENCODE v27, whereas only 12\% of introns with mean IUR $\geq$ 0.1 are absent from GENCODE v27 (Figure \ref{fig:low_sj}b), in line with previous reports showing that lowly-observed splicing events tend to be unannotated in transcript databases \cite{Nellore2016-fj,Pickrell2010-lz}. \\
+
+The observation that over half of colocalised sQTL introns are lowly used and that they tend to be unannotated strongly emphasises the need to investigate their functions and role in the context of complex disease. For example: are low-abundance translated into protein products or do they exert gene regulatory functions? What is the effect of up- or down-regulating these isoforms on different cellular phenotypes? Sampling these rare transcripts will thus shed light on the transcriptomic effects of IMD-associated risk loci, an avenue that has remained largely unexplored in most large-scale transcriptomic cohorts. \\
+
+\subsection{A rare alternative splicing event likely underpins IBD risk at the \textit{PTPN2} locus}
+To demonstrate how sQTLs for lowly-used introns can dysregulate alternative splicing and predispose to IMDs, I further investigated a \textit{PTPN2} sQTL that implicates a lowly-used intron that colocalised with an inflammatory bowel disease (IBD) associated risk locus at 18p11.21. Multiple lines of evidence, including coding variants associated with monogenic IBD \cite{Parlato2020-lh,Pike2018-wn} and mouse knock-out models \cite{Spalinger2018-mb,Spalinger2022-xj}, have suggested \textit{PTPN2} is the effector gene at 18p11.21, though this remains to be established. It is not yet known if and how common IBD-associated SNPs affect the expression of \textit{PTPN2}. \\
+
+I observed that the lead IBD SNP at 18p11.21 (rs80626450; 18-12818923-G-A) is associated with higher risk of IBD and with increased usage of intron 1-2 of the non-canonical transcript \textit{PTPN2-205} (chr18:12,817,365-chr18:12,818,944; Figure \ref{fig:ptpn2}b,d). rs80626450 is located 21 base pairs downstream of the donor splice site of exon 1 of \textit{PTPN2-205}, and is the lead SNP for both the sQTL and IBD association signals, strongly suggesting its involvement in the aberrant splicing event at this locus. The \textit{PTPN2} sQTL signal colocalised (PP4 $\geq$ 0.9) with the IBD signal in 13 conditions, but did not colocalise with any eQTLs mapped from the same data (eQTLs mapped in Panousis et. al. 2023). Despite the relative rarity of this transcript, I detected this colocalisation using GTEx sQTL summary statistics10, where this sQTL signal was also colocalised with the IBD locus (PP4 $\geq$ 0.9) in 14 tissues, including whole blood (Supplementary Table 3 and Supplementary Figure \ref{fig:ptpn2_gtex}), indicating that this rare splicing event can be reliably detected in a large number of tissues from an independent dataset. \\ 
+
+The directions of effects of rs80626450 on intron usage and IBD risk (effect size in sLPS\_6=1.21771  and odds ratio=1.17, respectively) suggest that an increase in the relative abundance of \textit{PTPN2-205} is associated with increased risk of IBD. Given that mouse knock-out studies of \textit{PTPN2} suggest the gene plays an anti-inflammatory role in macrophages, I hypothesise that increased usage of \textit{PTPN2-205} attenuates the role of \textit{PTPN2} as a negative regulator of inflammation, which in turn increases the risk of IBD. \\
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{ptpn2}
+  \caption{Example of colocalisation between an IBD risk locus at 18p11.21 and an sQTL for \textit{PTPN2}.  (a) Regional association plots of the IBD association signal, and sQTL association signal in unstimulated macrophages (Ctrl\_6) and macrophages stimulated with sLPS after 6 hours (sLPS\_6), (b) Normalised intron usage ratios of different genotypes of the lead IBD SNP rs80262450 in Ctrl\_6 and sLPS\_6, (C) Heatmap showing evidence of colocalisation (PP4) between the IBD association signal at 18p11.21 and all macrophage eQTLs/sQTLs in the locus (in all conditions), (D) RNA-seq coverage of the intron cluster where the \textit{PTPN2} sQTL effect is detected in sLPS\_6. Bars represent the number of reads and arcs represent the usage of different introns (only five splice junction ratios are shown for clarity and the colocalised sQTL splice junction is indicated in a red box). Canonical transcript \textit{PTPN2-201} and non-canonical transcript \textit{PTPN2-205} are shown underneath, with blue boxes representing introns and the position of rs80262450 on \textit{PTPN2-205} is shown by the green line.}
+  \label{fig:ptpn2}   
+\end{figure}
+
+\subsection{sQTL colocalisations converge on dysregulated pathways in IMDs}
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\textwidth]{dennd1b}
+  \caption{(a) Diagram showing different stages of endocytosis and endosomal recycling. Rab35 and two of its interactors LRRK2 and \textit{DENND1B} are shown on a recycling endosome. Regional Manhattan plots of the two IBD-associated loci (created with BioRender.com) (b) 1q31.1 and \textit{DENND1B} sQTL in naïve and stimulated macrophages (LIL10\_24) and (c) 12q12 and \textit{LRRK2} sQTL in naive and stimulated macrophages (CIL\_24) showing high colocalisation evidence with the IBD-associated locus in the stimulated condition sQTL, but not in the naïve condition sQTL.}
+  \label{fig:dennd1b}   
+\end{figure}
+IMD-sQTL colocalisations in disease-relevant cell types can reveal how genetic variation dysregulates biological pathways that enable the cell to perform its normal functions.
+For example, I found that two IBD-associated loci colocalised with sQTL signals for genes that interact with the RAB GTPase Rab35. Rab GTPases are a diverse set of molecules that regulate different aspects of vesicle-mediated transport, with over 70 RAB GTPAses discovered so far \cite{Sigismund2021-cu}. RAB GTPases are activated by Guanine Exchange Factors (GEF), and subsequently recruit effector proteins, including proteins required for vesicle uncoating, movement, tethering and fusion, which enables cargo trafficking across cell compartments and membranes \cite{Yoneyama2005-ba}.\\
+
+IBD-associated loci at 12q12 and 1q31.3 colocalise with \textit{LRRK2} and \textit{DENND1B} sQTLs in 5 and 21 conditions, respectively (PP4 $\geq$ 0.75; Supplementary Table 4 and 5; Figure \ref{fig:dennd1b}). \textit{DENND1B} is a GEF that activates Rab35, while Rab35 was shown to be a bona fide substrate for \textit{LRRK2} \cite{Steger2016-yl,Bae2018-pu}, although the exact effect \textit{LRRK2} has on Rab35 is still debated \cite{Bae2018-pu,Bonet-Ponce2020-ri,Lee2021-ff}. Rab35 regulates endosomal recycling of both integrins and cadherins, effectively maintaining a balance between cell adhesion and cell migration. Moreover, evidence suggests that endosomal recycling in epithelial cells helps maintain apical and basolateral polarity, and that Rab35 plays a role in maintaining this polarity \cite{Mrozowska2016-lm,Kinoshita2020-yl}. The fact that both LRRK2 and \textit{DENND1B} interact with Rab35 suggests that endosomal recycling is frequently dysregulated by common IBD-associated variation. \\
+
+Two \textit{DENND1B} splice junctions with different donor splice sites colocalise with the IBD-associated signal 1q31.3 (chr1:197,715,074-197,772,868 and chr1:197,715,074-197,735,586). The first splice junction is located in the coding sequence of the canonical transcript of \textit{DENND1B} (\textit{DENND1B-211}), while the second is part of the 5' untranslated region of another protein-coding transcript (\textit{DENND1B-201}). Lead sQTL SNPs for both transcripts have inconsistent directions of effect in different stimulation conditions where the colocalisations are detected (Supplementary Figure \ref{fig:lrrk2_dennd1b}) . This suggests that the effect of the risk-increasing allele on relative transcript abundances is highly context-dependent. \\
+
+Unlike \textit{DENND1B}, all \textit{LRRK2} sQTLs with high colocalisation probabilities (PP4 $\geq$ 0.75 in 5 conditions) had consistent directions of effects in the conditions where the colocalisation was detected. For example, the \textit{LRRK2} sQTL with the highest colocalisation probability was observed in LIL10\_24 (PP4=0.975), where the risk-increasing allele of the lead GWAS SNP (rs76904798; 12-40220632-C-T) decreases the usage of an \textit{LRRK2} splice junction (chr12:40,316,403-40,319,988; beta=-0.75), and also increases the risk of IBD (beta=0.105). This indicates that decreased usage of this splice junction increases risk of IBD, and conversely that inclusion of this splice junction may have a protective effect against IBD (Supplementary Figure \ref{fig:lrrk2_dennd1b}). \\
+
+Although I demonstrate how \textit{LRRK2} and \textit{DENND1B} contribute to a dysregulated endosomal recycling in IBD in different environmental contexts, more research is still needed to understand the exact mechanisms by which the isoforms of these two genes affect such an important biological process in macrophages. \\
+
+\section{Discussion}
+
+In this work, I mapped splicing QTLs in iPSC-derived macrophages to understand how splicing is genetically controlled in macrophages under 10 different environmental contexts. I found thousands of genes with significant sQTL effects across our array of conditions, and that a considerable proportion of these genes have different effect sizes upon stimulation and were thus defined as response sQTLs.\\
+
+The primary motivation behind several QTL mapping efforts is to understand the transcriptomic consequences of disease-associated genetic variation. Recently, Mostafavi et al. 2022 (ref 8) suggested that eQTL and GWAS studies are powered to discover systematically different types of variants, and that this may partially explain the limited colocalisation between eQTLs and GWAS risk loci. More than half of the IMD-associated risk loci that I tested likely share a single causal variant with either an eQTL or sQTL, with sQTLs solely contributing half of these loci, which clearly demonstrates the added value of sQTLs. This echoes previous work that showed the promise of sQTLs in closing the colocalisation gap \cite{Mu2021-ar,Kim-Hellmuth2020-gz,Liu2018-fh}. Mostafavi et al. (ref \cite{Mostafavi2022-tg}) proposed that systematic differences between GWAS and eQTL association signals are behind this colocalisation gap. Along the same lines, I attribute the large number of sQTL colocalisations to three important features of the discovered sQTLs that make them likely to colocalise with GWAS association signals. First, unlike eQTL variants, sQTL variants tend to be located around intron splice sites, rather than TSS of genes (Figure \ref{fig:intron_tss}), closer to intronic GWAS association signals that do not colocalise with eQTL signals. Indeed, 63.4\% of the lead SNPs in the GWAS loci that I tested were intronic variants. Second, sQTL signals largely do not colocalise with eQTL signals, suggesting that they are driven by distinct genetic associations (Figure \ref{fig:esqtl}). Third, I show that a considerable number of colocalisation events implicate unannotated introns that are lowly used across transcripts. These subtle changes in intron usage are unlikely to be reflected in overall levels of gene expression levels and may therefore remain undetected in eQTL studies. \\
+
+
+Currently, it is unclear whether lowly-used splicing events are simply splicing errors \cite{Pickrell2010-lz,Melamud2009-my} or if they have functional consequences\cite{Wright2022-gp,Rotival2019-ic}. For example,  Pickrell et al. 2010 (ref \cite{Pickrell2010-lz}) interpreted the lack of evolutionary conservation around lowly-used splice sites as evidence that they are functionally-irrelevant. This interpretation has been debated over the past decade \cite{Mazin2021-lb}. Here, I show that many of these lowly-used splice junctions may underpin disease-associated genetic effects on alternative splicing, and should not be considered noisy and functionally irrelevant. The PTPN2 example is particularly intriguing as the implicated splice junction falls within an Alu element, a class of Short Interspersed Nuclear Elements (SINE; Dfam E-value=$4.7\times10^{-98}$) that constitute 11\% of the human genome\cite{Deininger2011-cx}. RNA binding proteins normally repress the expression of newly-incorporated Alu elements, but decreased repression over long evolutionary periods provides a substrate for new functions \cite{Attig2016-mj,Singer2004-km}. The risk-increasing effect of the lowly-used \textit{PTPN2} splice junction could therefore represent a harmful evolutionary byproduct that attenuates the anti-inflammatory effect of \textit{PTPN2}. This remains to be validated by functional studies that profile the functional consequences of \textit{PTPN2} isoforms that contain this splice junction. With the recent success of RNA therapeutics such as splice-switching antisense oligonucleotides (ASO), it may be possible to “contain” these evolutionary side effects via therapeutic interventions that decrease the proportion of these lowly-used splice junctions \cite{Mercuri2018-pi,Roberts2020-rx}. This should provide incentive for the complex disease and transcriptomic community to understand and interrogate the functional consequences of the splicing events that underpin complex disease risk. \\
+
+Although this dataset represents the largest resource for studying how alternative splicing is genetically controlled in iPSC-derived macrophages, I acknowledge two main limitations. First, although macrophages differentiated using MacroMap's experimental protocol have been shown to be transcriptionally similar to monocyte-derived macrophages \cite{Alasoo2018-pv}, they still do not capture the local environment of tissue-resident macrophages. This may limit the ability to understand the effect of local micro-environments on the transcriptome of macrophage \cite{Lavin2014-fb}. Second, intron usage ratios do not provide information about the relative abundance of full transcripts. For example, I demonstrated the potential effects of splicing events on the canonical transcripts of \textit{PTPN2}, but it is still unclear which transcripts these splicing events may have originated from. Fortunately, long-read sequencing and its algorithms for isoform quantification are becoming increasingly mature \cite{AlKhafaji2021-af,Amarasinghe2020-ci,Hu2021-bv}. I therefore expect that a more direct quantification of transcript usage will be attainable, and that it will make alternative splicing a more routine part of transcriptomic profiling studies. 
+
+In summary, these findings highlight an important role for alternative splicing in macrophage response to environmental cues, and that its dysregulation explains a large proportion of IMD-associated susceptibility loci. I anticipate that improved long-read sequencing technologies will facilitate whole isoform quantification in different cellular contexts, which will open the door for a better understanding of the role of different isoforms in innate immune response. Finally, I recommend that alternative splicing quantification should be an integral part of future QTL studies (including single cell studies), and that it will be increasingly relevant to understand the transcriptomic effects of disease-associated risk loci. 
+\newpage
+\section{Methods}
+
+\subsection{Differentiation of Induced Pluripotent Stem Cell Lines (iPSC) Into Macrophages}
+
+iPSCs obtained from healthy donors of European descent were selected from the HipSci Consortium \cite{Kilpinen2017-qm}, and were differentiated to macrophages using a previously published protocol. Of 315 lines initially selected, 227 (71.6\%) were successfully differentiated. RNA-seq libraries were produced for 217, which represented 209 lines after quality control. Differentiated macrophages have been shown to be transcriptionally similar to monocyte-derived macrophages60. The differentiated naive macrophages were then stimulated with a diverse panel of adjuvants, resulting in 10 stimulation conditions, as well as naive differentiated (Ctrl\_6 and Ctrl\_24) and undifferentiated controls (Prec\_D0 and Prec\_D2). mRNA was harvested 6 and 24 hours after stimulation. Multiple cell lines were derived from a varying number of individuals in each stimulation condition (ranging between 177-202 individuals), resulting in a total of 4,698 unique RNA-seq libraries across all conditions (Panousis et al. 2023). Detailed experimental protocol for this study is provided by Panousis et al. 2023.
+
+\subsection{Genotype Imputation And Quality Control}
+Individuals who donated cell lines were previously genotyped through the HipSci project \cite{Kilpinen2017-qm}. Genotypes were obtained for each cell line from from the HipSci Consortium  (hipsci.org) and genotype calling and imputation to  UK10K and 1000 Genomes Phase I is described in \cite{Kilpinen2017-qm}. CrossMap \cite{Zhao2014-ve} was used to lift over from GRCh37 to GRCh38. Imputed variants with a low imputation score (INFO < 0.4), Hardy-Weinberg equilibrium P-value < $10^{-6}$, a minor allele frequency (MAF) < 0.05 or a missingness rate > 0.001 were filtered out. For the remaining variants, genotype principal components (PCs) were calculated using EIGENSTRAT \cite{Price2006-kr} to correct for population stratification.
+
+\subsection{RNA-seq Quality Control And Read Mapping}
+RNA-seq reads (FASTQ files) were mapped to the reference genome build GRCh38 using splice-aware aligner STAR v2.6.1 \cite{Dobin2013-hs} using the following parameters: 
+
+\begin{verbatim}
+--twopassMode Basic --outSAMstrandField intronMotif
+--outSAMtype BAM SortedByCoordinate --outSAMunmapped Within
+--outSAMattributes All --outFilterMismatchNoverReadLmax 0.04
+--outSAMmultNmax 1 --limitBAMsortRAM 40000000000
+--sjdbOverhang 74 --waspOutputMode SAMtag
+\end{verbatim}
+The parameter \Verb_sjdbOverhang_ is particularly relevant as it sets the minimum number of basepairs each split read has to map to on either side of the splice junction. I used a a value of 74 as it is recommended to be set to $read length -1$. Finally, this step outputs BAM files that I used for the identification of split reads using LeafCutter. \Verb_outSAMstrandField_ outputs the strand to which each read was mapped to. This is an important check when splice junctions are linked to genes to ensure that the identified splice junction and gene are transcribed from the same strand. 
+
+\subsection{WASP filtering of ambiguously-mapped reads}
+It has been shown that ambiguously-mapped reads (RNA-seq reads that map to multiple genomic positions) can bias the number of split reads mapped across splice junctions \cite{Van_de_Geijn2015-lb}. Genetic variants that overlap with splice junction can potentially introduce unnoticed mapping ambiguity when an alternative allele increases mapping ambiguity. It is particularly important to guard against this when mapping sQTLs, since decreased splice junction can indicate a mapping ambiguity effect of an alternative allele rather than a true genetic effect.
+
+WASP \cite{Van_de_Geijn2015-lb} identifies an ambiguously-mapped read by replacing the reference allele in genomic location with a genetic variant with the alternative alleles and then remapping. Reads whose mapping ambiguity increases after allele replacement are flagged (\Verb_vW_=2-7). In the previous step, I used STAR with the parameter \Verb_waspOutputMode_, which flags reads that pass the WASP filter with \Verb_[vW]=1_.  I therefore only removed read alignments which did not have tag \Verb_[-vW]=1_ using this command in SAMtools \cite{Li2009-yk}:
+
+\begin{verbatim}
+samtools view -S -b -e 
+"[vW]!=2 && [vW]!=3 && [vW]!=4 && [vW]!=5 && [vW]!=6 && [vW]!=7"
+\end{verbatim}
+
+\subsection{Identification of split reads}
+I identified split reads from BAM files from the previous step using \Verb_regtools_ \cite{Cotto2023-yp} and output as \Verb_.junc_ files. I used the following command and parameters:
+\begin{verbatim}regtools junctions extract -s 0 -a 8 -m 50 -M 500000 \end{verbatim}
+These parameters specify the minimum and maximum intron length (50 bp and 500,000 bps in length, respectively), and a minimum splice junction anchor length of 8 bps. The last parameter means that there must be reads supporting at least 8 basepairs of either sides of a splice junction. 
+
+\subsection{Intron clustering using LeafCutter}
+Mapped split reads (as \Verb_.junc_ files) were used to perform intron clustering using the Leafcutter script \Verb+leafcutter_cluster.py+:
+
+\begin{verbatim}
+python leafcutter_cluster_regtools_py3.py -j .junc -m 50 -l 500000
+\end{verbatim}
+A minimum number of 50 split reads across samples was required to support an intron cluster. Maximum intron length used was 500 kbp. 
+For each identified intron cluster with introns 1…j, LeafCutter quantifies intron usage ratio R for intron k as:
+$$R_{k}=\frac{X_k}{ \sum_{i=1}^{j}X_{i} }$$
+here $X_k$ is the number of split reads that belong to an identified intron $k$.
+
+\subsection{Differential splicing analysis}
+I performed differential splicing analysis between each of the 10 stimulated conditions and their corresponding timepoint controls (e.g. sLPS\_6 vs Ctrl\_6 and sLPS\_24 vs Ctrl\_24). LeafCutter differential splicing analysis tool (script \Verb+leafcutter_ds.R+)\cite{Li2018-ll} was used with eight experimental covariates: run ID, donor, library preparation method, sex, differentiation media,purity,  estimated cell diameter, and differentiation time, and with  the following parameters:
+\begin{verbatim}
+–min-samples-per-intron 50 –min-samples-per-group 50 –min-coverage 30
+\end{verbatim}
+This ensures that for a splice junction to be considered differentially spliced, it must be supported by at least 50 RNA-seq samples per condition, and 30 split reads in total. This ensures the robustness of the differential splicing analysis and avoids false positives due to technical differences in splice junction calls between conditions.
+
+\subsection{UMAP clustering}
+I performed the UMAP clustering on raw intron usage ratios, for introns that that were detected across all 24 conditions. This ensures that clustering is not based on introns that are not detected in a single condition. I performed UMAP clustering after 3 pre-processing steps. First, I performed quantile normalisation on raw intron usage ratios. Second, I performed rank-based inverse normal transformation. Third, I regressed out eight technical covariates similar to the ones included in the differential splicing analysis: run ID, Donor, library preparation method, sex, differentiation media, purity, estimated cell diameter, and differentiation time. I used the umap R package to perform UMAP clustering (https://github.com/tkonopka/umap). 
+
+\subsection{Intron usage ratio quality control and normalization}
+In order to use intron usage as a quantitative trait, I first used the LeafCutter script \linebreak \Verb+prepare_phenotype_table.py+, which applies two default filters at the intron level. It removes introns which have an intron usage ratio=0 in more than 40\% of samples, and those with a standard deviation $< 5\times10^{-3}$ (Figure \ref{fig:qc_introns_num}). The script also applies quantile normalization to the introns which ensures that different samples folow the same intron usage ratio distribution. The remaining introns were mapped to known intron-exon junctions in known genes using GENCODE's annotation (v27).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{qc_introns_num}
+  \caption{Number of introns identified in the intron clustering procedure of
+  Leafcutter (before intron sQTL quality control; in red) and the number of introns that were
+  used as input to map sQTLs (after intron sQTL quality control; in black).}
+  \label{fig:qc_introns_num}   
+\end{figure}
+
+\subsection{Mapping sQTLs using intron usage ratios}
+I mapped sQTLs using normalised intron usage ratios and genotype data from samples within each stimulation condition. Variants in a 1 mega base pair (Mb) window around the transcription start site (TSS) were tested for assocaition with intron usage ratios. Genotype-intron association was modelled using a linear regression model implemented in QTLtools \cite{Delaneau2017-dg} with the parameters:
+\begin{verbatim}
+--permute 1000 --window 1000000 --grp-best
+\end{verbatim}
+The option \Verb+-grep-best+ allows phenotypes (intron usage ratios) to be grouped. Within each phenotype group, the genotype-phenotype sample labels are permuted in exactly the same way. This allows P-values for phenotypes within the same group to be compared with each other and for QTLtools to report the best associated phenotype per group. I grouped introns by the gene they belong to, and report the best associated variant-intron per gene.
+
+In all of my subsequent analyses, I included the first three genotypic principal components (PC) as covariates. In order to remove unwanted variability in intron usage ratios, I mapped sQTLs separately in different conditions using 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20 and 50  intron usage ratio PCs as additional covariates. I then counted the number of genes with significant sQTL effects (sGene) at a false discovery rate (FDR) $\leq$ 0.05 using the R package qvalue v2.16.0 \cite{Storey2003-zd}. In all my downstream analyses, I use the number of intron usage ratio PCs that maximises the number of sGenes discovered (Figure \ref{fig:num_sgenes_PCs})
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{num_sgenes_PCs}
+  \caption{Number of intron usage ratio principal components used as
+  covariates (x-axis) versus the number of genes for which a significant sQTL effect was found
+  (y-axis) coloured by time point (6=6 hours, 24=24 hours, D0=Day 0, D2=Day 2).}
+  \label{fig:num_sgenes_PCs}   
 \end{figure}
 
 
-\end{landscape}
+\subsection{Genome-wide summary statistics preprocessing}
+GWAS summary statistics were downloaded from either the GWAS catalogue \cite{Buniello2019-wb} or from UK BioBank GWAS summary statistics (\cite{Zhou2018-jh}; Supplementary Table S2). Summary statistics were formatted using a custom script so that each file contains at least: the chromosome and position (GRCh38) of each associated variant, effect size, and standard error. 
+
+\subsection{Identification of genome-wide significant loci from IMD GWAS summary statistics and colocalisation analysis}
+To define genome-wide significant loci, I identified all variants that passed the genome-wide significance P-value threshold $< 5\times10^{-8}$ in each downloaded GWAS summary statistics file. I ordered these SNPs from the lowest to the highest P-value and then iterated over each of them. At each iteration, I defined a 1 Mbp window centred around the SNP. If a SNP falls within a locus that has been defined in a previous iteration, it is not used to define a new locus. 
+
+For each genome-wide significant locus, I first identified the set of all genes whose TSS falls within the locus. I then performed pairwise colocalisation tests for all the intron usage ratios (within each of these genes) and the GWAS association signal. I performed these colocalisation tests within each of the 24 conditions. I matched variants between the sQTL and GWAS association signals by position on GRCh38 only since not all GWAS studies provided the effect alleles. I performed colocalisation analysis using the R package coloc v5.1.131 and I discarded GWAS-intron pairs that have < 2 variants in common. Only SNPs in common between each GWAS study and MacroMap's genotypic data are considered. This procedure output a list of tested introns per GWAS per condition. The same procedure was used for GTEx sQTLs. Locus plots for the colocalisation were produced using the locuscomparer R package \cite{Liu2019-fv}. Heatmaps for visualising PP4 values were generated using the ComplexHeatmap R packages \cite{Gu2016-oc}.
+
+\subsection{Condition-specificity analysis using mash}
+I tested the condition-specificity of sQTLs using mashR v0.2.57 \cite{Urbut2019-gf}. mashR is an adaptive shrinkage framework that can be used to compare effect size estimates in a multi-tissue or multi-condition association study. It outputs shrunk effect size estimates in addition to a statistic indicating if effect sizes between two conditions are significantly different from each other (local false sign rate; LFSR). I used this framework to test if a given sQTL effect is a "response sQTL", meaning that its effect size is significantly different in a stimulated macrophage condition from unstimulated macrophages. mashR requires training data to learn the correlation structure in the data from a set of canonical and data-driven covariance matrices (i.e. adaptive). The data-driven matrices are usually derived from the strongest QTL associations in the data. mashR then uses a randomly sampled set of QTL association to learn the mixture component of the provided covariance matrices. I use the lead sQTL SNP per gene (for genes with an FDR < 0.05) as our strong subset, and $10^6$ randomly sampled sQTL associations as the random subset (effect sizes and standard errors). Mash can also be trained using a baseline condition, against which other conditions are compared (I used Ctrl\_24 as a baseline condition). The learned model can be used to recalculate "posterior" summary statistics for any desired set of sQTL associations by providing their effect sizes and standard errors. In my analysis, I recomputed effect sizes and LFSR for two sets of sQTL effects: 
+\begin{enumerate}
+\item Lead SNP for significant sQTLs (FDR < 0.05) per sGene within each stimulated condition. I used this to estimate the number of sGenes with at least one response sQTL (Figure \ref{fig:sqtl}b).
+\item Lead SNP for colocalised genes (PP4 $\geq$ 0.75) in the condition in which the colocalisation was detected. I used this to estimate the proportion of colocalised genes with a response sQTL within each stimulated condition (Figure \ref{fig:coloc}b). 
+\end{enumerate}
+\subsection{Colocalisation between significant sQTLs and eQTLs}
+I performed statistical colocalisation between all significant sQTLs (FDR < 0.05) and eQTLs from the same genes to investigate whether the sQTL and eQTL signals within sGenes are likely to be driven by the same causal variant. I only colocalised the intron with the highest association P-value per sGene.
+
+\section{Supplementary Figures}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{ptpn2_gtex}
+  \caption{Heatmap of PP4 values for all genes in 18p21.11 (rows) and GTEx tissues (columns) split by type of QTL (eQTL on right and sQTL on left).}
+  \label{fig:ptpn2_gtex}   
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{lrrk2_dennd1b}
+  \vspace{-70pt}
+  \caption{effect sizes of the most significant SNP and colocalisation PP4 for the colocalised splice junctions of LRRK2 (left) and DENND1B (right).}
+  \label{fig:lrrk2_dennd1b}   
+\end{figure}

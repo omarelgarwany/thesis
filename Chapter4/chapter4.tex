@@ -1,0 +1,531 @@
+%!TEX root = ../thesis.tex
+%*******************************************************************************
+%****************************** Fourth Chapter **********************************
+%*******************************************************************************
+
+\chapter{HLA-DRB1*01:03 is associated with risk of perianal Crohn's Disease}
+
+% **************************** Define Graphics Path **************************
+\ifpdf
+    \graphicspath{{Chapter4/Figs/Raster/}{Chapter4/Figs/PDF/}{Chapter4/Figs/}}
+\else
+    \graphicspath{{Chapter4/Figs/Vector/}{Chapter4/Figs/}}
+\fi
+\section{Introduction}
+Perianal Crohn's disease (pCD) is a sub-phenotype of Crohn's disease, a chronic inflammatory disease of the gut that affects 1\% of the population worldwide. pCD represents a major burden on both patients and healthcare providers, and is estimated to affect 20-40\% of CD patients worldwide, with a higher prevalence in Asia than in Western countries \cite{Ng2016-al}. As their disease progresses, CD patients become more likely to develop perianal symptoms. Twenty years after their CD diagnosis, CD patients have a 42\% cumulative probability of developing pCD. Timing of pCD diagnosis, however, varies significantly between healthcare systems. Previous studies from countries including France, Sweden and Japan have reported that between 4\%-68\% of pCD patients present with perianal symptoms before or at the time of CD diagnosis \cite{Mizushima2021-hk,Pogacnik2019-aj,Wils2021-ao}.\\
+
+pCD patients present with a variety of perianal symptoms. These include perianal skin tags, fissures, ulcers, faecal incontinence, rectal discharge and bleeding, perianal abscess, and fistulas. Perianal fistulas are the most common form of pCD, followed by perianal abscess \cite{Eglinton2012-vx}. Likewise, the impact of pCD on patients is multi-faceted. In addition to physical manifestations, patients report impaired quality of life as well as social and emotional complications of pCD. Furthermore, surgical interventions that aim to treat pCD and restore normal ano-rectal functions, such as seton insertion and fistula drainage, often impact essential functions such as walking and sitting \cite{Adegbola2020-nd}. Moreover, pCD patients, who often require multiple surgical interventions, suffer from high recurrence and relapse rates. In fact, only one third of pCD patients are estimated to achieve remission \cite{Panes2018-su,Braithwaite2017-zo}. \\
+
+% To inform clinical decision making, several clinical scoring systems have been proposed to describe the clinical picture and predict prognosis of pCD. The first pCD scoring system was published by Hughes in 1992 \cite{Hughes1992-kc}. Hughes classified pCD lesions into primary lesions, such as fissures and ulcers, and secondary lesions such as skin tags, abscess and fistulas \cite{Safar2007-dk}. A numeric score was given based on the presence and severity of ulcerations, fistulas or abscess, and strictures. However, this classification has had limited impact on clinical practice \cite{Scheurlen2023-gk}. The Perianal Disease Activity Index is the  (PDAI), which has been devised to predict surgical outcomes in pCD patients, is the most widely used measure of pCD activity. PDAI scores six pCD clinical indicators on a Likert score: abscess, fistula, fissure and ulcer, stenosis, incontinence, and concomitant disease. Patients with no perianal involvement score 0 and patients with advanced perianal disease score a maximum of 55  \cite{Pikarsky2002-gf}. Compared to other clinical scoring systems, PDAI correlates well with pCD outcome and has been recommended for use in clinical practice \cite{Irvine1995-ej}.\\
+
+Despite the diversity in presentation and course, pCD patients share a number of Crohn's disease characteristics. pCD is  more common among patients with distal than proximal disease. Patients with colonic or rectal CD are more likely to develop or initially present with pCD. Moreover, pCD tends to drive Crohn's disease towards a more invasive behaviour. Initially, two thirds of patients have inflammatory manifestations, but over time, the majority of pCD patients display increasingly stricturing and penetrative characteristics of CD \cite{Peyrin-Biroulet2010-mf,Scharl2017-sp}. However, invasive distal CD does not always precede pCD, which can sometimes present a diagnostic challenge in clinical setting. Although 95\% of patients will eventually develop luminal disease, an estimated 17.2\% of patients initially present with pCD only \cite{Eglinton2012-hh}. \\
+
+At a more fundamental level, our biological understanding of pCD fistula formation and progression mechanisms is still markedly lacking. One proposed pathophysiological mechanism is epithelial-to-mesenchymal transformation (EMT). EMT is a well-studied biological process, whereby polarised epithelial cells that line the gastrointestinal tract gain mesenchymal functions, such as enhanced cell invasion, and migration. The EMT hypothesis is supported by the presence of transitional cells which express both epithelial and mesenchymal cell markers in fistula tracts. These include epithelial markers cytokeratin 8 and 20, and mesenchymal markers vimentin and actin. Transforming growth factor $\beta$ and interleukin-13, which have been associated with the initiation of EMT, have also been identified in transitional cells lining pCD fistula tracts \cite{Scharl2013-uf}. \\
+
+In this chapter, I will describe a within-case genome-wide association study (GWAS) meta-analysis that I performed between two IBD cohorts to understand the genetic underpinnings of pCD. The two cohorts are: the NIHR IBD-BioResource (IBD-BR), and the UK IBD Genetics Consortium (UKIBDGC). \\
+
+The NIHR IBD-BR is a UK-wide collaborative project between the UK IBD Genetics Consortium and NIHR Bioresource, with the aim of recruiting 50,000 patients with Crohn's disease, ulcerative colitis or unclassified IBD. The IBD-BR collects phenotypic and epidemiological information (both clinical and self-reported) as well as DNA samples for both array genotyping and whole-genome and whole-exome sequencing. The aims of the IBD-BR are wide-ranging. They include understanding the genetics of IBD response to therapy, disease mechanism as well as determinants of disease course \cite{ibdbr-protocol-v8,ibdbr-questionnaire-v7,ibdbr-further-info}. So far, the IBD-BR has recruited over 31,000 patients, with detailed clinical phenotypes on different epidemiological characteristics, clinical picture, extra-intestinal manifestations, prescribed medication and treatment history, surgical history and disease behaviour and complications. The recruitment process starts by an expression of interest by volunteers who visit participating recruitment centres. Interested volunteers are then provided with an invitation letter and a patient information sheet that provides information on study requirements. Patients who agree to take part are then provided with an informed consent form, and subsequently asked to complete a health and lifestyle questionnaire. After these initial steps, the clinical team then proceeds to collect clinical data from hospital records. A clinician or research nurse extracts core information including IBD type, location and behaviour, complications, comorbidities, family history, smoking history, surgical data and
+drug therapy outcomes \cite{ibdbr-protocol-v8}. \\
+
+The UK IBD Genetics Consortium (UKIBDGC), part of the International IBD Genetics Consortium, is a large IBD case-control consortium, with patients recruited from multiple UK centres in Cambridge, Edinburgh, Manchester, Newcastle, Exeter, Oxford, London, Dundee and Nottingham \cite{ukibdgc-info}.\\
+
+Although data on perianal disease are recorded for both cohorts, the depth of clinical phenotyping is different. For example, the IBD-BR, contains specific manifestations of pCD. Clinicians and clinical nurses who complete the IBD-BR questionnaire perform an automated search of hospital records for clinical IBD information, including perianal manifestations \cite{ibdbr-protocol-v8}.  If the search is unsuccessful, they ask patients about perianal involvement: \textit{"Ever had perianal involvement? 1) Yes 2) No 3) Unknown"}  and record the answer in the clinical questionnaire \cite{ibdbr-questionnaire-v7}. A follow-up question about the type of perianal involvement is then asked: \textit{“If Yes - What type of perianal lesion has the patient had? (Select all that apply): 1) Tags/fissures/ulcers 2) Perianal abscess 3) Simple fistula 4) Complex fistula 5) Other”}. Clinicians may report one or more perianal involvement manifestations.  Unlike IBD-BR, the specific manifestations of pCD , such as fissures, ulcers or fistulas are not recorded for UKIBGC participants and only a binary phenotype is recorded (pCD+ or pCD-). \\
+
+In this chapter, I describe several analyses I conducted to identify genetic variants associated with pCD risk, leveraging these two IBD cohorts. Additionally, I perform several follow-up analyses to ensure the robustness of the genome-wide association signal I found. Finally, I conclude by mapping the associated locus to an HLA allele that partly explain the genome-wide significant association and recommend that higher-resolution HLA alleles may explain this association more completely.
+
+\section{Results}
+Among 30,894 IBD-BR participants, 15,152 were diagnosed with Crohn's disease, 14,819 of which had perianal involvement data: 4,448 answered "\textit{Yes}" to “\textit{Ever had perianal involvement?}” (pCD+; 30\%), 9,751 answered "\textit{No}" (pCD-; 65.8\%), and 620 answered “\textit{Unknown}” (4.1\%), matching previous pCD prevalence estimates. Perianal simple or complex fistula was the most common manifestation (2327;  52.3\% pCD+ participants), followed by perianal abscess (1806; 40.5\% of pCD+ participants).
+
+From 26,327 UKIBDGC patients, a total of 8,977 were diagnosed with CD. 7106 CD patients had perianal involvement information. pCD prevalence was lower than IBD-BR. 18.2\% of CD patients answered "\textit{Yes}" to the question “Perianal involvement?”, 61\% answered “No”, and 20.8\% answered "\textit{Unknown}". UKIBDGC does not report specific manifestations of pCD.
+
+\subsection{Epidemiological characteristics}
+Epidemiological characteristics of pCD+ and pCD- patients were largely similar in both cohorts (Table \ref{epidem}). Males were more likely than females to report perianal involvement in both cohorts (P-value={$7\times10^{-4}$} and {$8\times10^{-6}$} in IBD-BR and UKIBDGC respectively). pCD+ was not associated with a family history of CD, while smoking was slightly less common in pCD+ patients (P-value=0.006 and 0.003).
+\setlength{\tabcolsep}{10pt} 
+\renewcommand{\arraystretch}{1.5}
+\begin{table}[htb]
+  \centering
+  \begin{tabular}[t]{lllll}
+  \toprule
+  \multicolumn{1}{c}{ } & \multicolumn{2}{c}{IBD-BR} & \multicolumn{2}{c}{UKIBDGC} \\
+  \cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
+   & pCD+ & pCD- & pCD+ & pCD-\\
+  \midrule
+  Male & 2115 (47.5) & 4339 (44.5) & 807 (49.5) & 2363 (43.2)\\
+  Female & 2333 (52.5) & 5412 (55.5) & 824 (50.5) & 3112 (56.8)\\
+  Family History & 1325 (34.7) & 2795 (34.2) & 290 (27.1) & 598 (24.6)\\
+  Surgery & 2971 (68.8) & 3636 (38.3) & 896 (63.1) & 1935 (42.6)\\
+  Smoking & 656 (16.4) & 1572 (18.2) & 363 (30.1) & 913 (29.6)\\
+  \bottomrule
+  \end{tabular}
+  \end{table}
+  \label{epidem}
+
+
+  \subsection{Clinical characteristics}
+\subsubsection{pCD is associated with lower age-of-CD-diagnosis and rectal CD}
+
+Previous pCD studies have reported an association between pCD and distal penetrating CD as well as pCD and an earlier age of CD diagnosis \cite{Duricova2014-gf,Kaur2016-bs}. Compared to pCD- patients, pCD+ patients were significantly younger at diagnosis (P-value < $2\times10^{-16}$; median age of CD diagnosis for pCD+ patients was 24 versus 29 for pCD- patients in IBD-BR; Figure \ref{fig:age_diag_macextent}). Additionally, pCD+ patients were at least twice as likely to have penetrating disease behaviour. In IBD-BR, 19.1\% of pCD+ patients had disease behaviour classified as B3 versus 8.1\% in pCD-. This enrichment was stronger in UKIBDGC (28.5\% versus 10.6\%, respectively). \\
+
+In both cohorts, more patients reported ileal than colo-rectal CD (68.7\% versus 56.3\% in IBD-BR). Ileal and colo-rectal CD were either isolated, or extended to other parts of the gut. In IBD-BR, patients with an isolated colo-rectal CD were 2.4 times as likely to develop pCD, compared to patients with an isolated ileal CD (59.3\% versus 24.8\%).  Despite the lower pCD prevalence in UKIBDGC, patients with isolated colo-rectal CD were similarly enriched for pCD+ patients as IBD-BR (26.6\% versus 10.9\%). \\
+
+In IBD-BR, where colonic and rectal involvement are reported as separate indicators, rectal involvement accounted for this enrichment. Patients with isolated colonic disease were not significantly more enriched for pCD+ than patients with isolated ileal disease (28.3\% versus 24.8\%; Figure \ref{fig:age_diag_macextent}).
+\begin{figure}[htbp!] 
+  \centering    
+  \includegraphics[width=1.0\textwidth]{fig1}
+  \caption[Figure]{age at diagnosis and macroscopic extent of Crohn's disease in pCD+ and pCD- patients in the IBD-BR.}
+  \label{fig:age_diag_macextent}
+  \end{figure}
+
+\subsubsection{Lower rates of drug intake in pCD+ patients in IBD-BR}
+pCD+ patients were less likely to be actively prescribed a number of CD medications: oral steroids, Infliximab, Adalimumab, Vedolizumab, and Mesalazine (P-value $<$ 0.0036; Table \ref{table:drug_eim}). Anti-TNF therapies, including Infliximab and Adalimumab, are among the first-line drugs for perianal fistulas, and lead to fistula healing in 50\% of pCD patients (in combination with other surgical procedures) \cite{Regueiro2003-lf,Kotze2014-fh,Haennig2015-pj,Gaertner2007-wb}. On the other hand, oral steroids are known to be ineffective for fistula closure and may even exacerbate perianal abscess \cite{Jones1966-tt}. Lower drug intake could therefore be attributed to drug inefficacy, but it could also be a contributing factor to pCD.\\
+
+\subsubsection{pCD+ patients are enriched for six extraintestinal manifestations}
+pCD+ patients were enriched for extra-intestinal manifestation compared to pCD- patients (26.3\% versus 19.6\%; P-value $<$ 0.05). Enteropathic arthritis was the most most prevalent extraintestinal manifestation among pCD+ patients, followed by serious infections and psoriasis. In total, six extraintestinal manifestations showed significant enrichment in pCD+ versus pCD- patients (P-value $<$ 0.005; Table  \ref{table:drug_eim}). The association between extraintestinal manifestations was stronger in female participants, possibly since extraintestinal manifestations were more prevalent in female participants overall (odds ratio=1.3 in males versus 1.6 in females). 
+\begin{table}
+  \centering
+  \begin{tabular}[t]{llll}
+  \toprule
+  \textbf{} & \textbf{pCD+(\%)} & \textbf{pCD-(\%)} & \textbf{P-value}\\
+  \midrule
+  \addlinespace[0.3em]
+  \multicolumn{4}{l}{\textbf{Extraintestinal Manifestations}}\\
+  \hspace{1em}Primary Sclerosing Cholangitis & 25 (0.6) & 72 (0.8) & 0.29\\
+  \hspace{1em}Enteropathic Arthritis & 413 (9.7) & 635 (6.7) & $2.1\times10^{-9}$\\
+  \hspace{1em}Erythema Nodosum & 199 (4.6) & 222 (2.3) & $7.7\times10^{-13}$\\
+  \hspace{1em}Iritis & 183 (4.2) & 242 (2.5) & $1.1\times10^{-7}$\\
+  \hspace{1em}Orofacial Granulomatosis & 153 (3.6) & 162 (1.7) & $2.4\times10^{-11}$\\
+  \hspace{1em}Psoriasis & 311 (7.2) & 518 (5.4) & $6\times10^{-5}$\\
+  \hspace{1em}Ankylosing Spndylitis & 110 (2.6) & 238 (2.5) & 0.89\\
+  \hspace{1em}Multiple Sclerosis & 9 (0.2) & 27 (0.3) & 0.53\\
+  \hspace{1em}Lymphoma & 18 (0.4) & 36 (0.4) & 0.85\\
+  \hspace{1em}Serious Infections & 320 (7.4) & 465 (4.9) & $3.2\times10^{-9}$\\
+  \addlinespace[0.3em]
+  \multicolumn{4}{l}{\textbf{Drugs}}\\
+  \hspace{1em}Azathioprine & 1373 (41.4) & 2649 (42.1) & 0.49\\
+  \hspace{1em}Mercaptopurine & 271 (35.6) & 564 (36.1) & 0.83\\
+  \hspace{1em}Methotrexate & 192 (28.6) & 404 (35.4) & ${4\times10^{-3}}$\\
+  \hspace{1em}Ciclosporin & 3 (8.1) & 3 (7.5) & 1\\
+  \hspace{1em}Infliximab & 1207 (50.9) & 1622 (55.7) & $6\times10^{-4}$\\
+  \hspace{1em}Adalimumab & 740 (47.8) & 1368 (54.2) & $8\times10^{5}$\\
+  \hspace{1em}Golimumab & 9 (56.2) & 9 (50) & 0.98\\
+  \hspace{1em}Vedolimumab & 236 (67.8) & 424 (77.4) & $2\times10^{-3}$\\
+  \hspace{1em}Ustekinumab & 171 (69.2) & 209 (72.6) & 0.45\\
+  \hspace{1em}Mesalazine & 528 (30) & 1649 (43.7) & $< 2.2\times10^{-16}$\\
+  \hspace{1em}Oral Steroids & 304 (11.3) & 823 (14.2) & $3\times10^{-4}$\\
+ 
+  \bottomrule
+  \end{tabular}
+  \caption{Drug intake and extraintestinal manifestations in pCD+ and pCD- patients in the IBD-BR. Percentage of patients are shown between paranthese.}
+  \label{table:drug_eim}
+  \end{table}
+  
+% \begin{table}[htbp!]
+%   \centering
+%   \begin{tabular}{|l|l|l|r|}
+%   \hline
+%   Drug          & pCD+        & pCD-        & \multicolumn{1}{l|}{P-value} \\ \hline
+%   Aza           & 1373 (41.4) & 2649 (42.1) & 0.4932629                    \\ \hline
+%   Merc          & 271 (35.6)  & 564 (36.1)  & 0.8335190                    \\ \hline
+%   Metho         & 192 (28.6)  & 404 (35.4)  & 0.0036395                    \\ \hline
+%   Inflix        & 1207 (50.9) & 1622 (55.7) & 0.0006321                    \\ \hline
+%   Ada           & 740 (47.8)  & 1368 (54.2) & 0.0000796                    \\ \hline
+%   Goli          & 9 (56.2)    & 9 (50)      & 0.9838468                    \\ \hline
+%   Vedo          & 236 (67.8)  & 424 (77.4)  & 0.0020198                    \\ \hline
+%   Ust           & 171 (69.2)  & 209 (72.6)  & 0.4514008                    \\ \hline
+%   Mesa          & 528 (30)    & 1649 (43.7) & 0.0000000                    \\ \hline
+%   Oral\_ster    & 304 (11.3)  & 823 (14.2)  & 0.0002656                    \\ \hline
+%   Other1\_treat & 195 (37.9)  & 434 (49.6)  & 0.0000318                    \\ \hline
+%   Extraintestinal manifestations & pCD+      & pCD-      & \multicolumn{1}{l|}{P-value} \\ \hline
+%   prim\_scler\_chol              & 25 (0.6)  & 72 (0.8)  & 0.2916513                    \\ \hline
+%   enter\_arth                    & 413 (9.7) & 635 (6.7) & 0.0000000                    \\ \hline
+%   ery\_nodo                      & 199 (4.6) & 222 (2.3) & 0.0000000                    \\ \hline
+%   iritis                         & 183 (4.2) & 242 (2.5) & 0.0000001                    \\ \hline
+%   oro\_gran                      & 153 (3.6) & 162 (1.7) & 0.0000000                    \\ \hline
+%   psori                          & 311 (7.2) & 518 (5.4) & 0.0000596                    \\ \hline
+%   ank\_spond                     & 110 (2.6) & 238 (2.5) & 0.8860326                    \\ \hline
+%   mult\_scler                    & 9 (0.2)   & 27 (0.3)  & 0.5346415                    \\ \hline
+%   lymphoma                       & 18 (0.4)  & 36 (0.4)  & 0.8479312                    \\ \hline
+%   ser\_infect                    & 320 (7.4) & 465 (4.9) & 0.0000000                    \\ \hline
+%   \end{tabular}
+%   \end{table}
+  % \begin{table}[]
+  %   \centering
+  %   \begin{tabular}{|l|l|l|r|}
+  %   \hline
+  %   Extraintestinal manifestations & pCD+      & pCD-      & \multicolumn{1}{l|}{P-value} \\ \hline
+  %   prim\_scler\_chol              & 25 (0.6)  & 72 (0.8)  & 0.2916513                    \\ \hline
+  %   enter\_arth                    & 413 (9.7) & 635 (6.7) & 0.0000000                    \\ \hline
+  %   ery\_nodo                      & 199 (4.6) & 222 (2.3) & 0.0000000                    \\ \hline
+  %   iritis                         & 183 (4.2) & 242 (2.5) & 0.0000001                    \\ \hline
+  %   oro\_gran                      & 153 (3.6) & 162 (1.7) & 0.0000000                    \\ \hline
+  %   psori                          & 311 (7.2) & 518 (5.4) & 0.0000596                    \\ \hline
+  %   ank\_spond                     & 110 (2.6) & 238 (2.5) & 0.8860326                    \\ \hline
+  %   mult\_scler                    & 9 (0.2)   & 27 (0.3)  & 0.5346415                    \\ \hline
+  %   lymphoma                       & 18 (0.4)  & 36 (0.4)  & 0.8479312                    \\ \hline
+  %   ser\_infect                    & 320 (7.4) & 465 (4.9) & 0.0000000                    \\ \hline
+  %   \end{tabular}
+  %   \end{table}
+
+% \subsubsection{pCD and extraintestinal manifestations: other factors to consider}
+% Other factors that may underlie this enrichment include treatment with anti-TNFs such as Infliximab, which are effective in reducing extraintestinal manifestations. In the previous section, I showed that pCD+ patients in IBD-BR are less likely to be actively taking a number of drugs including Infliximab. Therefore, an important question is whether this enrichment is driven by true shared pathophysiology between pCD and extraintestinal manifestations, or if it is merely due to lower rates of Infliximab intake in pCD+ patients (as well as other drugs).\\
+
+% This can be tested by assessing the enrichment of extraintestinal manifestations within subsets of patients stratified by drug intake (e.g. patients currently on Infliximab versus patients not on Infliximab). If stratifying by drug intake does not affect the enrichment, then t is unlikely to be driven by drug intake. 
+% However, information on drug intake, pCD and extraintestinal manifestations were jointly available for a smaller set of IBD-BR participants (n=5,133-5,186) that did not exhibit an enrichment of extraintestinal manifestations in pCD+ versus pCD- patients. Therefore, these sets of participants cannot be used to make a conclusion about the effect of drug intake on the observed enrichment in participants with pCD information. 
+
+
+
+
+    \subsubsection{Surgical burden of pCD}
+
+    Combined surgical and medical interventions represent some of the few effective interventions available to pCD patients. Different surgical options are available to perianal disease patients depending on its anatomical features, complications and disease severity. Exploration under anaesthesia and seton insertion are the typical first-line management options, and further medical or surgical interventions are based on initial exploration \cite{Adegbola2018-ha}. As expected, 2,971 pCD patients (66.8\%) had undergone any type of surgical intervention compared to 3,637 (37.2\%) of pCD- participants. In total, almost half the pCD+ patients with operative history had undergone one of three pCD-related surgical procedures (1431 patients; 48.2\%): drainge of perianal abscess, insertion of seton, or drainage of fistula. Perianal abscess drainage was the most common: 808 pCD+ patients (27.2\% of surgically-operated patients) underwent at least one perianal abscess drainage operation, followed by insertion of a seton suture (744 pCD+ patients; 25\%), followed by perianal fistula repair operation (438 pCD+ patients; 14.7\%).
+
+    \subsubsection{pCD prevalence decreased over time}
+    Understanding pCD prevalence over time is important to understand the impact of pCD on patients and healthcare providers. Previous work has shown reduced pCD incidence over the last decade [ref], which was partly attributed to improved treatment options. To investigate this observation in the IBD-BR, I partitioned participants according to their year of CD diagnosis into two-year groups (e.g. 2006-2008), and calculated prevalence estimates in each period. As expected, the number of diagnosed participants varied between year groups, with fewer participants diagnosed in the early years. 100-230 participants per two years were diagnosed in the years from 1980 to 2000, but this rose to 497-734 per two years in the years from 2010 to 2020. Notably, point prevalence estimates decreased starting from the year 2010 onwards. The mean point prevalence between 1980 to 2010 decreased significantly from 35.9\% to 25.1\% between 2010 to 2020 (P-value $<2\times10^{-16}$; Figure \ref{fig:pcd_prev}). The decrease in prevalence remained significant when mean point prevalence was calculated between 2010 to 2016 only (mean prevalence=26.8\%), or between 2010 to 2014 only (mean prevalence=28.1\%).\\
+    \begin{figure}[htb] 
+      \centering    
+      \includegraphics[width=1.0\textwidth]{fig2}
+      \caption[Figure]{Prevalence per year of CD diagnosis, partitioned into two-year groups. 95\% confidence intervals around point estimates are calculated using a bootstrap procedure, whereby participants where resampled 1,000 times within each two-year group.}
+      \label{fig:pcd_prev}
+      \end{figure}
+ 
+    A decrease in pCD prevalence has been observed previously \cite{Park2019-kj}. However, such a decrease has not been precisely quantified, partly due to the relatively smaller sample sizes of most studies \cite{Brochard2022-kz,Bruckner2018-ag,Gottgens2017-df,Tsai2022-kz}. A potential limitation of this analysis is that censored data may contribute to the observed decrease in pCD prevalence in later years. pCD does not always present at the time of diagnosis, which may bias prevalence estimates downwards in the years after 2010. However, the consistent decrease in prevalence even when I excluded patients diagnosed after 2014 indicates that the contribution of censored observation is likely minimal. Although some patients may develop perianal symptoms up to 20 years after diagnosis, the cumulative probability of developing pCD does not increase significantly after 5 years. It is therefore unlikely that pCD prevalence for IBD-BR patients diagnosed between 2010 to 2014 will increase significantly \cite{Tsai2022-kz}.
+
+    \subsection{UKIBDGC and IBD-BR definitions of pCD are similar}
+    Similar to IBD-BR, the UKIBDGC can be used to perform a GWAS between pCD+ and pCD-. Although designed as a case-control cohort for IBD patients and healthy controls, the UKIBDGC reports a number of clinical and phenotypic characteristics of IBD patients. For each IBD participant, disease subtype diagnosis, and location (inclduding perianal diseasel) are recorded. \\
+
+As a large consortium of data collected from several hospitals and recruitment centres, it is unclear whether the criteria for assigning pCD status is consistent between the different centers, and more importantly if it matches the criteria used to assign pCD status to IBD-BR patients. Heterogeneity in pCD status definition can often arise from different diagnostic criteria being applied, or different times of phenotype update between recruitment centres. Ensuring the consistency of pCD status between UKIBDGC and IBD-BR is crucial to minimise the heterogeneity of case/control definition between the two cohorts and maximise the statistical power from a meta-analysis between the two cohorts. 
+To assess this, participant overlap between IBD-BR and UKIBDGC can be leveraged to understand the level of agreement in pCD status assignment. Since participant identifiers are not mapped across studies, genetic similarity of individuals across cohorts can instead be leveraged to identify overlapping participants (Methods).\\
+
+Out of 971 overlapping CD participants, only one was assigned pCD+ in IBD-BR and pCD- in UKIBDGC. A total of 432 individuals had missing or “Unknown” perianal involvement, 406 of which were“Unknown” in both cohorts (Table \ref{table:cohort_pcd_agree}). This strong agreement in pCD status indicates that both cohorts assign pCD status in a similar fashion.\\
+
+Patients who answered “Yes'' in both studies were not enriched in any particular type of perianal involvement (e.g. 51.9\% of overlapping individuals reported either simple or complex fistula versus 52\% in IBD-BR). 27\% of overlapping patients reported only skin tags, fissures or ulcer, indicating that milder forms of pCD were also included in the UKIBDGC assignment of pCD+ status.
+
+
+\begin{table}[htb]
+  \caption{Number of overlapping individuals between UKIBDGC and IBD-BR who answered Yes, No or Unknown to \textit{Ever had perianal involvement?}}
+  \label{table:cohort_pcd_agree}
+  \centering
+  \begin{tabular}[t]{|l|r|r|r|}
+  \hline
+  \multicolumn{1}{|c|}{ } & \multicolumn{3}{c|}{UKIBDGC} \\
+  \cline{2-4}
+  IBD-BR& Yes & No & Unknown\\
+  \hline
+  Yes & 201 & 0 & 1\\
+  \hline
+  No & 1 & 337 & 6\\
+  \hline
+  Unknown & 6 & 13 & 406\\
+  \hline
+  \end{tabular}
+  \end{table}
+
+  \section{Genome-wide association analysis of pCD}
+\subsection{IBD-BR}
+I performed a GWAS between pCD+ as cases pCD- as controls, with pCD+ cases defined as any type of perianal involvement (skin tags, perianal abscess, and simple or complex fistula).\\
+ In total, 8,687 European ancestry participants with perianal involvement data were genotyped (2,664 pCD+ and 6,023 pCD-). The composition of genotyped pCD+ cases cohort matched the overall composition of IBD-BR. 53.6\% (1480) of genotyped pCD+ individuals had either a simple or complex perianal fistula, and 41.2\% (1098) had perianal abscess. Together, patients with perianal fistula or abscess account for 74.9\% (1995) of genotyped pCD+ cases. To ensure that pCD- controls do not include recently diagnosed CD patients who may develop perianal disease in the near future, I excluded pCD- controls diagnosed with CD less than 5 years before the last clinical review (resulting in 4,196 pCD- controls). Previous studies have shown that the cumulative risk of developing perianal disease 5 years and 10 years after diagnosis are similar \cite{Tsai2022-kz}.
+
+I performed GWAS using REGENIE v3.2.5 and used four genotypic principal components and sex as covariates. I removed variants with imputation INFO score < 0.4 and minor allele frequency (MAF) < 0.01, leaving 9,777,139 variants for association analysis (see Methods for detailed genotype and imputation QC). None of the tested variants achieved genome-wide significant association (P-value $< 5\times10^{-8}$). There was no evidence of genomic inflation (median $\chi^{2}$=0.49; $\lambda_{GC}$=1.08).
+\subsection{UKIBDGC}
+A total of 8,078 patietns of European ancestry were diagnosed with CD in the UKIBDGC, of which 6550 had perianal involvement information (1481 pCD+  and 5,069 pCD-). To minimise sample overlap with the IBD-BR, I removed overlapping individuals between UKIBDGC and IBD-BR (Methods), and performed GWAS with the remaining individuals (1303 pCD+ and 4761 pCD-). \\
+
+I performed GWAS similar to the IBD-BR analysis, with the difference that UKIBDGC samples genotpyed on different arrays were analysed seperately (HCE and GWAS1; Methods).A total of 8,916,200 and 8,897,554 variants were tested in HCE and GWAS1, respectively. No variants achieved genome-wide significant association (P-value < $5\times10^{-8}$). There was no evidence of genomic inflation (HCE: median $\chi^{2}$=0.47; $\lambda_{GC}$=1.04; GWAS1: median $\chi^{2}$=0.46; $\lambda_{GC}$=1.01).
+
+\subsection{Meta-analysis between UKIBGC and IBD-BR: a genome-wide significant locus at 6p21.32}
+
+I used METAL to perform a meta-analysis using the IBD-BR  and UKIBDGC summary statistics (effect sizes and standard errors). There was no evidence of genomic inflation in the meta-analysis results (Figure \ref{fig:meta_qq_manhattan}). 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%FIGURE SOURCE: /nfs/users/nfs_o/oe2/ibdbr/scripts/explore/manhattan.R
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H] 
+  \centering   
+  \begin{subfigure}[t]{1.0\textwidth}
+    \centering   
+
+    \includegraphics[width=1.0\textwidth]{Vector/ukibdgc_ibdbr_perianal_timesincediag5yrsctrl_allcase_meta_qq}
+
+    
+  \end{subfigure} 
+
+    \begin{subfigure}[t]{1.0\textwidth}
+      \centering   
+
+      \includegraphics[width=1.0\textwidth]{Vector/ukibdgc_ibdbr_perianal_timesincediag5yrsctrl_allcase_meta}
+
+      
+  \end{subfigure} 
+  \caption[Figure]{(a) Quantile-quantile plot for the meta-analysis between UKIBDGC and IBD-BR cohorts, suggesting a good fit to the uniform distribution, and showing no evidence of genomic inflation (median $\chi^{2}$=0.49; $\lambda_{GC}$=1.09; median $\chi^{2}$ was calculated by converting P-values to $\chi^{2}$  values using the function \Verb+qchisq(P, df=1,lower.tail=F)+ in R v4.1.0). (b) Manhattan plot of meta-analysis between IBD-BR and UKIBDGC. pCD+ cases are defined as CD patients with any type of perianal involvement and pCD- controls are defined as CD patients with no perianal involvement.}
+  \label{fig:meta_qq_manhattan}
+  \end{figure}
+  % \begin{figure}[H] 
+  %   \centering    
+  %   \includegraphics[width=1.0\textwidth]{Vector/ukibdgc_ibdbr_perianal_timesincediag5yrsctrl_allcase_meta}
+  %   \caption[Figure]{Manhattan plot of meta-analysis between IBD-BR and UKIBDGC. pCD+ cases are defined as CD patients with any type of perianal involvement and pCD- controls are defined as CD patients with no perianal involvement.}
+  %   \label{fig:meta_manhattan}
+  %   \end{figure}
+
+    Six variants in the 6p21.32 locus showed genome-wide significant association (P-value $< 5\times10^{-8}$; index variant rs115378818 P-value=$2.4\times10^{-12}$; Table \ref{table:gws}). None of the variants showed significant heterogeneity of effect size between the constituent cohorts (Bonferroni-corrected $P_{het}$ < 0.008). All six variants were well-imputed across the constituent cohorts (INFO score > 0.7).
+  
+  \begin{table}[htb]
+    \centering\begingroup\fontsize{10}{14}\selectfont
+    \caption{genome-wide significant variants in the 6p21.32 locus. Odds ratio and their 95\% confidence intervals are shown. MAF=minor allele frequency.}
+    \label{table:gws}
+    \begin{tabular}[t]{|l|l|l|l|l|l|r|}
+      
+    \hline
+    Chromosome & Position (b38) & Ref & Alt & P-value & Odds Ratio & MAF\\
+    \hline
+    6 & 32333650 & C & T & $2.4\times10^{-12}$ & 1.78 (1.52 - 2.09) & 0.0369\\
+    \hline
+    6 & 32279268 & T & G & $5.4\times10^{-10}$ & 1.57 (1.36 - 1.81) & 0.0467\\
+    \hline
+    6 & 32205822 & T & C & $1.7\times10^{-8}$ & 1.45 (1.28 - 1.65) & 0.0533\\
+    \hline
+    6 & 32243461 & G & C & $2\times10^{-8}$ & 1.38 (1.23 - 1.54) & 0.0752\\
+    \hline
+    6 & 32708532 & A & C & 2.$4\times10^{-8}$ & 1.55 (1.33 - 1.8) & 0.0397\\
+    \hline
+    6 & 32429885 & C & A & $2.5\times10^{-8}$ & 1.54 (1.33 - 1.8) & 0.0430\\
+    \hline
+    \end{tabular}
+
+    \endgroup{}
+
+    \end{table}
+    
+    
+    All six variants had a low minor allele frequency (MAF), ranging from 0.04 to 0.08 in the constituent cohorts (Table \ref{table:maf_concord}). Over the last 15 years, hundreds of GWAS studies have emphasised the importance of guarding against spurious associations driven by low-frequency variants. In some studies, these associations were later found to be false positives \cite{Tabangin2009-gs}. To minimise this risk and ensure the robustness of the associated variants, one may compare the within-cohort genetic properties of these variants to their expected genetic properties in a matching general population. A mismatch between the general population and the cohorts may indicate that the detected association may indeed be artefactual. To this end, I performed a number of checks to ensure the robustness of the association at 6p21.32. First, I checked whether the variants' MAF is comparable between the constituent cohorts (IBD-BR and UKIBDGC). Second, I compared cohort MAFs to the general population MAFs (in non Finnish Europeans). Third, I investigated whether the association strength is consistent with the expected LD structure in non-Finnish Europeans. 
+    \begin{figure}[H] 
+      \centering    
+      \includegraphics[width=0.8\textwidth]{Vector/regional_assoc_plot}
+      \caption[Figure]{Regional association plot showing meta-analysis association P-values in the 6p21.32 regions. Variants are coloured by $R^{2}$ with the index variant, derived from 1000 Genomes Project High Coverage study (Non-Finnish Europeans)}
+      \label{fig:regional_assoc_plot}
+      \end{figure}
+    \subsubsection{Associated variants at 6p21.32 match population allele frequencies}
+    None of the variants showed significant differences in MAF within the constituent cohorts or between the cohorts and non-Finnish Europeans in the general population (Table \ref{table:maf_concord}; 1000 Genomes Project and GnomAD; see Methods for how MAF deviation was assessed). Despite no significant deviation from expected population MAF, all variants had consistently higher cohort than population MAFs. Such a systematic increase in MAF may be expected if these variants are also associated with CD risk, since the constituent cohorts are composed entirely of CD patients. 
+    In support of this, I found that three of the six variants are significantly associated with CD risk in an independent CD GWAS study, partly explaining the higher cohort MAFs (de Lange et al. 2017; the three other variants were not imputed in the CD study). Moreover, the minor alleles had a risk-increasing effect on both CD and pCD, but the magnitude of effect was significantly higher for CD ($P_{het}$ < 0.008).
+
+    
+  \begin{table}[H]
+    \centering\begingroup\fontsize{9}{11}\selectfont
+    \caption{Minor allele frequencies for the genome-wide significant variants in the 6p21.32 locus in meta-analysis constituent cohorts, and in two population cohorts (1000 Genomes Project and GnomAD; Non-Finnish Europeans). Association P-value with Crohn's Disease from de Lange et al. 2017 are shown for variants reported in the study.}
+    \label{table:maf_concord}
+    \begin{tabular}[t]{lrrrrrl}
+    \toprule
+    \multicolumn{1}{c}{ } & \multicolumn{3}{c}{Study Cohorts} & \multicolumn{2}{c}{Population cohorts} & \multicolumn{1}{c}{ } \\
+    \cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-6}
+    SNP & IBD-BR & HCE & GWAS1 & GnomAD & 1000GP & CD P-value\\
+    \midrule
+    6:32333650\_C\_T & 0.033 & 0.041 & 0.042 & 0.012 & 0.012 & NA\\
+    6:32279268\_T\_G & 0.044 & 0.050 & 0.050 & 0.020 & 0.015 & $4.3\times10^{-42}$\\
+    6:32205822\_T\_C & 0.053 & 0.054 & 0.053 & 0.028 & 0.021 & NA\\
+    6:32243461\_G\_C & 0.074 & 0.076 & 0.081 & 0.052 & 0.036 & NA\\
+    6:32708532\_A\_C & 0.038 & 0.042 & 0.041 & 0.024 & 0.020 & $5\times10^{-9}$\\
+    \addlinespace
+    6:32429885\_C\_A & 0.036 & 0.050 & 0.049 & 0.020 & 0.016 & $4.2\times10^{-31}$\\
+    \bottomrule
+    \end{tabular}
+    \endgroup{}
+    \end{table}
+
+    \subsubsection{Association signal at 6p21.32 matches expected linkage disequilibrium pattern in non-Finnish Europeans}
+    Although the six variants spanned a 500 kbp region, they displayed high LD with rs115378818, as the 6p21 region is known to exhibit long-range LD (Figure \ref{fig:regional_assoc_plot}). Overall, the LD structure and association signal in 6p21.32 matched the expected LD structure in non-Finnish Europeans. First, I found that $R^2$ values derived from the cohorts were highly correlated with $R^2$ derived from non-Finnish Europeans (1000 Genomes Project; Pearson correlation coefficient $R^2$ > 0.6). Second, the association signal for the six variants matched the expected LD pattern in 1000GP. Specifically, P-values of nominally associated variants (P-value < $5\times10^{-4}$) were correlated with their LD with rs115378818 (Figure \ref{fig:ld_pval_plot}).
+
+
+
+
+    \begin{figure}[H] 
+      \centering    
+      \includegraphics[width=1.0\textwidth]{fig3}
+      \caption[Figure]{association P-value for all variants in a 1mbp window around rs115378818 (P-value < $5\times10^{-4}$) on the x-axis, and $R^{2}$ of variants with rs115378818 on the y-axis (derived from 1000GP). Vertical red-line indicates the genome-wide significant threshold ($5\times10^{-8}$).}
+      \label{fig:ld_pval_plot}
+      \end{figure}
+
+
+    \subsection{Association at 6p21.32 is robust to more severe pCD+ definitions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%FIGURE SOURCE: /lustre/scratch123/hgi/mdt2/projects/ibdgwas_ukibdgc/oe2/scripts/compare_chi_squared.R
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H] 
+  \centering    
+  \includegraphics[width=0.8\textwidth]{Vector/meta_chisq_plot}
+  \caption[Figure]{association P-value for all variants in a 1mbp window around rs115378818 (P-value < $5\times10^{-4}$) on the x-axis, and $R^{2}$ of variants with rs115378818 on the y-axis (derived from 1000GP). Vertical red-line indicates the genome-wide significant threshold ($5\times10^{-8}$).}
+  \label{fig:meta_def_comparison}
+  \end{figure}
+The IBD-BR provides information about the type of perianal involvement each patient presents with. To understand the effect of different definition criteria, I investigated how the meta-analysed association signal at 6p21.32 is sensitive to different definitions of pCD+ cases in the IBD-BR. In addition to the broad-definition mata-analysis described in the previous section ($META_{broad}$), I performed a meta-analysis between UKIBDGC and IBD-BR using three additional pCD+ definitions that have an increasingly severe impact on patients: pCD+ as abscess or simple or complex fistula only ($META_{abscfist}$), as simple or complex fistula only ($META_{fist}$), and as complex fistula only ($META_{complexfist}$). 
+
+Since the stricter definitions resulted in a reduction in the number of pCD+ cases, a proportional decrease in association test statistic ($\chi^{2}$) should also be expected. Under the hypothesis that the stricter-definition meta-analyses are simply a subset of $META_{broad}$, the $\chi^{2}$  observed in any definition meta-analysis should match $\chi^{2}$ from $META_{broad}$ adjusted for the reduction in sample size (I will refer to this as $\chi^{2}_{Broad,n}$; see Methods for how this adjustment was performed). 
+
+In a 1mbp window centred around rs115378818, I compared the $\chi^{2}$ observed in each of the three stricter-definition meta-analyses to $\chi^{2}_{Broad,N}$. All six genome-wide significant variants achieved the expected association in the stricter definition meta-analyses. For example, rs115378818 remained genome-wide significant in $META_{fist}$ despite the decrease in sample size (1,234 fewer pCD+ cases; observed P-value=$2.2\times10^{-11}$; broad-definition P-value adjusted for sample size=$3\times10^{-11}$; Figure \ref{fig:meta_def_comparison}). More broadly, across all variants in 6p21.32, I observed strong correlation between observed $\chi^{2}$ in the stricter-definition meta-analyses and $\chi^{2}_{Broad,n}$, which shows the robustness of the association signal against different definitions of pCD+ cases in IBD-BR ($META_{abscfist}$=0.95; $META_{fist}$=0.92,$META_{complexfist}$=0.84). 
+
+
+\subsection{pCD is associated with HLA allele DRB1*01:03}
+To link the pCD-associated locus to an HLA allele, I performed association analyses between pCD status and class I and II HLA alleles, both at the allele group and specific allele levels (2-digit and 4-digit resolutions; see Methods for HLA imputation). Similar to the genome-wide association analysis, I performed the HLA association analyses separetely for IBD-BR and UKIBDGC and subsequently meta-analysed the summary statistics (effect sizes and standard errors). \\
+
+None of the tested HLA alleles achieved genome-wide significance (P-value < $5\times10^{-8}$) within the cohorts or in the meta-analysis. At the allele group level, DRB1*01 had the strongest association. At a specific allele level, HLA-DRB1*01:03 had the most significant association, and had a stronger association compred to its allele group ($P_{DRB1*01:03}=1.8\times10^{-6}$; $P_{DRB1*01}=1.4\times10^{-3}$). I tested both dominant and additive modes of inheritance and found that the dominant model achieved better model fit at both the allele group and specific allele levels ($AIC_{dominant} < AIC_{additive}$; Table \ref{table:hla_allele_assoc}). 
+\begin{table}[H]
+  
+  \centering\begingroup\fontsize{9}{10}\selectfont
+  \caption{Top HLA allele associations with pCD status. Both allele groups (2-digit resolution; first two rows) and specific alleles (4-digit resolution; second two rows) are shown. Meta-analysed P-values and odds ratios between UKIBDGC and IBD-BR cohorts are shown (and their 95\% confidence intervals). Both dominant and additive modes of inheritance  for  DRB1*01 and DRB1*01:03 were tested. Akaike Information Content (AIC), a measure of model fit, is shown in the last theree columns for each of the three constituent cohorts, and shows a better fit for the dominant model (lower AIC).}
+  \label{table:hla_allele_assoc}
+  \begin{tabular}[t]{|l|l|l|l|l|l|l|}
+  \hline
+  HLA Allele & Inheritance & Odds Ratio & P-value & AIC (IBDBR) & AIC (HCE) & AIC (GWAS1)\\
+  \hline
+  DRB1*01 & Dominant & 1.2 (1.1 - 1.3) & 9.4e-04 & 9127.887 & 3901.092 & 1783.907\\
+  \hline
+  DRB1*01 & Additive & 1.1 (1.1 - 1.2) & 1.5e-03 & 9128.485 & 3901.413 & 1783.907\\
+  \hline
+  DRB1*01:03 & Dominant & 1.6 (1.3 - 1.9) & 5.3e-07 & 9122.007 & 3651.987 & 1615.647\\
+\hline
+DRB1*01:03 & Additive & 1.5 (1.3 - 1.8) & 1.8e-06 & 9122.825 & 3653.500 & 1615.647\\
+\hline
+  \end{tabular}
+  \endgroup{}
+  \end{table}
+\subsubsection{Conditioning association signal on DRB1*01:03}
+After conditioning on rs115378818, I did not observe an association with DRB1*01:03, indicating that the  DRB1*01:03 association is completely accounted for by rs115378818 ($P_{DRB1*01:03|rs115378818}$=0.61). Conversely, DRB1*01:03 did not completely account for the rs115378818 association. When I conditioned the rs115378818 association on DRB1*01:03, rs115378818 remained nominally associated with pCD ($P_{rs115378818}=2.4\times10^{-12}$ and  $P_{rs115378818|DRB1*01:03}=1.1\times10^{-5}$; Figure \ref{fig:residual_assoc_plot}). Taken together, this evidence suggests that  DRB1*01:03 is indeed associated with pCD and that it partly explains the observed genome-wide association signal, but that another HLA allele may additionally contribute to the observed association signal.  
+\begin{figure}[H] 
+  \centering    
+  \includegraphics[width=0.7\textwidth]{Vector/cond_regional_assoc_plot}
+  \caption[Figure]{Residual association signal after including DRB1*01:03 as a covariate. Blue points represent variants with a genome-wide significant association in the model that does not include DRB1:01*03. The red point indicates rs115378818 (index variant).}
+  \label{fig:residual_assoc_plot}
+  \end{figure}
+
+  
+\section{Discussion}
+In this chapter, I have used two IBD cohort (UKIBDGC and IBD-BR) with rich clinical data to identify the genetic variants associated with risk of pCD, a CD sub-phenotype that affects up to 40\% of CD patients, with significant health and lifestyle impact on patients. Both cohorts report similar epidemiological characteristics of pCD+ patients compared to pCD- patients. Furthermore, IBD-BR with its deeper clinical phenotyping shows lower anti-TNF intake and higher extraintestinal manifestations in pCD+ patients, two observations that should be further investigated in future work. More importantly, the availability of genotypic data enabled the identification of overlapping individuals between the two studies, and confirming a remarkable consistency in pCD status assignment despite the large number of hospital and recruitment centers that contributed patient data and samples to these two cohorts.\\
+
+By meta-analysing pCD GWAS data from both cohorts, I have identified a genome-wide significant in the highly polymorphic Major Histocompatibility Locus (MHC) at 6p21.32 associated with pCD risk. Given the relative low frequency of genome-wide significant variants, I have performed a number of "post-GWAS" checks to ensure the veracity of the assocation. Genome-wide significant variants allele frequencies matched expected non-Finnish Europeans allele frequencies, and the P-values at the locus matched their expected LD pattern in non-Finnish Europeans. Moreover, the association was robust to pCD+ status defined with increasingly stricter criteria of perianal involvement, showing its robustness to heterogeneous case definitions. \\
+
+Previous GWAS studies have attempted to identify pCD-associated loci, but none have achieved genome-wide significance \cite{Akhlaghpour2023-jw,Kaur2016-ut}. For example Akhlaghpour et al. identified a Complement Factor B (\textit{CFB}) coding variant that was nominally associated with pCD risk (rs4151651;P-value=$9.35\times10^{-6}$). This variant is unlikely to account completely for our meta-analysis association. First, the rs115378818 and rs4151651 are in weak LD ($R^{2}$=0.24). Second, Upon conditioning on the \textit{CFB} signal (rs114969413; $R^{2}$ with index variant $=0.99$), there was a residual association in our meta-analysis (rs115378818 P-value=$2.1\times10^{-6}$; Figure \ref{fig:cond_mcgovern}). \\
+
+\begin{figure}
+  \centering    
+  \includegraphics[width=0.7\textwidth]{Vector/cond_mcgovern_regional_assoc_plot}
+  \caption[Figure]{Residual association signal after including  rs114969413 (a \textit{CFB} locus variant) as a covariate. Blue points represent variants with a genome-wide significant association in the model that does not include rs114969413. The red point indicates rs115378818 (index variant).}
+  \label{fig:cond_mcgovern}
+  \end{figure}
+
+
+To follow up on our association signal, I tested the association between pCD status and different HLA alleles imputed from genotype data. HLA alleles can be mapped at different resolutions from allele groups (2-digit) to specific alleles (4-digit) to amino acid resolution. The current release of our HLA imputation data includes 2-digit and 4-digit HLA alleles. HLA-DRB1*01:03 showed a strong (but not genome-wide significant) association with pCD risk. Conditioning on the index variant (rs115378818) completely explained the association of HLA-DRB1*01:03, but HLA-DRB1*01:03 did not completely account for the index variant association. \\
+
+Several reasons may explain this. First, the association signal at 6p21.32 may be explained by multiple HLA alleles, and therefore conditioning on a signle HLA allele cannot completely explain the 6p21.32 signal. The highly polymorphic nature of most HLA genes often makes it difficult to completely attribute disease risk to a single HLA allele. This has been previously observed for Rheumatoid Arthritis (RA), where several \textit{HLA-DRB1} alleles confer risk to RA \cite{Van_Drongelen2017-dh}. Second, higher HLA allele resolution at the amino acid level may better account for the pCD signal \cite{Molineros2019-mu}. Interestingly, using only three amino acid positions in a predictive model of RA risk provided identical prediction with a model that included all HLA-DRB1 allleles \cite{Raychaudhuri2012-em}. Therefore, a follow-up to my work should explore the association of HLA-DRB1 alleles with pCD at an amino acid level. The presence of a small number of amino acid substitution is a reasonable explanation for the 6p21.32 association that was not completely account by HLA-DRB1*01:03.\\
+
+
+
+
+\section{Methods}
+\subsection{UK IBD Genetics Consortium Genotype Quality Control}
+UKIBDGC samples with pCD information were genotyped with two genotyping arrays: Affymetrix Human Mapping 500K Array (I will refer to this as GWAS1; number of variants before QC=469,281), and Illumina Human Core Exome-12v1.0 or its newer version Illumina Infinium Core Exome-24v1.1 (I will refer to this as HCE; number of variants before QC=535,434 and 557,662 respectively). Quality control for UKIBDGC genotype data was performed as part of the International IBD Genetics Consortium cases-control meta-analysis. QC was performed using a combination of Plink (v1.9 and v2), bcftools (v1.16), and KING (v2.2.4).
+\subsection{Variant-level QC}
+Variants that met the following criteria were excluded: 
+\begin{itemize}
+  \item Low call rate (<0.95 for variants with minor allele frequency (MAF) $>$ 0.01 or $<$ 0.98 for variants with MAF $\leq$ 0.01).
+  \item Significant difference in genotype call rate (P-value $< 10^{-4}$) between IBD cases and controls.
+  \item Large allele frequency (AF) differences between UKIBDGC and Gnomad (Non-Finnish Europeans), or TOPMed (global) using the following formula:
+
+$$\frac{(P_{1}-P_{0})^{2}}{(P_{1}+P_{0})(2-P_{1}-P_{0})} > \epsilon$$ 
+
+
+where $\epsilon=0.025$ or $0.125$, for Gnomad and TOPmed respectively,  $P_{0}$ is the minor allele frequency (MAF) in Gnomad or TOPMed and $P_{1}$ is UKIBDGC MAF. This formula accounts for larger AF differences between UKIBDGC and population references in common than in low-frequency variants. The TOPMed global AF difference cutoff is higher to account for AF computed across diverse populations
+\item Hardy Weinberg Equilibrium (HWE) P-value < 10-5 in IBD controls or < 10-12 in IBD cases. HWE P-value was estimated in EUR ancestry samples. For chromosome X, HWE was estimated in genotypically-inferred EUR females, or 
+\item Monomorphic variants. 
+\end{itemize}
+
+\subsection{Sample-level QC}
+Samples that meet the following criteria were excluded:
+\begin{itemize}
+\item Missing genotyping rate $>$ 0.05
+\item Heterozygosity estimate $\pm$ 4 standard deviations from the EUR mean, or 
+\item mismatch between recorded gender and genotypically-inferred sex. 
+\end{itemize}
+\subsection{Imputation to TOPMed}
+The TOPMed imputation server (imputationserver at 1.5.7) was used for UKIBDGC imputation. Directly genotyped variants with empirical imputation $R < -0.5$ were flipped, and variants with empirical $R^{2} \leq 0.5$ were excluded after imputation. After their exclusion, imputation was repeated, and variants with HWE P-value $\leq 10^{-5}$ in IBD controls were excluded.
+
+\subsection{IBD-BR Genotype QC and Imputation}
+The cohort was genotyped with two different versions of the UKBiobank ThermoFisher genotyping array. The same genotype QC steps as UKIBDGC were applied to IBD-BR, except for 1) The AF difference check, where 1000 Genomes Panel (1000GP) was used as a reference panel 2) Imputation, where the Sanger Imputation Server was used \cite{1000gp}, with two imputation reference panels: UK10K+1000GP and HRC. Imputed genotypes from both panels were combined. For variants that existed in both panels, HRC imputed genotypes only were retained. Imputed variants with large AF difference between the two panels, or with HWE P-value $ \leq 10^{-5}$ in IBD controls  were removed.
+
+
+\subsection{Identification of overlapping samples between UKIBDGC and IBD-BR}
+Identification of duplicate individuals between UKIBDGC and IBD-BR genotyping data was performed with KING \cite{king-software}. Based on the distribution of kingship coefficients, duplicates were defined as having a kinship coefficient > 0.354 as recommended in \cite{king-software}. Estimation of kinship coefficient was performed using post-QC directly genotyped SNPs (number of variants used for kinship inference between IBD-BR and GWAS1=42,292:, and between IBD-BR and HCE=53,431).
+
+\subsection{Genome-wide association analysis}
+All genome-wide association analyses were performed using REGENIE v3.2.5 \cite{Mbatchou2021-qm} following a 2-step procedure. Briefly, in step 1, a whole-genome regression model is fit using directly-genotyped variants in order to estimate a set of genome-wide predictors that capture a large fraction of phenotypic variance. These predictors are then used as covariates in step 2 where a larger set of variants are tested for association.
+I used post-QC genotyped variants in step 1 and both genotyped and imputed variants in step 2 from all autosomal chromosomes. Additionally, I enabled Firth approximation for all variants with P-value < 0.01 (\Verb+--firth --approx --pThresh 0.01+).
+
+\subsection{1000GP LD calculation}
+Population LD estimates were calculated using the 1000 Genomes Project high coverage dataset \cite{1000gphc}. $R^{2}$ values where calculated using plink v1.9 and after retaining non-Finnish European individuals only. 
+
+\subsection{$\chi^{2}$ comparison between different pCD definitions}
+In order to compare associations from meta-analyses using different pCD+ case definitions to the meta-analysis with a broad pCD+ case definition, I adjusted the the broad-definition $\chi^{2}$ values using this formula:
+
+ $$\chi^{2}_{Broad,n}=\frac{n}{N}\chi^{2}_{Broad}$$
+
+Where n is the sample size of the meta-analysis being assessed, and $\chi^{2}_{Broad}$ is the broad-definition observed association statistic and  $\chi^{2}_{Broad,n}$ is the broad-definition association statistic adjusted for sample size. 
+
+%From script:
+%/nfs/users/nfs_o/oe2/ibdbr/scripts/hla/cond_meta.R
+% \subsection{First subsection in the first section}
+% \dots and some more 
+
+% \subsection{Second subsection in the first section}
+% \dots and some more \dots
+
+% \subsubsection{First subsub section in the second subsection}
+% \dots and some more in the first subsub section otherwise it all looks the same
+% doesn't it? well we can add some text to it \dots
+
+% \subsection{Third subsection in the first section}
+% \dots and some more \dots
+
+% \subsubsection{First subsub section in the third subsection}
+% \dots and some more in the first subsub section otherwise it all looks the same
+% doesn't it? well we can add some text to it and some more and some more and
+% some more and some more and some more and some more and some more \dots
+
+% \subsubsection{Second subsub section in the third subsection}
+% \dots and some more in the first subsub section otherwise it all looks the same
+% doesn't it? well we can add some text to it \dots
+
+% \section{Second section of the third chapter}
+% and here I write more \dots
+
+% \section{The layout of formal tables}
+% This section has been modified from ``Publication quality tables in \LaTeX*''
+%  by Simon Fear.
+
+% The layout of a table has been established over centuries of experience and 
+% should only be altered in extraordinary circumstances. 
+
+% When formatting a table, remember two simple guidelines at all times:
+
+% \begin{enumerate}
+%   \item Never, ever use vertical rules (lines).
+%   \item Never use double rules.
+% \end{enumerate}
+
+% These guidelines may seem extreme but I have
+% never found a good argument in favour of breaking them. For
+% example, if you feel that the information in the left half of
+% a table is so different from that on the right that it needs
+% to be separated by a vertical line, then you should use two
+% tables instead. Not everyone follows the second guideline:
+
+% There are three further guidelines worth mentioning here as they
+% are generally not known outside the circle of professional
+% typesetters and subeditors:
+
+% \begin{enumerate}\setcounter{enumi}{2}
+%   \item Put the units in the column heading (not in the body of
+%           the table).
+%   \item Always precede a decimal point by a digit; thus 0.1
+%       {\em not} just .1.
+%   \item Do not use `ditto' signs or any other such convention to
+%       repeat a previous value. In many circumstances a blank
+%       will serve just as well. If it won't, then repeat the value.
+% \end{enumerate}
+
+% A frequently seen mistake is to use `\textbackslash begin\{center\}' \dots `\textbackslash end\{center\}' inside a figure or table environment. This center environment can cause additional vertical space. If you want to avoid that just use `\textbackslash centering'
+

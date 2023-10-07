@@ -2,7 +2,7 @@
 %*******************************************************************************
 %****************************** Third Chapter **********************************
 %*******************************************************************************
-\chapter{My third chapter}
+\chapter{pAD}
 
 % **************************** Define Graphics Path **************************
 \ifpdf
@@ -11,146 +11,81 @@
     \graphicspath{{Chapter3/Figs/Vector/}{Chapter3/Figs/}}
 \fi
 
-\section{First section of the third chapter}
-And now I begin my third chapter here \dots
+\section{Phenotype quality control}
+With every inpatient visit, patients receive a primary and secondary diagnosis. These diagnoses are recorded using a hierarchical clinical diagnosis framework known as The International Classification of Diseases (ICD) \cite{Hirsch2016-mw}. ICD is a hierarchical framework whereby each medical diagnosis is given an alphanumeric code, and all sub-classifications of any given diagnosis are nested within it. For example, K50 codes for Crohn's disease, while K50.1 codes for Crohn's disease in the large intestine. In this chapter, I will refer to the main ICD codes as "level 1 codes" and their sub-classifications "level 2 codes". The level 1 code for perianal involvement is K60 (K60: Fissure and fistula of the anal and rectal regions)
 
-And now to cite some more people~\citet{Rea85,Ancey1996}
+To understand the genetic architecture of perianal involvement in the general population, I performed a GWAS analysis between all-cause peri-anal disease (pAD) and healthy individuals in the UKBB. 
 
-\subsection{First subsection in the first section}
-\dots and some more 
+\subsection{Control exclusion criteria}
+To avoid contamination of controls with lower digestive tract disorders that may be true pAD cases that were incorrectly diagnosed, I applied a set of control exclusion criteria. Specifically, I excluded from the control set any individuals who had an ICD-10 hospital diagnosis of K55-K64 and their corresponding ICD-9 codes as demonstrated in Table \ref{table:ukbb_ctrl_excl_criteria}; collectively grouped as "Other diseases of intestines"). These ICD codes indicate symptoms that may resemble pAD symptoms upon presentation, and include ano-rectal bleeding (K55 vascular disorders of the intestine, K57 diverticular disease of intestine and K64 Haemorrhoids and perianal venous thrombosis), or a change in bowel habits (K56 Paralytic ileus and K58 Irritable bowel syndrome), perianal fistula or abscess (K60 fissure and fistula of the anal  and K61), any ano-rectal abnormalities (K62), or proximal fistulas or abscesses (K63). In total, I excluded 133,398 from 481,756 pAD controls (27.7\%).
 
-\subsection{Second subsection in the first section}
-\dots and some more \dots
-
-\subsubsection{First subsub section in the second subsection}
-\dots and some more in the first subsub section otherwise it all looks the same
-doesn't it? well we can add some text to it \dots
-
-\subsection{Third subsection in the first section}
-\dots and some more \dots
-
-\subsubsection{First subsub section in the third subsection}
-\dots and some more in the first subsub section otherwise it all looks the same
-doesn't it? well we can add some text to it and some more and some more and
-some more and some more and some more and some more and some more \dots
-
-\subsubsection{Second subsub section in the third subsection}
-\dots and some more in the first subsub section otherwise it all looks the same
-doesn't it? well we can add some text to it \dots
-
-\section{Second section of the third chapter}
-and here I write more \dots
-
-\section{The layout of formal tables}
-This section has been modified from ``Publication quality tables in \LaTeX*''
- by Simon Fear.
-
-The layout of a table has been established over centuries of experience and 
-should only be altered in extraordinary circumstances. 
-
-When formatting a table, remember two simple guidelines at all times:
-
-\begin{enumerate}
-  \item Never, ever use vertical rules (lines).
-  \item Never use double rules.
-\end{enumerate}
-
-These guidelines may seem extreme but I have
-never found a good argument in favour of breaking them. For
-example, if you feel that the information in the left half of
-a table is so different from that on the right that it needs
-to be separated by a vertical line, then you should use two
-tables instead. Not everyone follows the second guideline:
-
-There are three further guidelines worth mentioning here as they
-are generally not known outside the circle of professional
-typesetters and subeditors:
-
-\begin{enumerate}\setcounter{enumi}{2}
-  \item Put the units in the column heading (not in the body of
-          the table).
-  \item Always precede a decimal point by a digit; thus 0.1
-      {\em not} just .1.
-  \item Do not use `ditto' signs or any other such convention to
-      repeat a previous value. In many circumstances a blank
-      will serve just as well. If it won't, then repeat the value.
-\end{enumerate}
-
-A frequently seen mistake is to use `\textbackslash begin\{center\}' \dots `\textbackslash end\{center\}' inside a figure or table environment. This center environment can cause additional vertical space. If you want to avoid that just use `\textbackslash centering'
+\subsection{Case inclusion criteria}
+To define the case cohort, I identified all individuals with ICD-10 and ICD-9 codes K60
+and 565 as case. In total, 5,257 UKBB participants had at least a single visit where they received either a primary or secondary pAD diagnosis or its corresponding ICD-9 code ("anal fissure and fistula"; 565). There are six level 2 codes within K60, representing two broad categories of pAD: fissures and fistulas. Three codes are used for acute and chronic fissures and three codes for acute and chronic fistulas. 92\% of patients (4,858) presented with either K60.1, K60.2 or K60.3 ("chronic anal fissure", "anal fissure, unspecified" and "anal fistula", respectively; Table \ref{table:ukbb_level2_nums}).
 
 
-\begin{table}
-\caption{A badly formatted table}
-\centering
-\label{table:bad_table}
-\begin{tabular}{|l|c|c|c|c|}
-\hline 
-& \multicolumn{2}{c}{Species I} & \multicolumn{2}{c|}{Species II} \\ 
-\hline
-Dental measurement  & mean & SD  & mean & SD  \\ \hline 
-\hline
-I1MD & 6.23 & 0.91 & 5.2  & 0.7  \\
-\hline 
-I1LL & 7.48 & 0.56 & 8.7  & 0.71 \\
-\hline 
-I2MD & 3.99 & 0.63 & 4.22 & 0.54 \\
-\hline 
-I2LL & 6.81 & 0.02 & 6.66 & 0.01 \\
-\hline 
-CMD & 13.47 & 0.09 & 10.55 & 0.05 \\
-\hline 
-CBL & 11.88 & 0.05 & 13.11 & 0.04\\ 
-\hline 
-\end{tabular}
-\end{table}
 
-\begin{table}
-\caption{A nice looking table}
-\centering
-\label{table:nice_table}
-\begin{tabular}{l c c c c}
-\hline 
-\multirow{2}{*}{Dental measurement} & \multicolumn{2}{c}{Species I} & \multicolumn{2}{c}{Species II} \\ 
-\cline{2-5}
-  & mean & SD  & mean & SD  \\ 
-\hline
-I1MD & 6.23 & 0.91 & 5.2  & 0.7  \\
-
-I1LL & 7.48 & 0.56 & 8.7  & 0.71 \\
-
-I2MD & 3.99 & 0.63 & 4.22 & 0.54 \\
-
-I2LL & 6.81 & 0.02 & 6.66 & 0.01 \\
-
-CMD & 13.47 & 0.09 & 10.55 & 0.05 \\
-
-CBL & 11.88 & 0.05 & 13.11 & 0.04\\ 
-\hline 
-\end{tabular}
-\end{table}
+\begin{table}[H]
+  \centering
+  \caption{Number of UKB participant with with a primary or secondary diagnosis for each K60 level 2 code. K60.0=Acute Anal Fissure; K60.1=Chronic Anal Fissure; K60.2=Anal Fissure; unspecified; K60.3=Anal Fistula; K60.4=Rectal Fistula; K60.5= Anorectal Fistula}
+  \label{table:ukbb_level2_nums}
+  \begin{tabular}{|l|l|l|l|l|l|l|}
+  \hline
+  ICD-10 code           & K60.0  & K60.1  & K60.2  & K60.3 & K60.4 & K60.5\\ \hline
+  Number of individuals & 144                      & 788                        & 2,624                           & 1,954              & 76                   & 122                     \\ \hline
+  \end{tabular}
+  \end{table}
 
 
-\begin{table}
-\caption{Even better looking table using booktabs}
-\centering
-\label{table:good_table}
-\begin{tabular}{l c c c c}
-\toprule
-\multirow{2}{*}{Dental measurement} & \multicolumn{2}{c}{Species I} & \multicolumn{2}{c}{Species II} \\ 
-\cmidrule{2-5}
-  & mean & SD  & mean & SD  \\ 
-\midrule
-I1MD & 6.23 & 0.91 & 5.2  & 0.7  \\
 
-I1LL & 7.48 & 0.56 & 8.7  & 0.71 \\
 
-I2MD & 3.99 & 0.63 & 4.22 & 0.54 \\
+\begin{table}[]
+  \caption{pAD control set exclusion criteria. All ICD-10 codes had corresponding ICD-9 codes except K56 K62 and K63. For those, ICD-9 codes were obtained manually by inspecting level-2 ICD-10 codes and searching for their corresponding level-2 ICD-9 codes.}
+  \label{table:ukbb_ctrl_excl_criteria}
+  \begin{tabular}{|p{0.1\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|p{0.1\linewidth}|}
+  \hline
+  ICD-10 code & ICD-10 meaning                                            & ICD-9 code                          & ICD-9 meaning     & N                                                                                                                                                          \\ \hline
+  K55         & Vascular disorders of intestine                           & 557                                 & Vascular insufficiency of intestine       & 2923                                                                                                                                  \\ \hline
+  K56         & Paralytic ileus and intestinal obstruction without hernia & 5600, 5601, 5602, 5603, 5608A, 5608, 5609 & Intussusception, Paralytic ileus, Volvulus, Impaction of intestine,Other specified intestinal obstruction, Unspecified intestinal obstruction & 9257                              \\ \hline
+  K57         & Diverticular disease of intestine                         & 562                                 & Diverticula of intestine              &     61519                                                                                                                                  \\ \hline
+  K58         & Irritable bowel syndrome                                  & 5641                                & Irritable bowel syndrome          & 12418                                                                                                                                          \\ \hline
+  K59         & Other functional intestinal disorders                     & 564                                 & Functional digestive disorders not elsewhere classified      & 30087                                                                                                               \\ \hline
+  K60         & Fissure and fistula of anal and rectal regions            & 565                                 & Anal fissure and fistula     & 5079                                                                                                                                               \\ \hline
+  K61         & Abscess of anal and rectal regions                        & 566                                 & Abscess of anal and rectal regions              &     2178                                                                                                                        \\ \hline
+  K62         & Other diseases of anus and rectum                         & 5690, 5691, 5692, 5693, 5694            & Anal and rectal polyp, Rectal prolapse, Stenosis of rectum and anus, Hemorrhage of rectum and anus, Other specified disorders of rectum and anus            & 39191                \\ \hline
+  K63         & Other diseases of intestine                               & 5695, 5696, 5697, 5698, 5699            & Abscess of intestine, Colostomy and enterostomy complications, Complications of intestinal pouch, Other specified disorders of intestine, Unspecified disorder of intestine & 33307 \\ \hline
+  K64         & Hemorrhoids and perianal venous thrombosis                & 455                                 & Hemorrhoids & 19060\\ \hline
 
-I2LL & 6.81 & 0.02 & 6.66 & 0.01 \\
+  \end{tabular}
+  \end{table}
+  \subsection{pAD case enrichment}
+  The availability of a large number of clinical diagnoses and phenotypes for UKB participants enables a thorough characterisation of the GWAS case cohort. I aimed to understand the cohort composition and identify which ICD-10 codes are enriched in cases versus controls. For each ICD-10 code, I compared the prevalence in pAD cases versus controls, and I formally tested the enrichment of 1,693 codes using Fisher's exact test. \\
 
-CMD & 13.47 & 0.09 & 10.55 & 0.05 \\
+  199 codes were significantly enriched (Fisher’s exact  P-value < $3\times10^{-5}$; Table ). Overall, the enrichment odds ratio was higher than expected (median odds ratio=1.36), likely as a consequence of sampling a disease cohort within a healthy population cohort. Haemorrhoids (I84) was the most significantly enriched diagnosis (P-value $6\times10^{-98}$; 38\% in pAD cases versus 6\% in controls; Fisher's odds ratio=9.7). This is likely due to the higher likelihood of diagnosing Haemorrhoids in patients with more serious ano-rectal disorders such as pAD, compared to the general population where haemorrhoids patients with no other ano-rectal manifestations are less likely to seek medical advice, and may therefore remain undiagnosed. 
 
-CBL & 11.88 & 0.05 & 13.11 & 0.04\\ 
-\bottomrule
-\end{tabular}
-\end{table}
+
+
+  \section{UKBB GWAS}
+  Using the pAD case control cohort, I performed a GWAS within UKBB using REGENIE v3.2.5 [ref]. After excluding individuals with missing genotypes or with discordant reported and inferred sex, I conducted the GWAS between 4,606 pAD cases and 332,234 pAD controls (see Methods for genotype data quality control and imputation). After filtering out variants with low imputation quality (INFO < 0.4) and minor allele frequency (MAF) < 0.01, a total of 9,705,089 variants were tested. The GWAs summary statistics did not exhibit genomic inflation (median $\chi^{2}=0.48$; $\lambda_{GC}=1.06$). Three loci achieved genome-wide significant association (P-value < $5\times10^{-8}$). All index variants were well-imputed (INFO > 0.9). Additionally, their MAF matched population MAFs from both 1000 Genomes Project and gnomAD (see Methods for how MAF deviation from the general population was assessed). 
+
+  \begin{table}[htb]
+    \centering\begingroup\fontsize{10}{14}\selectfont
+    \caption{genome-wide significant variants in the UKBB analysis. Odds ratio and their 95\% confidence intervals are shown. MAF=minor allele frequency.}
+    \label{table:gws}
+    \begin{tabular}[t]{|l|l|l|l|l|l|p{0.1\linewidth}|p{0.1\linewidth}|p{0.1\linewidth}|}
+      
+    \hline
+    Chromosome & Position (b38) & Ref & Alt & P-value & Odds Ratio & MAF (UKBB) & MAF (1000GP) & MAF (gnomAD)\\
+    \hline
+    3 & 52,928,665 & C & T & $2.4\times10^{-9}$ & 1.14 (1.1 - 1.19) & 0.44 & NA & 0.38\\
+    \hline
+    6 & 31,148,469 & G & A & $2.6\times10^{-8}$ & 1.12 (1.08 - 1.17) & 0.44 & 0.45 & 0.45 \\
+    \hline
+    9 & 22,119,196 & T & C & $2.7\times10^{-8}$ & 0.89 (0.58 - 0.93) & 0.52 & 0.53 & 0.52\\
+    \hline
+
+    \end{tabular}
+
+    \endgroup{}
+
+    \end{table}

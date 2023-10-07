@@ -65,8 +65,10 @@
 
 % Uncomment the following two lines to force Latex to place the figure.
 % Use [H] when including graphics. Note 'H' instead of 'h'
-%\usepackage{float}
+\usepackage{float}
 %\restylefloat{figure}
+% o229-add inline verbatim: https://tex.stackexchange.com/questions/387684/inline-verbatim
+\usepackage{fancyvrb}
 
 % Subcaption package is also available in the sty folder you can use that by
 % uncommenting the following line
@@ -77,9 +79,10 @@
 % ********************************** Tables ************************************
 \usepackage{booktabs} % For professional looking tables
 \usepackage{multirow}
+\usepackage{makecell}
 
 %\usepackage{multicol}
-%\usepackage{longtable}
+\usepackage{longtable}
 %\usepackage{tabularx}
 
 
@@ -112,6 +115,7 @@
 %\usepackage{cleveref} %Referencing without need to explicitly state fig /table
 
 % Add `custombib' in the document class option to use this section
+
 \ifuseCustomBib
    \RequirePackage[square, sort, numbers, authoryear]{natbib} % CustomBib
 
@@ -124,6 +128,9 @@
 
 % changes the default name `Bibliography` -> `References'
 \renewcommand{\bibname}{References}
+% oe229 - Bibliography style as superscript
+%TODO: make clickable
+% \usepackage[superscript,biblabel]{cite}
 
 
 % ******************************************************************************
