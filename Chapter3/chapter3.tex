@@ -370,9 +370,55 @@ I tested the association of each of the 18 pAD-associated index variants with ea
 
 Although the rest of the 18 index variants did show a significant association with the two haemorrhoids definition, I observed a pattern similar to 3:53034026\_C\_T. Seven of the 18 pAD-associated index variants had significantly smaller effect sizes in HaemexclpAD than in pADexclHaem ($P_{het}$ < $3\times10^{-3}$; Figure \ref{fig:combined_forest_het_plot}). Moreover, 8 additional variants had suggestive evidence of heterogeneity of effect ($P_{het}$ < 0.05), and in all cases the effect size was larger in pADExclHaem than in HaemExclpAD. 
 
-Two conclusion can be made from this analysis. First, despite a much larger sample size in favour of the haemorrhoids cohorts, only four pAD-associated index variants were also associated with haemorrhoids, even with a relatively lenient threshold for association. Second, despite their nominal association with haemorrhoids, these four variants (and indeed all other variants) had a consistently smaller effect size on HaemExclpAD than pADExclHaem, and for 3:53034026\_C\_T that difference in effect size was significant. More importantly, this pattern was observed for all 18 index variants, despite the lack of power to detect a significant heterogeneity of effects. Performing a similar 'disentaglment' analysis in both Finngen and UKBB, and subsequently identifying which variants have a significantly larger effect size in pADExclHaem than HaemExclpAD is a plausible way to validate this pattern. Such validation would conclusively establish those variants as bona fidae pAD-associated variants.
+Two conclusion can be made from this analysis. First, despite a much larger sample size in favour of the haemorrhoids cohorts, only four pAD-associated index variants were also associated with haemorrhoids, even with a relatively lenient threshold for association. Second, despite their nominal association with haemorrhoids, these four variants (and indeed all other variants) had a consistently smaller effect size on HaemExclpAD than pADExclHaem, and for 3:53034026\_C\_T that difference in effect size was significant. More importantly, this pattern was observed for all 18 index variants, despite the lack of power to detect a significant heterogeneity of effects. Performing a similar 'disentaglment' analysis in both Finngen and UKBB, and subsequently identifying which variants have a significantly larger effect size in pADExclHaem than HaemExclpAD is a plausible way to validate this pattern. Such validation would conclusively establish those variants as bona fidae pAD-associated variants.\\
 
 
+
+\subsection{Colocalisation analysis}
+Many GWAS loci that have been uncovered over the last 15 years are located in non-coding regions. This complicates the task of understanding their downstream effects and linking them to effector genes. Over the last ten years, large-scale studies that map genetic variants associated with transcriptomic variation have improved our understanding of the downstream effects of disease-associated genetic variants. For example, the Gentype Expression Project (GTEx) has mapped genetic variants associated with individual variation in overall levels of gene expression (eQTL) and splicing (sQTL). Additionally, statistical methods that are able to integrate association signals from different studies have been applied to GWAS and QTL data in order to investigate which effector genes likely underpin disease-associated GWAS signals. Colocalisation analysis, for example, quantifies the probability that two association signals are driven by a single causal variant ($PP_{4}$) and can therefore be used to compare GWAS and QTL association signals.\\
+
+I carried out colocalisation analysis between the 18 pAD-associated loci and eQTL and sQTL signals from GTEx v8. I colocalised each of the 18 loci with all eQTLs and sQTLs in a 1 mbp window centered around each locus' index variant. Across all 49 GTEx tissues, I performed the colocalisation with a total of 519 genes and all their splice junctions (see Methods for the number of genes and splice junctions tested for each locus). The most informative output of colocalisation analysis is $PP_{4}$, the posterior probability of two association signals sharing a single underlying variant. Overall, I found high-confidence colocalisation evidence for 8 loci, where at least one eQTL or sQTL colocalised with each pAD-associated locus ($PP_{4}$ > 0.8; Table \ref{table:coloc_res}). All 8 loci had at least a single colocalisation with an sQTL (16 sQTL genes), while 6 loci colocalised with at least one eQTL signal (10 eQTL), implicating a total of 21 genes. In many cases where both an eQTL and sQTL colocalisation were detected, distinct eQTL and sQTL genes were implicated. Moreover, different tissues often implicated different genes. For example, the locus at index variant 7:2524404\_G\_A colocalised with two different QTL genes (\textit{BRAT1} in the liver and thyroid gland, and \textit{LFNG} in the skin and whole blood). In fact, 4 of the 8 colocalised loci implicated a single gene, and only two loci implicated the same gene with high confidence in multiple tissues (index variant 10:61661180\_A\_G and 5:64868326\_TTTC\_T). The pleiotropic nature of genetic effects on gene expression is well documented in GTEx \cite{Ribeiro2021-xj}, and even in other organisms \cite{Brem2002-zj,Schadt2003-ei}. This pleiotropy is often attributed to the widespread gene co-expression patterns, whereby the expression of multiple genes is controlled by a single locus, sometimes termed "eQTL hotspots" \cite{Tian2016-hy}. Co-expressed genes are often found to be functionally related via shared biological pathways \cite{Van_Dam2017-vm,Westra2013-mm}. To explore this, I performed a gene set enrichment analysis in four databases: Reactome \cite{Gillespie2022-jr}, the Gene Ontlogy (GO) Molecular Function database, GO Cellular Component and GO Biological processes \cite{Thomas2022-nb}. I did not find any significantly enriched pathways in any of the the three GO databases or the Reactome database. Notably, 8 of the 21 genes were not found in the Reacome database, reflecting the lack of knowledge of their biological functions. 
+
+\begin{longtable}[t]{l>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}}
+  \caption{shows}
+    \label{table:coloc_res}\\
+    \hline
+  \toprule
+  Index SNP & Tissues (eQTL) & Tissues (sQTL)\\
+  \midrule
+  \endfirsthead
+  \caption[]{ \textit{(continued)}}\\
+  \toprule
+  Index SNP & Tissues (eQTL) & Tissues (sQTL)\\
+  \midrule
+  \endhead
+  
+  \endfoot
+  \bottomrule
+  \endlastfoot
+  \begingroup\fontsize{9}{11}\selectfont 1:39809417\_A\_T\endgroup & \begingroup\fontsize{9}{11}\selectfont NA\endgroup & \begingroup\fontsize{9}{11}\selectfont Brain Amygdala (PPIE: 0.85), Testis (PPIE: 0.82), Thyroid (PPIEL: 0.82), Brain Anterior cingulate cortex BA24 (PPT1: 0.86), Nerve Tibial (TRIT1: 0.83), Testis (TRIT1: 0.86)\endgroup\\
+  \midrule
+  \begingroup\fontsize{9}{11}\selectfont 1:39836225\_G\_C\endgroup & \begingroup\fontsize{9}{11}\selectfont NA\endgroup & \begingroup\fontsize{9}{11}\selectfont Brain Amygdala (PPIE: 0.85), Testis (PPIE: 0.82), Thyroid (PPIEL: 0.82), Brain Anterior cingulate cortex BA24 (PPT1: 0.86), Nerve Tibial (TRIT1: 0.83), Testis (TRIT1: 0.86)\endgroup\\
+  \midrule
+  \begingroup\fontsize{9}{11}\selectfont 3:53034026\_C\_T\endgroup & \begingroup\fontsize{9}{11}\selectfont Kidney Cortex (ITIH4: 0.97), Colon Transverse (SFMBT1: 0.98), Esophagus Gastroesophageal Junction (SFMBT1: 0.95), Esophagus Muscularis (TMEM110: 0.82), Pancreas (TMEM110: 0.98)\endgroup & \begingroup\fontsize{9}{11}\selectfont Artery Aorta (ITIH4: 0.9), Artery Tibial (ITIH4: 0.97), Liver (ITIH4: 0.96), Nerve Tibial (ITIH4: 0.93), Liver (MUSTN1: 0.87), Esophagus Muscularis (RFT1: 0.84)\endgroup\\
+  \midrule
+  \begingroup\fontsize{9}{11}\selectfont 5:64868326\_TTTC\_T\endgroup & \begingroup\fontsize{9}{11}\selectfont Testis (CWC27: 0.86)\endgroup & \begingroup\fontsize{9}{11}\selectfont Esophagus Muscularis (CWC27: 0.81), Testis (CWC27: 0.84)\endgroup\\
+  \midrule
+  \begingroup\fontsize{9}{11}\selectfont 6:31121854\_C\_T\endgroup & \begingroup\fontsize{9}{11}\selectfont Lung (HLA-B: 0.86), Thyroid (HLA-B: 0.87), Adrenal Gland (POU5F1: 0.85), Brain Cerebellar Hemisphere (POU5F1: 0.89), Brain Cerebellum (POU5F1: 0.91), Brain Hypothalamus (POU5F1: 0.84)\endgroup & \begingroup\fontsize{9}{11}\selectfont Skin Not Sun Exposed Suprapubic (FLOT1: 0.85), Skin Not Sun Exposed Suprapubic (MICA: 0.81), Colon Transverse (PSORS1C1: 0.98), Lung (PSORS1C1: 0.99), Small Intestine Terminal Ileum (PSORS1C1: 0.89)\endgroup\\
+  \midrule
+  \addlinespace
+  \begingroup\fontsize{9}{11}\selectfont 6:31253340\_T\_C\endgroup & \begingroup\fontsize{9}{11}\selectfont Lung (HLA-B: 0.86), Thyroid (HLA-B: 0.87), Adrenal Gland (POU5F1: 0.85), Brain Cerebellar Hemisphere (POU5F1: 0.89), Brain Cerebellum (POU5F1: 0.91), Brain Hypothalamus (POU5F1: 0.84)\endgroup & \begingroup\fontsize{9}{11}\selectfont Skin Not Sun Exposed Suprapubic (MICA: 0.81), Colon Transverse (PSORS1C1: 0.98), Lung (PSORS1C1: 0.99), Small Intestine Terminal Ileum (PSORS1C1: 0.89)\endgroup\\
+  \midrule
+  \begingroup\fontsize{9}{11}\selectfont 7:2524404\_G\_A\endgroup & \begingroup\fontsize{9}{11}\selectfont Liver (BRAT1: 0.94), Skin Not Sun Exposed Suprapubic (LFNG: 0.92), Skin Sun Exposed Lower leg (LFNG: 0.99), Whole Blood (LFNG: 0.85)\endgroup & \begingroup\fontsize{9}{11}\selectfont Thyroid (BRAT1: 0.95), Skin Not Sun Exposed Suprapubic (LFNG: 0.86), Skin Sun Exposed Lower leg (LFNG: 0.95), Whole Blood (LFNG: 0.99)\endgroup\\
+  \midrule
+  \begingroup\fontsize{9}{11}\selectfont 10:61661180\_A\_G\endgroup & \begingroup\fontsize{9}{11}\selectfont Minor Salivary Gland (C10orf107: 0.96)\endgroup & \begingroup\fontsize{9}{11}\selectfont Brain Anterior cingulate cortex BA24 (C10orf107: 0.81), Testis (C10orf107: 0.9)\endgroup\\
+  \midrule
+  \begingroup\fontsize{9}{11}\selectfont 11:10356352\_C\_A\endgroup & \begingroup\fontsize{9}{11}\selectfont NA\endgroup & \begingroup\fontsize{9}{11}\selectfont Adrenal Gland (AMPD3: 0.85)\endgroup\\
+  \midrule
+  \begingroup\fontsize{9}{11}\selectfont 12:114235969\_T\_C\endgroup & \begingroup\fontsize{9}{11}\selectfont NA\endgroup & \begingroup\fontsize{9}{11}\selectfont Vagina (RBM19: 0.81)\endgroup\\*
+  \end{longtable}
+
+  Only a single locus implicated a single gene across various tissues and with both eQTL and sQTL colocalisation evidence (\textit{CWC27}; index variant 5:64868326\_TTTC\_T; $PP_{4}$ > 0.8). The protective allele of the index variant (odds ratio=0.91) increases the expression of CWC27 (eQTL effect size=0.29), and also changes usage of five CWC27 splice junctions in testis. All implicated splice junctions are located within intron 11-12 of CWC27. CWC27 codes for a protein that forms part of the splicesome, a complex machinery that  which is part of a complex Rare CWC27 variants are known to be associated with retinitis pigmentosa with or without skeletal symptoms. Xu et al. [ref] performed whole-exome sequencing of ten individuals from seven unrelated families, nine of which suffered from retinitis pigmentosa, either alone or with a range of structural disorders such as bradydactyly, short stature, and craniofacial defects. In all seven families, rare protein-truncating variants in CWC27 were found, establishing CWC27 as the effector gene for this group of rare disorders. 
 
 
 
@@ -408,8 +454,83 @@ For each variant, METAL outputs the effect allele, meta-analysed effect size, st
 \subsection{Phenotype enrichment analysis}
 Explain which ICD codes you tested - explain that you didn't apply coontrol exclusion criteria - explain how you performed Fisher's exact test and which R function you used
 \subsection{Genetic correlation analysis}
-explain that there are different methods using GRM and summstats - explain LDSc uses summstats only - explain munging - explain concept of heritability based on LDSC - explain limitations: 1-that it uses only HapMap3 snps and why it's justified since they capture a good proportion of heritability 2-LD scores are derived from HapMap3 rather than UKBB or Finngen 3-Explain limitations of LDSC compared to GREML: less power - explain how it obtains rg by multiplying heritability estimates
+Genetic correlation analysis is commonly employed to understand the genetic similarities between two phenotypes or diseases of interest. Linkage disequillibrium score regression (LDSC \cite{Bulik-Sullivan2015-fk}) leverages association summary statistics between a pair of traits to compute a genetic correlation estimate ($r_{g}$). The availability of GWAS summary statistics for large numbers of traits and diseases makes genetic correlation a feasible exploratory analysis to discover genetic similarities between traits.\\
+
+The fundamental concept of LDSC is that there is a linear relationship between the Z-score product ($z_{1}z_{2}$) and the LD score of SNPs, where LD score is defined as the sum of $R^{2}$ values for all SNP in a pre-defined windown (the default is 1 cM) \cite{Bulik-Sullivan2015-ts}. The rationale behind this relationship is that SNPs with a higher LD score are more likely to tag the causal variant at each locus, and will therefore have a larger $z_{1}z_{2}$ value. Regressing the LD score for all SNPs can give an estimate of the overall genetic covariance between two traits.Specifically, the regression slope quantifies the gentic covariance, which can then be normalised by the sample sizes of the two traits and the number of SNPs to obtain a genetic correlation estimate between the two traits ($r_{g}$).\\
+
+The accuracy of $r_{g}$ rests on the assumption that the GWAS populations match the LD scores population. By default, LD scores are provided by LDSC, which are computed from the HapMap3 European-ancestry reference panel \cite{hapmap}. It is also important to note that although $r_{g}$ is a genome-wide measure, its computation is based on a predefined set of SNPs. The estimation of $r_{g}$ is based on a set of high-quality common SNPs in HapMap3, which is also provided by LDSC (MAF $\geq$ 0.05; N=1,217,312).
+
+\subsubsection{Genetic correlation between pAD and haemorrhoids}
+I used LDSC to compute $r_{g}$ between my pAD meta-analysis and two haemorrhoids GWASes (Zheng et al. 2021 \cite{Zheng2021-ss} and the Pan-UKBB GWAS: \Verb+pan.ukbb.broadinstitute.org/+). I downloaded the Zheng et al. 2021 summary statistics via the GWAS catalogue website (study accession: GCST90014033; $N_{cases}$=218,920; $N_{controls}$=725,213). Since the Pan-UKBB performed the haemorrhoids GWAS using different ancestries, I used the summary statistics from the European-ancestry GWAS only (ICD-10 code: I84; $N_{cases}$=26,348; $N_{controls}$=394,183). \\
+
+After downloading the two haemorrhoids summary statistics, I preprocessed both of them using the LDSC script \Verb+munge_sumstats.py+. The script filters the SNPs and aligns their alleles to the HapMap3 SNP list using the flag \Verb+--merge_alleles hm3.snplist+. This script also takes as input a signed summary statistic column which I provided using the flag \Verb+--signed-sumstats effect_size,0+, where the first argument specifies the column name (effect size column) and the second argument specifies the expected value of the signed summary statistic. Each of the two "munged" summary statistics files were then provided as input to the \Verb+ldsc.py --rg+, along with the pAD summary statistics file, and $r_{g}$ is then computed between pAD and each of the two haemorrhoids GWASes. 
+
+
 \subsection{Colocalisation analysis}
+In order to link the meta-analysis genome-wide significant loci to effector genes, I performed statistical colocalisation with a set of expression and splicing QTLs from the Genotype Excpression Project (GTEx v8). Colocalisation analysis is a statistical approach that uses two summary statistics from two association studies in order to make an inference whether the two association signal are likely to be driven by a shared causal variant. A fundamental assumption of colocalisation is that a single causal variant underlies both association signals under comparison. Under this assumption, five different hypothesis regarding the relationship between the two association signals are tested:
+\begin{itemize}
+  \item $H_{0}$: none of the two signals are associated with their corresponding traits
+  \item $H_{1}$: only the first signal is associated with its corresponding trait
+  \item $H_{2}$: only the second signal is associated with it corresponding trait
+  \item $H_{3}$: the two signals are associated with their corresponding traits, with different underlying genetic variants
+  \item $H_{4}$: the two signals are associated with their corresponding traits, and share a single underlying genetic variant.
+\end{itemize}
+Certainty about each of these hypotheses is quantified as a posterior probability. Therefore, colocalisation analysis outputs four different posterior probabilities: $PP_{0}$, $PP_{1}$, $PP_{2}$, $PP_{3}$, and $PP_{4}$. Statistical colocalisation is implemented in the R package \Verb+coloc v5.1.2+.
+
+To maximise the ability of \Verb+coloc+ to identify effector genes, I downloaded summary statistics from GTEx v8, a large compendium of expression and splicing quantitative trait loci (eQTLs and sQTLs) mapped from RNA-seq samples obtained from 49 human tissues, ranging in sample sizes from 73-706 individuals. eQTLs and sQTLs were mapped in a 1mbp window around the transcript start site (TSS) of each gene (cis-eQTLs and cis-sQTLs) using genotyped or imputed variants with MAF $\geq$ 0.01.
+
+Within each of the meta-analysis genome-wide significant loci, I identified a list of genes and splice junctions for eQTL and sQTL colocalisation, respectively. To achieve this, for each locus I defined a 1 mbp window around the index variant at each locus, and created a set of genes and splice junction whose respective TSS is located within this window. Next, I performed colocalisation analysis between the meta-analysis summary statistics and each gene's or splice junction's summary statistics. I used the \Verb+coloc.abf()+, which takes as input effect sizes and standard errors of each variant from the meta-analysis and gene or splice junction being tested. Importantly, \Verb+coloc.abf()+ does not require the effect sizes to be aligned to the same effect allele, as the Bayes Factor calculation implemented in \Verb+coloc+ relies on the $Z^{2}$ statistic to compute the posterior probabilities.
+
+\begin{table}[H]
+
+  \caption{}
+  \label{table:num_egenes_sgenes}
+  \centering
+  \begin{tabular}[t]{|l|r|r|}
+  \hline
+  Index variant & Number of genes & Number of splice junctions\\
+  \hline
+  1:39809417\_A\_T & 34 & 4,634\\
+  \hline
+  1:39836225\_G\_C & 36 & 5,027\\
+  \hline
+  3:53034026\_C\_T & 41 & 6,917\\
+  \hline
+  5:64868326\_TTTC\_T & 13 & 653\\
+  \hline
+  6:1775202\_G\_A & 12 & 705\\
+  \hline
+  6:31121854\_C\_T & 89 & 10,551\\
+  \hline
+  6:31253340\_T\_C & 98 & 11,566\\
+  \hline
+  6:133008360\_T\_A & 31 & 1,128\\
+  \hline
+  6:133260944\_G\_A & 18 & 818\\
+  \hline
+  6:133267939\_T\_C & 16 & 730\\
+  \hline
+  7:2524404\_G\_A & 21 & 4,390\\
+  \hline
+  8:70735125\_A\_G & 15 & 678\\
+  \hline
+  8:70993166\_AAGTT\_A & 10 & 471\\
+  \hline
+  9:21995045\_T\_G & 22 & 393\\
+  \hline
+  9:22124505\_A\_T & 19 & 373\\
+  \hline
+  10:61661180\_A\_G & 6 & 389\\
+  \hline
+  11:10356352\_C\_A & 20 & 3,023\\
+  \hline
+  12:114235969\_T\_C & 18 & 740\\
+  \hline
+  \end{tabular}
+  \end{table}
+
+
+
 Explain assumptions of coloc - explain how coloc performs coloc: ABF - explain all probability outputs: H0 - H4 - explain limitation in how it assumes a single causal variant and that it needs to accommodate several - explain that this will require an appropriate LD panel 
 
 
