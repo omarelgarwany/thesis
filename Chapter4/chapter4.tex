@@ -33,6 +33,80 @@ Although data on perianal disease are recorded for both cohorts, the depth of cl
 
 In this chapter, I describe several analyses I conducted to identify genetic variants associated with pCD risk, leveraging these two IBD cohorts. Additionally, I perform several follow-up analyses to ensure the robustness of the genome-wide association signal I found. Finally, I conclude by mapping the associated locus to an HLA allele that partly explain the genome-wide significant association and recommend that higher-resolution HLA alleles may explain this association more completely.
 
+\section{Methods}
+\subsection{UK IBD Genetics Consortium Genotype Quality Control}
+UKIBDGC samples were genotyped with two genotyping arrays: Affymetrix Human Mapping 500K Array (I will refer to this as GWAS1; number of variants before QC=469,281), and Illumina Human Core Exome-12v1.0 or its newer version Illumina Infinium Core Exome-24v1.1 (I will refer to this as HCE; number of variants before QC=535,434 and 557,662 respectively). Quality control for UKIBDGC genotype data was performed as part of the International IBD Genetics Consortium cases-control meta-analysis. QC was performed using a combination of Plink (v1.9 and v2), bcftools (v1.16), and KING (v2.2.4).
+\subsection{Variant-level QC}
+Variants that met the following criteria were excluded: 
+\begin{itemize}
+  \item Low call rate (<0.95 for variants with minor allele frequency (MAF) $>$ 0.01 or $<$ 0.98 for variants with MAF $\leq$ 0.01).
+  \item Significant difference in genotype call rate (P-value $< 10^{-4}$) between IBD cases and controls.
+  \item Large allele frequency (AF) differences between UKIBDGC and Gnomad (Non-Finnish Europeans), or TOPMed (global) using the following formula:
+
+$$\frac{(P_{1}-P_{0})^{2}}{(P_{1}+P_{0})(2-P_{1}-P_{0})} > \epsilon$$ 
+
+
+where $\epsilon=0.025$ or $0.125$, for Gnomad and TOPmed respectively,  $P_{0}$ is the minor allele frequency (MAF) in Gnomad or TOPMed and $P_{1}$ is UKIBDGC MAF. This formula accounts for larger AF differences between UKIBDGC and population references in common than in low-frequency variants. The TOPMed global AF difference cutoff is higher to account for AF computed across diverse populations
+\item Hardy Weinberg Equilibrium (HWE) P-value < 10-5 in IBD controls or < $10^{-12}$ in IBD cases. HWE P-value was estimated in EUR ancestry samples. For chromosome X, HWE was estimated in genotypically-inferred EUR females, or 
+\item Monomorphic variants. 
+\end{itemize}
+
+\subsection{Sample-level QC}
+Samples that meet the following criteria were excluded:
+\begin{itemize}
+\item Missing genotyping rate $>$ 0.05
+\item Heterozygosity estimate $\pm$ 4 standard deviations from the EUR mean, or 
+\item mismatch between recorded gender and genotypically-inferred sex. 
+\end{itemize}
+\subsection{Imputation to TOPMed}
+The TOPMed imputation server (imputationserver at 1.5.7) was used for UKIBDGC imputation. Directly genotyped variants with empirical imputation $R < -0.5$ were flipped, and variants with empirical $R^{2} \leq 0.5$ were excluded after imputation. After their exclusion, imputation was repeated, and variants with HWE P-value $\leq 10^{-5}$ in IBD controls were excluded.
+
+\subsection{IBD-BR Genotype QC and Imputation}
+The cohort was genotyped with two different versions of the UKBiobank ThermoFisher genotyping array. The same genotype QC steps as UKIBDGC were applied to IBD-BR, except for 1) The AF difference check, where 1000 Genomes Panel (1000GP) was used as a reference panel 2) Imputation, where the Sanger Imputation Server was used \cite{1000gp}, with two imputation reference panels: UK10K+1000GP and HRC. Imputed genotypes from both panels were combined. For variants that existed in both panels, HRC imputed genotypes only were retained. Imputed variants with large AF difference between the two panels, or with HWE P-value $ \leq 10^{-5}$ in IBD controls  were removed.
+
+Genotypic principal components (PC) were estimated for all participants, using a set of genotyped variants that were also available in the 1000 Genomes Project (100GP; excluding variants associated with IBD susceptibility; P-value < $10^{-4}$, and variants in long LD regions (as defined in \cite{plink_high_ld}). This final list was pruned with the following parameters: window size = 50 kbp; step size = 5; $R^{2}$ = 0.2. PCs were then projected to 1000GP PCs. Samples within the European ancestry group were retained for the subsequent analyses. 
+
+\subsection{Identification of overlapping samples between UKIBDGC and IBD-BR}
+Identification of duplicate individuals between UKIBDGC and IBD-BR genotyping data was performed with KING \cite{king-software}. Based on the distribution of kingship coefficients, duplicates were defined as having a kinship coefficient > 0.354 as recommended in \cite{king-software}. Estimation of kinship coefficient was performed using post-QC directly genotyped SNPs (number of variants used for kinship inference between IBD-BR and GWAS1=42,292:, and between IBD-BR and HCE=53,431).
+
+\subsection{Genome-wide association analysis}
+All genome-wide association analyses were performed using REGENIE v3.2.5 \cite{Mbatchou2021-qm} following a 2-step procedure. Briefly, in step 1, a whole-genome regression model is fit using directly-genotyped variants in order to estimate a set of genome-wide predictors that capture a large fraction of phenotypic variance. These predictors are then used as covariates in step 2 where a larger set of variants are tested for association.
+I used post-QC genotyped variants in step 1 and both genotyped and imputed variants in step 2 from all autosomal chromosomes. Additionally, I enabled Firth approximation for all variants with P-value < 0.01 (\Verb+--firth --approx --pThresh 0.01+).
+
+\subsection{1000GP LD calculation}
+Population LD estimates were calculated using the 1000 Genomes Project high coverage dataset \cite{1000gphc}. $R^{2}$ values where calculated using plink v1.9 and after retaining non-Finnish European individuals only. 
+
+\subsection{$\chi^{2}$ comparison between different pCD definitions}
+In order to compare associations from meta-analyses using different pCD+ case definitions to the meta-analysis with a broad pCD+ case definition, I adjusted the the broad-definition $\chi^{2}$ values using this formula:
+
+ $$\chi^{2}_{Broad,n}=\frac{n}{N}\chi^{2}_{Broad}$$
+
+Where n is the sample size of the meta-analysis being assessed, and $\chi^{2}_{Broad}$ is the broad-definition observed association statistic and  $\chi^{2}_{Broad,n}$ is the broad-definition association statistic adjusted for sample size. 
+
+%From script:
+%/nfs/users/nfs_o/oe2/ibdbr/scripts/hla/cond_meta.R
+% \subsection{First subsection in the first section}
+% \dots and some more 
+
+% \subsection{Second subsection in the first section}
+% \dots and some more \dots
+
+% \subsubsection{First subsub section in the second subsection}
+% \dots and some more in the first subsub section otherwise it all looks the same
+% doesn't it? well we can add some text to it \dots
+
+% \subsection{Third subsection in the first section}
+% \dots and some more \dots
+
+% \subsubsection{First subsub section in the third subsection}
+% \dots and some more in the first subsub section otherwise it all looks the same
+% doesn't it? well we can add some text to it and some more and some more and
+% some more and some more and some more and some more and some more \dots
+
+% \subsubsection{Second subsub section in the third subsection}
+% \dots and some more in the first subsub section otherwise it all looks the same
+% doesn't it? well we can add some text to it \dots
+
 \section{Results}
 Among 30,894 IBD-BR participants, 15,152 were diagnosed with Crohn's disease, 14,819 of which had perianal involvement data: 4,448 answered "\textit{Yes}" to “\textit{Ever had perianal involvement?}” (pCD+; 30\%), 9,751 answered "\textit{No}" (pCD-; 65.8\%), and 620 answered “\textit{Unknown}” (4.1\%), matching previous pCD prevalence estimates. Perianal simple or complex fistula was the most common manifestation (2327;  52.3\% pCD+ participants), followed by perianal abscess (1806; 40.5\% of pCD+ participants).
 
@@ -221,19 +295,34 @@ Patients who answered “Yes'' in both studies were not enriched in any particul
   \end{table}
 
   \section{Genome-wide association analysis of pCD}
+  \subsection{Defining pCD+ cases}
+  Unlike GWAS of CD, where robust diagnostic criteria are applied to clearly demarcate cases and controls, in GWAS of disease pCD it is not obvious which perianal manifestations should be considered pCD+ cases. The IBD-BR questionnaire reports several types of pCD manifestations, including skin tags, fissures or ulcers, perianal abscess, and simple and complex fistulas. In this chapter, my aim is to perform a pCD meta-analysis between IBD-BR and UKIBDGC, and therefore similarity in pCD+ case definition across the cohorts is an important consideration to ensure the the robustness of genome-wide significant hits. In the previous section, I showed that leveraging the overlapping individuals can give an insight into the composition of the UKIBDGC pCD+ cases. This showed that UKIBDGC pCD+ cases were not particularly enriched in any particular type of perianal manifestations. Additionally, when I inspected the UKIBDGC questionnaire used to collect perianal manifestations data, I found that the relevant question appeared to include all types of perianal manifestations: \textit{"Ever had perianal fistula (incl recto-vaginal),  abscess, anal ulcer or significant anal stenosis?"}.
+  
+ 
 \subsection{IBD-BR}
-I performed a GWAS between pCD+ as cases pCD- as controls, with pCD+ cases defined as any type of perianal involvement (skin tags, perianal abscess, and simple or complex fistula).\\
- In total, 8,687 European ancestry participants with perianal involvement data were genotyped (2,664 pCD+ and 6,023 pCD-). The composition of genotyped pCD+ cases cohort matched the overall composition of IBD-BR. 53.6\% (1480) of genotyped pCD+ individuals had either a simple or complex perianal fistula, and 41.2\% (1098) had perianal abscess. Together, patients with perianal fistula or abscess account for 74.9\% (1995) of genotyped pCD+ cases. To ensure that pCD- controls do not include recently diagnosed CD patients who may develop perianal disease in the near future, I excluded pCD- controls diagnosed with CD less than 5 years before the last clinical review (resulting in 4,196 pCD- controls). Previous studies have shown that the cumulative risk of developing perianal disease 5 years and 10 years after diagnosis are similar \cite{Tsai2022-kz}.
+Although clinical and phenotypic data are available for all participants, not all participants have been genotyped in the current release (04/04/2022). From a total of 15,152 participants with CD diagnosis, 9,458 European ancestry participants with perianal involvement data were genotyped. To ensure that pCD- controls do not include recently diagnosed CD patients who may develop perianal disease in the near future, I excluded pCD- controls diagnosed with CD less than 5 years before the last clinical review. This choice was informed by previous studies that showed that the cumulative risks of developing perianal disease 5 years and 10 years after diagnosis are similar \cite{Tsai2022-kz}. This resulted in a total of 6833 participants (2,664 pCD+ cases and 4,169 pCD- controls). After these filters were applied, the composition of genotyped pCD+ cases cohort matched the overall composition of all participants with perianal involvement information. 53.6\% (1480) of genotyped pCD+ individuals had either a simple or complex perianal fistula, and 41.2\% (1098) had perianal abscess. Together, patients with perianal fistula or abscess account for 74.9\% (1995) of genotyped pCD+ cases.
 
-I performed GWAS using REGENIE v3.2.5 and used four genotypic principal components and sex as covariates. I removed variants with imputation INFO score < 0.4 and minor allele frequency (MAF) < 0.01, leaving 9,777,139 variants for association analysis (see Methods for detailed genotype and imputation QC). None of the tested variants achieved genome-wide significant association (P-value $< 5\times10^{-8}$). There was no evidence of genomic inflation (median $\chi^{2}$=0.49; $\lambda_{GC}$=1.08).
+I performed GWAS between pCD+ cases and pCD- controls using REGENIE and used four European-ancestry genotypic principal components and sex as covariates. I removed variants with imputation INFO score < 0.4 and minor allele frequency (MAF) < 0.01, leaving 9,777,139 variants for association analysis (see Methods for detailed genotype and imputation QC). None of the tested variants achieved genome-wide significant association (P-value $< 5\times10^{-8}$). There was moderate evidence of genomic inflation (median $\chi^{2}$=0.49; $\lambda_{GC}$=1.08).
 \subsection{UKIBDGC}
-A total of 8,078 patietns of European ancestry were diagnosed with CD in the UKIBDGC, of which 6550 had perianal involvement information (1481 pCD+  and 5,069 pCD-). To minimise sample overlap with the IBD-BR, I removed overlapping individuals between UKIBDGC and IBD-BR (Methods), and performed GWAS with the remaining individuals (1303 pCD+ and 4761 pCD-). \\
+A total of 8,078 patients of European ancestry were diagnosed with CD in the UKIBDGC, of which 6550 had perianal involvement information. To minimise sample overlap with the IBD-BR, I removed overlapping individuals between UKIBDGC and IBD-BR (Methods), and performed GWAS with the remaining individuals (1303 pCD+ and 4761 pCD-). \\
 
-I performed GWAS similar to the IBD-BR analysis, with the difference that UKIBDGC samples genotpyed on different arrays were analysed seperately (HCE and GWAS1; Methods).A total of 8,916,200 and 8,897,554 variants were tested in HCE and GWAS1, respectively. No variants achieved genome-wide significant association (P-value < $5\times10^{-8}$). There was no evidence of genomic inflation (HCE: median $\chi^{2}$=0.47; $\lambda_{GC}$=1.04; GWAS1: median $\chi^{2}$=0.46; $\lambda_{GC}$=1.01).
+I performed GWAS similar to the IBD-BR analysis, with the difference that UKIBDGC samples genotyped on different arrays were analysed seperately (HCE and GWAS1; Methods).A total of 8,916,200 and 8,897,554 variants were tested in HCE and GWAS1, respectively. No variants achieved genome-wide significant association (P-value < $5\times10^{-8}$). There was no evidence of genomic inflation (HCE: median $\chi^{2}$=0.47; $\lambda_{GC}$=1.04; GWAS1: median $\chi^{2}$=0.46; $\lambda_{GC}$=1.01).
 
 \subsection{Meta-analysis between UKIBGC and IBD-BR: a genome-wide significant locus at 6p21.32}
 
-I used METAL to perform a meta-analysis using the IBD-BR  and UKIBDGC summary statistics (effect sizes and standard errors). There was no evidence of genomic inflation in the meta-analysis results (Figure \ref{fig:meta_qq_manhattan}). 
+I used METAL to perform a fixed-effects meta-analysis between summary statistics from IBD-BR, and the two UKIBDGC summary statistics HCE and GWAS1, with a total of 3,967 pCD+ cases and 8,930 pCD- controls. There was a total of 8,473,930 overlapping variants across the meta-analysed summary statistics, and an additional 1,645,123 were unique to one of the studies, 42.7\% of which were indels. Given that 16\% of variants were unique to one of cohorts, I did not remove them from their respective summary statistics file. It is important to note, however, that this choice may favour variants that are available in all studies. Additionally, I enabled METAL's \Verb+GENOMICCONTROL ON+ option to correct genomic inflation in each of the two summary statistics before performing the meta-analysis. The resulting meta-analysed summary statistics showed no evidence of genomic inflation ($\lambda_{GC}$=1.03; Figure \ref{fig:meta_qq_manhattan}). 
+\begin{table}[H]
+  \centering
+  \begin{tabular}[t]{lrrr}
+  \toprule
+  \textbf{Studies} & \textbf{SNP} & \textbf{Indel} & \textbf{Total}\\
+  \midrule
+  pcd.ibdbr & 8,626,072 & 1,150,933 & 9,777,005\\
+  pcd.gwas1 & 8,307,857 & 589,198 & 8,897,055\\
+  pcd.allhce & 8,325,721 & 589,997 & 8,915,718\\
+  \bottomrule
+  \end{tabular}
+  \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %FIGURE SOURCE: /nfs/users/nfs_o/oe2/ibdbr/scripts/explore/manhattan.R
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -254,7 +343,7 @@ I used METAL to perform a meta-analysis using the IBD-BR  and UKIBDGC summary st
 
       
   \end{subfigure} 
-  \caption[Figure]{(a) Quantile-quantile plot for the meta-analysis between UKIBDGC and IBD-BR cohorts, suggesting a good fit to the uniform distribution, and showing no evidence of genomic inflation (median $\chi^{2}$=0.49; $\lambda_{GC}$=1.09; median $\chi^{2}$ was calculated by converting P-values to $\chi^{2}$  values using the function \Verb+qchisq(P, df=1,lower.tail=F)+ in R v4.1.0). (b) Manhattan plot of meta-analysis between IBD-BR and UKIBDGC. pCD+ cases are defined as CD patients with any type of perianal involvement and pCD- controls are defined as CD patients with no perianal involvement.}
+  \caption[Figure]{(a) Quantile-quantile plot for the meta-analysis between UKIBDGC and IBD-BR cohorts, suggesting a good fit to the uniform distribution, and showing no evidence of genomic inflation (median $\chi^{2}$=0.47; $\lambda_{GC}$=1.03; median $\chi^{2}$ was calculated by converting P-values to $\chi^{2}$  values using the function \Verb+qchisq(P, df=1,lower.tail=F)+ in R v4.1.0). (b) Manhattan plot of meta-analysis between IBD-BR and UKIBDGC. pCD+ cases are defined as CD patients with any type of perianal involvement and pCD- controls are defined as CD patients with no perianal involvement.}
   \label{fig:meta_qq_manhattan}
   \end{figure}
   % \begin{figure}[H] 
@@ -264,37 +353,32 @@ I used METAL to perform a meta-analysis using the IBD-BR  and UKIBDGC summary st
   %   \label{fig:meta_manhattan}
   %   \end{figure}
 
-    Six variants in the 6p21.32 locus showed genome-wide significant association (P-value $< 5\times10^{-8}$; index variant rs115378818 P-value=$2.4\times10^{-12}$; Table \ref{table:gws}). None of the variants showed significant heterogeneity of effect size between the constituent cohorts (Bonferroni-corrected $P_{het}$ < 0.008). All six variants were well-imputed across the constituent cohorts (INFO score > 0.7).
+    Four variants in the 6p21.32 locus showed genome-wide significant association (P-value $< 5\times10^{-8}$; index variant rs115378818 P-value=$8.6\times10^{-12}$; Table \ref{table:gws}). None of the variants showed significant heterogeneity of effect size between the constituent cohorts (Bonferroni-corrected $P_{het}$ < 0.008). All six variants were well-imputed across the constituent cohorts (INFO score > 0.7).
   
-  \begin{table}[htb]
-    \centering\begingroup\fontsize{10}{14}\selectfont
-    \caption{genome-wide significant variants in the 6p21.32 locus. Odds ratio and their 95\% confidence intervals are shown. MAF=minor allele frequency.}
-    \label{table:gws}
-    \begin{tabular}[t]{|l|l|l|l|l|l|r|}
+    \begin{table}[H]
+      \caption{genome-wide significant variants in the 6p21.32 locus. Odds ratio and their 95\% confidence intervals are shown. MAF=minor allele frequency.}
+      \label{table:gws}
+      \centering\begingroup\fontsize{10}{12}\selectfont
       
-    \hline
-    Chromosome & Position (b38) & Ref & Alt & P-value & Odds Ratio & MAF\\
-    \hline
-    6 & 32333650 & C & T & $2.4\times10^{-12}$ & 1.78 (1.52 - 2.09) & 0.0369\\
-    \hline
-    6 & 32279268 & T & G & $5.4\times10^{-10}$ & 1.57 (1.36 - 1.81) & 0.0467\\
-    \hline
-    6 & 32205822 & T & C & $1.7\times10^{-8}$ & 1.45 (1.28 - 1.65) & 0.0533\\
-    \hline
-    6 & 32243461 & G & C & $2\times10^{-8}$ & 1.38 (1.23 - 1.54) & 0.0752\\
-    \hline
-    6 & 32708532 & A & C & 2.$4\times10^{-8}$ & 1.55 (1.33 - 1.8) & 0.0397\\
-    \hline
-    6 & 32429885 & C & A & $2.5\times10^{-8}$ & 1.54 (1.33 - 1.8) & 0.0430\\
-    \hline
-    \end{tabular}
+      \begin{tabular}[t]{|r|r|l|l|l|r|}
+      \hline
+      CHROM & GENPOS & Allele1 & OR & P & MAF\\
+      \hline
+      6 & 32,205,822 & C & 1.45 (1.27 - 1.66) & 4.0e-08 & 0.05\\
+      \hline
+      6 & 32,243,461 & C & 1.38 (1.23 - 1.55) & 4.4e-08 & 0.08\\
+      \hline
+      6 & 32,279,268 & G & 1.57 (1.36 - 1.82) & 1.5e-09 & 0.05\\
+      \hline
+      6 & 32,333,650 & T & 1.78 (1.51 - 2.1) & 8.6e-12 & 0.04\\
+      \hline
+      \end{tabular}
+      \endgroup{}
+      \end{table}
 
-    \endgroup{}
-
-    \end{table}
     
     
-    All six variants had a low minor allele frequency (MAF), ranging from 0.04 to 0.08 in the constituent cohorts (Table \ref{table:maf_concord}). Over the last 15 years, hundreds of GWAS studies have emphasised the importance of guarding against spurious associations driven by low-frequency variants. In some studies, these associations were later found to be false positives \cite{Tabangin2009-gs}. To minimise this risk and ensure the robustness of the associated variants, one may compare the within-cohort genetic properties of these variants to their expected genetic properties in a matching general population. A mismatch between the general population and the cohorts may indicate that the detected association may indeed be artefactual. To this end, I performed a number of checks to ensure the robustness of the association at 6p21.32. First, I checked whether the variants' MAF is comparable between the constituent cohorts (IBD-BR and UKIBDGC). Second, I compared cohort MAFs to the general population MAFs (in non Finnish Europeans). Third, I investigated whether the association strength is consistent with the expected LD structure in non-Finnish Europeans. 
+    All four variants had a low minor allele frequency (MAF), ranging from  0.04 to 0.08 in the constituent cohorts (Table \ref{table:maf_concord}). Over the last 15 years, hundreds of GWAS studies have emphasised the importance of guarding against spurious associations driven by low-frequency variants. In some studies, these associations were later found to be false positives \cite{Tabangin2009-gs}. To minimise this risk and ensure the robustness of the associated variants, one may compare the within-cohort genetic properties of these variants to their expected genetic properties in a matching general population. A mismatch between the general population and the cohorts may indicate that the detected association may indeed be artefactual. To this end, I performed a number of checks to ensure the robustness of the association at 6p21.32. First, I checked whether the variants' MAF is comparable between the constituent cohorts (IBD-BR and UKIBDGC). Second, I compared cohort MAFs to the general population MAFs (in non Finnish Europeans). Third, I investigated whether the association strength is consistent with the expected LD structure in non-Finnish Europeans. 
     \begin{figure}[H] 
       \centering    
       \includegraphics[width=0.8\textwidth]{Vector/regional_assoc_plot}
@@ -416,78 +500,6 @@ Several reasons may explain this. First, the association signal at 6p21.32 may b
 
 
 
-\section{Methods}
-\subsection{UK IBD Genetics Consortium Genotype Quality Control}
-UKIBDGC samples with pCD information were genotyped with two genotyping arrays: Affymetrix Human Mapping 500K Array (I will refer to this as GWAS1; number of variants before QC=469,281), and Illumina Human Core Exome-12v1.0 or its newer version Illumina Infinium Core Exome-24v1.1 (I will refer to this as HCE; number of variants before QC=535,434 and 557,662 respectively). Quality control for UKIBDGC genotype data was performed as part of the International IBD Genetics Consortium cases-control meta-analysis. QC was performed using a combination of Plink (v1.9 and v2), bcftools (v1.16), and KING (v2.2.4).
-\subsection{Variant-level QC}
-Variants that met the following criteria were excluded: 
-\begin{itemize}
-  \item Low call rate (<0.95 for variants with minor allele frequency (MAF) $>$ 0.01 or $<$ 0.98 for variants with MAF $\leq$ 0.01).
-  \item Significant difference in genotype call rate (P-value $< 10^{-4}$) between IBD cases and controls.
-  \item Large allele frequency (AF) differences between UKIBDGC and Gnomad (Non-Finnish Europeans), or TOPMed (global) using the following formula:
-
-$$\frac{(P_{1}-P_{0})^{2}}{(P_{1}+P_{0})(2-P_{1}-P_{0})} > \epsilon$$ 
-
-
-where $\epsilon=0.025$ or $0.125$, for Gnomad and TOPmed respectively,  $P_{0}$ is the minor allele frequency (MAF) in Gnomad or TOPMed and $P_{1}$ is UKIBDGC MAF. This formula accounts for larger AF differences between UKIBDGC and population references in common than in low-frequency variants. The TOPMed global AF difference cutoff is higher to account for AF computed across diverse populations
-\item Hardy Weinberg Equilibrium (HWE) P-value < 10-5 in IBD controls or < 10-12 in IBD cases. HWE P-value was estimated in EUR ancestry samples. For chromosome X, HWE was estimated in genotypically-inferred EUR females, or 
-\item Monomorphic variants. 
-\end{itemize}
-
-\subsection{Sample-level QC}
-Samples that meet the following criteria were excluded:
-\begin{itemize}
-\item Missing genotyping rate $>$ 0.05
-\item Heterozygosity estimate $\pm$ 4 standard deviations from the EUR mean, or 
-\item mismatch between recorded gender and genotypically-inferred sex. 
-\end{itemize}
-\subsection{Imputation to TOPMed}
-The TOPMed imputation server (imputationserver at 1.5.7) was used for UKIBDGC imputation. Directly genotyped variants with empirical imputation $R < -0.5$ were flipped, and variants with empirical $R^{2} \leq 0.5$ were excluded after imputation. After their exclusion, imputation was repeated, and variants with HWE P-value $\leq 10^{-5}$ in IBD controls were excluded.
-
-\subsection{IBD-BR Genotype QC and Imputation}
-The cohort was genotyped with two different versions of the UKBiobank ThermoFisher genotyping array. The same genotype QC steps as UKIBDGC were applied to IBD-BR, except for 1) The AF difference check, where 1000 Genomes Panel (1000GP) was used as a reference panel 2) Imputation, where the Sanger Imputation Server was used \cite{1000gp}, with two imputation reference panels: UK10K+1000GP and HRC. Imputed genotypes from both panels were combined. For variants that existed in both panels, HRC imputed genotypes only were retained. Imputed variants with large AF difference between the two panels, or with HWE P-value $ \leq 10^{-5}$ in IBD controls  were removed.
-
-
-\subsection{Identification of overlapping samples between UKIBDGC and IBD-BR}
-Identification of duplicate individuals between UKIBDGC and IBD-BR genotyping data was performed with KING \cite{king-software}. Based on the distribution of kingship coefficients, duplicates were defined as having a kinship coefficient > 0.354 as recommended in \cite{king-software}. Estimation of kinship coefficient was performed using post-QC directly genotyped SNPs (number of variants used for kinship inference between IBD-BR and GWAS1=42,292:, and between IBD-BR and HCE=53,431).
-
-\subsection{Genome-wide association analysis}
-All genome-wide association analyses were performed using REGENIE v3.2.5 \cite{Mbatchou2021-qm} following a 2-step procedure. Briefly, in step 1, a whole-genome regression model is fit using directly-genotyped variants in order to estimate a set of genome-wide predictors that capture a large fraction of phenotypic variance. These predictors are then used as covariates in step 2 where a larger set of variants are tested for association.
-I used post-QC genotyped variants in step 1 and both genotyped and imputed variants in step 2 from all autosomal chromosomes. Additionally, I enabled Firth approximation for all variants with P-value < 0.01 (\Verb+--firth --approx --pThresh 0.01+).
-
-\subsection{1000GP LD calculation}
-Population LD estimates were calculated using the 1000 Genomes Project high coverage dataset \cite{1000gphc}. $R^{2}$ values where calculated using plink v1.9 and after retaining non-Finnish European individuals only. 
-
-\subsection{$\chi^{2}$ comparison between different pCD definitions}
-In order to compare associations from meta-analyses using different pCD+ case definitions to the meta-analysis with a broad pCD+ case definition, I adjusted the the broad-definition $\chi^{2}$ values using this formula:
-
- $$\chi^{2}_{Broad,n}=\frac{n}{N}\chi^{2}_{Broad}$$
-
-Where n is the sample size of the meta-analysis being assessed, and $\chi^{2}_{Broad}$ is the broad-definition observed association statistic and  $\chi^{2}_{Broad,n}$ is the broad-definition association statistic adjusted for sample size. 
-
-%From script:
-%/nfs/users/nfs_o/oe2/ibdbr/scripts/hla/cond_meta.R
-% \subsection{First subsection in the first section}
-% \dots and some more 
-
-% \subsection{Second subsection in the first section}
-% \dots and some more \dots
-
-% \subsubsection{First subsub section in the second subsection}
-% \dots and some more in the first subsub section otherwise it all looks the same
-% doesn't it? well we can add some text to it \dots
-
-% \subsection{Third subsection in the first section}
-% \dots and some more \dots
-
-% \subsubsection{First subsub section in the third subsection}
-% \dots and some more in the first subsub section otherwise it all looks the same
-% doesn't it? well we can add some text to it and some more and some more and
-% some more and some more and some more and some more and some more \dots
-
-% \subsubsection{Second subsub section in the third subsection}
-% \dots and some more in the first subsub section otherwise it all looks the same
-% doesn't it? well we can add some text to it \dots
 
 % \section{Second section of the third chapter}
 % and here I write more \dots
