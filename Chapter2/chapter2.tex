@@ -25,27 +25,46 @@ Here, we mapped sQTLs in iPSC-derived macrophages in 12 different cellular condi
 Induced pluripotent stem cell lines (iPSC) from 209 healthy unrelated individuals, generated as part of the HipSci project \cite{Kilpinen2017-qm}, were differentiated into iPSC-derived macrophages (experimental protocol described in Supplementary note in Panousis et al. 2023). RNA was harvested from macrophage precursors at day 0 (Prec\_D0) and day 2 (Prec\_D2). \linebreak
 Naïve macrophages were exposed to a panel of 10 stimuli, and RNA was obtained and processed 6 and 24 hours after stimulation (in addition to unstimulated controls; Ctrl\_6 and Ctrl\_24), resulting in a total of 24 different conditions. I quantified alternative splicing from split reads (reads mapping across two splice junctions) using Leafcutter, which quantifies alternative splicing as intron usage ratios \cite{Li2018-ll}. I derived an intron usage ratio matrix for each of the 24 conditions and used this for differential splicing analysis and sQTL mapping.\\
 
-\begin{figure}
+\begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{study_desc}
   \caption{Overview of study: (a) Genotyped iPSC cell lines were differentiated into macrophages, and RNA was harvested before differentiation (Prec\_D0) and 2 days after starting differentiation (Prec\_D2). RNA was also harvested from differentiated macrophages at 6 and 24 hours (Ctrl\_6 and Ctrl\_24). Naive macrophages were then exposed to a panel of 10 stimuli and RNA was harvested at 6 and 24 hours after stimulation. (b) Split reads were used to quantify intron usage ratios on an individual level using LeafCutter. Split reads were then used for differential splicing analysis between naive and stimulated conditions, and as a quantitative trait to map splicing quantitative trait loci (sQTLs). sQTLs were then colocalised with 21 immune-mediated disease GWAS summary statistics.}
   \label{fig:study_desc}   
 \end{figure}
 
+
+\subsection{Alternative splicing patterns during the macrophage differentiation process}
+In order to visualise general patterns of intron usage across conditions, I projected intron usage ratios across conditions in a UMAP. Since intron usage QC was performed seperately for different stimulation conditions, not all introns were shared. In a UMAP projection this could caused clusters to be erroneously separated due to introns that passed QC in in unique sets of conditions. Therefore, I created the UMAP projection using introns that were shared across all conditions (N=40,044).\\
+
+Overall, I found that macrophage precursors (Prec\_D0) clustered separately from all other conditions. Moreover, precursors at day 2 (Prec\_D2) clustered together with the fully differentiated conditions, suggesting that macrophage splicing programmes are activated early in the seven day long differentiation process. I also observed a clear separation between cells harvested after 6 and 24 hours, an effect that was not clearly detected for unstimulated macrophages (Ctrl\_6 and Ctrl\_24; Figure \ref{fig:ds}c). These findings demonstrate that both differentiation of iPSCs into macrophages and macrophage stimulation initiate profound and temporal alternative splicing changes (Figure \ref{fig:ds})a,b). \\
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{Vector/umap.png}
+  \caption{ UMAP of intron usage ratios in different stimulation conditions, coloured both by (a) different stimulation conditions and (b) by time point.}
+  \label{fig:umap}   
+\end{figure}
+Although UMAPs are useful to visualise general patterns in the data, they are less useful to make inferences about the correlation structure due to the non-linear nature of a UMAP transformation. Therefore, I confirmed these patterns by measuring the correlation between different conditions. Since a large propotion of introns have a usage close to 0, I only used the top 20,000 variable introns. In confirmation of the UMAP patterns, Prec\_D0 showed relatively weaker correlation with both differentiated macrophages at day 2 (Pearson correlation coefficient $\rho$ with Prec\_D2=0.84) and the two differentiated control conditions ($\rho$=0.85 and 0.84 with Ctrl\_6 and Ctrl\_24). Conversely, correlation between Prec\_D2 and both Ctrl\_6 and Ctrl\_24 was stronger ($\rho$=0.94 and 0.95, respectively), similarly confirming the trends observed in the UMAP. This difference in correlation strength was even more striking when I used the top 10,000 and top 5,000 variable introns, showing that it is not an artefact of the number of variable introns used to measure correlations between these conditions.\\
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{cond_corr}
+  \caption{Heatmap showing Pearson correlation coefficient values between all 24 conditions. Usage ratios of the top 20,000 variable introns (highest variants across all conditions) were $log_{10}$ transformed and the mean usage was calculated across samples within each condition. Pairwise correlation coefficients were then calculated between the means of log transformed ratios.}
+  \label{fig:cond_corr}   
+\end{figure}
+
 \subsection{Macrophage response genes are differentially spliced upon stimulation}
-
-Macrophage precursors (Prec\_D0) clustered separately from all other conditions in a UMAP projection of intron usage ratios across conditions (Figure \ref{fig:ds}a,b; Pearson correlation coefficient between Prec\_D0/Prec\_D2=0.74). \\
-
-Precursors at day 2 (Prec\_D2) clustered together with the fully differentiated conditions, suggesting that macrophage splicing programmes are activated early in the seven day long differentiation process (Supplementary note in Panousis et al. 2023; Pearson correlation coefficient between Prec\_D2/Ctrl\_6=0.88 and Prec\_D2/Ctrl\_24=0.92; Supplementary Figure 1). I also observed a clear separation between cells harvested after 6 and 24 hours, an effect that was not clearly detected for unstimulated macrophages (Ctrl\_6 and Ctrl\_24; Figure \ref{fig:ds}c). These findings demonstrate that both differentiation of iPSCs into macrophages and macrophage stimulation initiate profound and temporal alternative splicing changes. \\
-
 To identify genes that are differentially spliced upon immune stimulation, I undertook differential splicing analysis using LeafCutter (Methods). I identified a total of 3,464 genes with altered splicing in stimulated versus unstimulated macrophages after either 6 or 24 hours (adjusted P-value < 0.05 and |log effect size| > 0.5). Macrophages stimulated with IL4 had the fewest differentially spliced genes (110 and 94 genes after 6 and 24 hours, respectively; Figure \ref{fig:ds}c), in line with previous reports that showed stimulating macrophages with IL4 had little impact on splicing \cite{Liu2018-fh}. \\
 
-I next undertook pathway enrichment analysis to identify REACTOME pathways enriched with differential spliced genes following stimulation. Six hours after bacterial stimulation with LPS (sLPS\_6), differentially spliced genes were enriched for pathways relevant to macrophage response, including "Cytokine Signalling" (84 genes; P-value=$9.1\times10^{-8}$), "Vesicle-mediated transport" (68 genes; P-value=$10^{-6}$) and "Class I MHC mediated antigen processing and presentation" (47 genes; P-value=$7.95\times10^{-6}$ Supplementary Table S1).\\
+I next undertook pathway enrichment analysis to identify REACTOME pathways enriched with differentially spliced genes following stimulation. In this section, I will summarise the enriched pathways in two represenative stimulation condition. These two condition were chosen to represent two broad classes of stimuli used in the MacroMap experimental design: Lipopolysaccharides as an example of bacterial stimulation and PolyI:C as a representative of viral stimuli.\\
 
-\begin{figure}
+Six hours after bacterial stimulation with LPS (sLPS\_6), differentially spliced genes were enriched for pathways relevant to macrophage response, including "Cytokine Signalling" (84 genes; P-value=$9.1\times10^{-8}$), "Vesicle-mediated transport" (68 genes; P-value=$10^{-6}$) and "Class I MHC mediated antigen processing and presentation" (47 genes; P-value=$7.95\times10^{-6}$ Supplementary Table S1).\\
+
+\begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth]{ds}
-  \caption{ UMAP of intron usage ratios in different stimulation conditions, coloured both by (A) different stimulation conditions and (B) by time point. (C) Number of differentially spliced genes between naive and stimulated macrophages after 6 hours (yellow) and 24 hours (blue) (D) Volcano plot showing differentially spliced genes 6 hours after sLPS stimulation, with log effect size on the x-axis (for each gene the intron with the largest absolute effect size is shown) and -log10 of adjusted P-value on the y-axis. Colours indicate the direction of intron usage change (blue indicating reduced usage and red indicating greater usage in stimulated cells versus naive cells). Genes that belong to the "vesicle-mediated transport" REACTOME pathway are indicated.}
+  \includegraphics[width=\textwidth]{Vector/ds.png}
+  \caption{(Left) Number of differentially spliced genes between naive and stimulated macrophages after 6 hours (yellow) and 24 hours (blue) (Right) Volcano plot showing differentially spliced genes 6 hours after sLPS stimulation, with log effect size on the x-axis (for each gene the intron with the largest absolute effect size is shown) and -log10 of adjusted P-value on the y-axis. Colours indicate the direction of intron usage change (blue indicating reduced usage and red indicating greater usage in stimulated cells versus naive cells). Genes that belong to the "vesicle-mediated transport" REACTOME pathway are indicated.}
   \label{fig:ds}   
 \end{figure}
 Several genes coding for members of the RAB family of proteins were enriched within the vesicle-mediated transport pathway, which is also known to be regulated via alternative splicing \cite{Green2020-lf} (including \textit{RAB1B, RAB4A, RAB9A, RAB11A, RAB13, RAB14} and \textit{RABEPK}; Figure \ref{fig:ds}d, Supplementary Table S1). RABs are GTPases that regulate membrane trafficking by controlling  the formation, movement and recycling of vesicles \cite{Stenmark2009-ju}. For example, I observed greater usage of the first exon of a non-canonical transcript of \textit{RAB13} (\textit{RAB13-205}), coupled with lower usage of the canonical first exon (\textit{RAB13-201}) (Difference in Percentage Spliced In ($\Delta$PSI) =0.046 and -0.05, respectively). The two annotated transcripts RAB13-201 and \textit{RAB13-205} result in protein products of 203 and 122 amino acids respectively, which indicates that a different \textit{RAB13} protein isoform is produced following stimulation with LPS.\\
@@ -189,7 +208,7 @@ The parameter \Verb_sjdbOverhang_ is particularly relevant as it sets the minimu
 \subsection{WASP filtering of ambiguously-mapped reads}
 It has been shown that ambiguously-mapped reads (RNA-seq reads that map to multiple genomic positions) can bias the number of split reads mapped across splice junctions \cite{Van_de_Geijn2015-lb}. Genetic variants that overlap with splice junction can potentially introduce unnoticed mapping ambiguity when an alternative allele increases mapping ambiguity. It is particularly important to guard against this when mapping sQTLs, since decreased splice junction can indicate a mapping ambiguity effect of an alternative allele rather than a true genetic effect.
 
-WASP \cite{Van_de_Geijn2015-lb} identifies an ambiguously-mapped read by replacing the reference allele in genomic location with a genetic variant with the alternative alleles and then remapping. Reads whose mapping ambiguity increases after allele replacement are flagged (\Verb_vW_=2-7). In the previous step, I used STAR with the parameter \Verb_waspOutputMode_, which flags reads that pass the WASP filter with \Verb_[vW]=1_.  I therefore only removed read alignments which did not have tag \Verb_[-vW]=1_ using this command in SAMtools \cite{Li2009-yk}:
+WASP \cite{Van_de_Geijn2015-lb} identifies an ambiguously-mapped read by replacing the reference allele in each genomic location that harbours a genetic variant with the alternative alleles and then remapping. Reads whose mapping ambiguity increases after allele replacement are flagged (\Verb_vW_=2-7). In the previous step, I used STAR with the parameter \Verb_waspOutputMode_, which flags reads that pass the WASP filter with \Verb_[vW]=1_.  I therefore only removed read alignments which did not have tag \Verb_[-vW]=1_ using this command in SAMtools \cite{Li2009-yk}:
 
 \begin{verbatim}
 samtools view -S -b -e 

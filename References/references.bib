@@ -2658,6 +2658,579 @@ Resource version 1.0},
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% PCD chapter: pcd prevalence
+https://hla.alleles.org/proteins/class1.html
+@ARTICLE{Naito2022-qy,
+  title     = "{HLA} imputation and its application to genetic and molecular
+               fine-mapping of the {MHC} region in autoimmune diseases",
+  author    = "Naito, Tatsuhiko and Okada, Yukinori",
+  abstract  = "Variations of human leukocyte antigen (HLA) genes in the major
+               histocompatibility complex region (MHC) significantly affect the
+               risk of various diseases, especially autoimmune diseases.
+               Fine-mapping of causal variants in this region was challenging
+               due to the difficulty in sequencing and its inapplicability to
+               large cohorts. Thus, HLA imputation, a method to infer HLA types
+               from regional single nucleotide polymorphisms, has been
+               developed and has successfully contributed to MHC fine-mapping
+               of various diseases. Different HLA imputation methods have been
+               developed, each with its own advantages, and recent methods have
+               been improved in terms of accuracy and computational
+               performance. Additionally, advances in HLA reference panels by
+               next-generation sequencing technologies have enabled higher
+               resolution and a more reliable imputation, allowing a
+               finer-grained evaluation of the association between sequence
+               variations and disease risk. Risk-associated variants in the MHC
+               region would affect disease susceptibility through complicated
+               mechanisms including alterations in peripheral responses and
+               central thymic selection of T cells. The cooperation of reliable
+               HLA imputation methods, informative fine-mapping, and
+               experimental validation of the functional significance of MHC
+               variations would be essential for further understanding of the
+               role of the MHC in the immunopathology of autoimmune diseases.",
+  journal   = "Semin. Immunopathol.",
+  publisher = "Springer Science and Business Media LLC",
+  volume    =  44,
+  number    =  1,
+  pages     = "15--28",
+  month     =  jan,
+  year      =  2022,
+  keywords  = "Autoimmune diseases; Fine-mapping; HLA; HLA imputation; MHC",
+  copyright = "https://creativecommons.org/licenses/by/4.0",
+  language  = "en"
+}
+
+@ARTICLE{Naito2021-jl,
+  title     = "A deep learning method for {HLA} imputation and trans-ethnic
+               {MHC} fine-mapping of type 1 diabetes",
+  author    = "Naito, Tatsuhiko and Suzuki, Ken and Hirata, Jun and Kamatani,
+               Yoichiro and Matsuda, Koichi and Toda, Tatsushi and Okada,
+               Yukinori",
+  abstract  = "Conventional human leukocyte antigen (HLA) imputation methods
+               drop their performance for infrequent alleles, which is one of
+               the factors that reduce the reliability of trans-ethnic major
+               histocompatibility complex (MHC) fine-mapping due to
+               inter-ethnic heterogeneity in allele frequency spectra. We
+               develop DEEP*HLA, a deep learning method for imputing HLA
+               genotypes. Through validation using the Japanese and European
+               HLA reference panels (n = 1,118 and 5,122), DEEP*HLA achieves
+               the highest accuracies with significant superiority for
+               low-frequency and rare alleles. DEEP*HLA is less dependent on
+               distance-dependent linkage disequilibrium decay of the target
+               alleles and might capture the complicated region-wide
+               information. We apply DEEP*HLA to type 1 diabetes GWAS data from
+               BioBank Japan (n = 62,387) and UK Biobank (n = 354,459), and
+               successfully disentangle independently associated class I and II
+               HLA variants with shared risk among diverse populations (the top
+               signal at amino acid position 71 of HLA-DR$\beta$1; P = 7.5
+               $\times$ 10-120). Our study illustrates the value of deep
+               learning in genotype imputation and trans-ethnic MHC
+               fine-mapping.",
+  journal   = "Nat. Commun.",
+  publisher = "Springer Science and Business Media LLC",
+  volume    =  12,
+  number    =  1,
+  pages     = "1639",
+  month     =  mar,
+  year      =  2021,
+  copyright = "https://creativecommons.org/licenses/by/4.0",
+  language  = "en"
+}
+
+@ARTICLE{Cook2021-px,
+  title     = "Accurate imputation of human leukocyte antigens with {CookHLA}",
+  author    = "Cook, Seungho and Choi, Wanson and Lim, Hyunjoon and Luo, Yang
+               and Kim, Kunhee and Jia, Xiaoming and Raychaudhuri, Soumya and
+               Han, Buhm",
+  abstract  = "The recent development of imputation methods enabled the
+               prediction of human leukocyte antigen (HLA) alleles from
+               intergenic SNP data, allowing studies to fine-map HLA for immune
+               phenotypes. Here we report an accurate HLA imputation method,
+               CookHLA, which has superior imputation accuracy compared to
+               previous methods. CookHLA differs from other approaches in that
+               it locally embeds prediction markers into highly polymorphic
+               exons to account for exonic variability, and in that it
+               adaptively learns the genetic map within MHC from the data to
+               facilitate imputation. Our benchmarking with real datasets shows
+               that our method achieves high imputation accuracy in a wide
+               range of scenarios, including situations where the reference
+               panel is small or ethnically unmatched.",
+  journal   = "Nat. Commun.",
+  publisher = "Springer Science and Business Media LLC",
+  volume    =  12,
+  number    =  1,
+  pages     = "1264",
+  month     =  feb,
+  year      =  2021,
+  copyright = "https://creativecommons.org/licenses/by/4.0",
+  language  = "en"
+}
+
+@ARTICLE{Zheng2014-mj,
+  title     = "{HIBAG--HLA} genotype imputation with attribute bagging",
+  author    = "Zheng, X and Shen, J and Cox, C and Wakefield, J C and Ehm, M G
+               and Nelson, M R and Weir, B S",
+  abstract  = "Genotyping of classical human leukocyte antigen (HLA) alleles is
+               an essential tool in the analysis of diseases and adverse drug
+               reactions with associations mapping to the major
+               histocompatibility complex (MHC). However, deriving
+               high-resolution HLA types subsequent to whole-genome
+               single-nucleotide polymorphism (SNP) typing or sequencing is
+               often cost prohibitive for large samples. An alternative
+               approach takes advantage of the extended haplotype structure
+               within the MHC to predict HLA alleles using dense SNP genotypes,
+               such as those available from genome-wide SNP panels. Current
+               methods for HLA imputation are difficult to apply or may require
+               the user to have access to large training data sets with SNP and
+               HLA types. We propose HIBAG, HLA Imputation using attribute
+               BAGging, that makes predictions by averaging HLA-type posterior
+               probabilities over an ensemble of classifiers built on bootstrap
+               samples. We assess the performance of HIBAG using our study data
+               (n=2668 subjects of European ancestry) as a training set and HLA
+               data from the British 1958 birth cohort study (n$\approx$1000
+               subjects) as independent validation samples. Prediction
+               accuracies for HLA-A, B, C, DRB1 and DQB1 range from 92.2\% to
+               98.1\% using a set of SNP markers common to the Illumina 1M Duo,
+               OmniQuad, OmniExpress, 660K and 550K platforms. HIBAG performed
+               well compared with the other two leading methods, HLA*IMP and
+               BEAGLE. This method is implemented in a freely available HIBAG R
+               package that includes pre-fit classifiers for European, Asian,
+               Hispanic and African ancestries, providing a readily available
+               imputation approach without the need to have access to large
+               training data sets.",
+  journal   = "Pharmacogenomics J.",
+  publisher = "Springer Science and Business Media LLC",
+  volume    =  14,
+  number    =  2,
+  pages     = "192--200",
+  month     =  apr,
+  year      =  2014,
+  language  = "en"
+}
+
+@ARTICLE{Jia2013-mh,
+  title     = "Imputing amino acid polymorphisms in human leukocyte antigens",
+  author    = "Jia, Xiaoming and Han, Buhm and Onengut-Gumuscu, Suna and Chen,
+               Wei-Min and Concannon, Patrick J and Rich, Stephen S and
+               Raychaudhuri, Soumya and de Bakker, Paul I W",
+  journal   = "PLoS One",
+  publisher = "Public Library of Science (PLoS)",
+  volume    =  8,
+  number    =  6,
+  pages     = "e64683",
+  month     =  jun,
+  year      =  2013,
+  language  = "en"
+}
+
+
+
+@ARTICLE{Monsuur2008-fk,
+  title     = "Effective detection of human leukocyte antigen risk alleles in
+               celiac disease using tag single nucleotide polymorphisms",
+  author    = "Monsuur, Alienke J and de Bakker, Paul I W and Zhernakova,
+               Alexandra and Pinto, Dalila and Verduijn, Willem and Romanos,
+               Jihane and Auricchio, Renata and Lopez, Ana and van Heel, David
+               A and Crusius, J Bart A and Wijmenga, Cisca",
+  abstract  = "BACKGROUND: The HLA genes, located in the MHC region on
+               chromosome 6p21.3, play an important role in many autoimmune
+               disorders, such as celiac disease (CD), type 1 diabetes (T1D),
+               rheumatoid arthritis, multiple sclerosis, psoriasis and others.
+               Known HLA variants that confer risk to CD, for example, include
+               DQA1*05/DQB1*02 (DQ2.5) and DQA1*03/DQB1*0302 (DQ8). To diagnose
+               the majority of CD patients and to study disease susceptibility
+               and progression, typing these strongly associated HLA risk
+               factors is of utmost importance. However, current genotyping
+               methods for HLA risk factors involve many reactions, and are
+               complicated and expensive. We sought a simple experimental
+               approach using tagging SNPs that predict the CD-associated HLA
+               risk factors. METHODOLOGY: Our tagging approach exploits linkage
+               disequilibrium between single nucleotide polymorphism (SNPs) and
+               the CD-associated HLA risk factors DQ2.5 and DQ8 that indicate
+               direct risk, and DQA1*0201/DQB1*0202 (DQ2.2) and
+               DQA1*0505/DQB1*0301 (DQ7) that attribute to the risk of DQ2.5 to
+               CD. To evaluate the predictive power of this approach, we
+               performed an empirical comparison of the predicted DQ types,
+               based on these six tag SNPs, with those executed with current
+               validated laboratory typing methods of the HLA-DQA1 and -DQB1
+               genes in three large cohorts. The results were validated in
+               three European celiac populations. CONCLUSION: Using this
+               method, only six SNPs were needed to predict the risk types
+               carried by >95\% of CD patients. We determined that for this
+               tagging approach the sensitivity was >0.991, specificity >0.996
+               and the predictive value >0.948. Our results show that this tag
+               SNP method is very accurate and provides an excellent basis for
+               population screening for CD. This method is broadly applicable
+               in European populations.",
+  journal   = "PLoS One",
+  publisher = "Public Library of Science (PLoS)",
+  volume    =  3,
+  number    =  5,
+  pages     = "e2270",
+  month     =  may,
+  year      =  2008,
+  language  = "en"
+}
+
+@ARTICLE{De_Bakker2006-ho,
+  title     = "A high-resolution {HLA} and {SNP} haplotype map for disease
+               association studies in the extended human {MHC}",
+  author    = "de Bakker, Paul I W and McVean, Gil and Sabeti, Pardis C and
+               Miretti, Marcos M and Green, Todd and Marchini, Jonathan and Ke,
+               Xiayi and Monsuur, Alienke J and Whittaker, Pamela and Delgado,
+               Marcos and Morrison, Jonathan and Richardson, Angela and Walsh,
+               Emily C and Gao, Xiaojiang and Galver, Luana and Hart, John and
+               Hafler, David A and Pericak-Vance, Margaret and Todd, John A and
+               Daly, Mark J and Trowsdale, John and Wijmenga, Cisca and Vyse,
+               Tim J and Beck, Stephan and Murray, Sarah Shaw and Carrington,
+               Mary and Gregory, Simon and Deloukas, Panos and Rioux, John D",
+  journal   = "Nat. Genet.",
+  publisher = "Springer Science and Business Media LLC",
+  volume    =  38,
+  number    =  10,
+  pages     = "1166--1172",
+  month     =  oct,
+  year      =  2006,
+  language  = "en"
+}
+
+@BOOK{Beksac2014-gm,
+  title     = "Bone marrow and stem cell transplantation",
+  editor    = "Beksac, Meral",
+  publisher = "Humana Press",
+  series    = "Methods in molecular biology (Clifton, N.J.)",
+  edition   =  2,
+  month     =  jan,
+  year      =  2014,
+  address   = "New York, NY",
+  copyright = "https://www.springernature.com/gp/researchers/text-and-data-mining",
+  language  = "en"
+}
+
+@ARTICLE{Tozer2009-mp,
+  title     = "Etiology of perianal Crohn's disease: Role of genetic,
+               microbiological, and immunological factors",
+  author    = "Tozer, Philip J and Whelan, Kevin and Phillips, Robin K S and
+               Hart, Ailsa L",
+  journal   = "Inflamm. Bowel Dis.",
+  publisher = "Oxford University Press (OUP)",
+  volume    =  15,
+  number    =  10,
+  pages     = "1591--1598",
+  month     =  oct,
+  year      =  2009,
+  language  = "en"
+}
+
+@ARTICLE{Latiano2009-bu,
+  title     = "Polymorphism of the {IRGM} gene might predispose to fistulizing
+               behavior in Crohn's disease",
+  author    = "Latiano, A and Palmieri, O and Cucchiara, S and Castro, M and
+               D'Inc{\`a}, R and Guariso, G and Dallapiccola, B and Valvano, M
+               R and Latiano, T and Andriulli, A and Annese, V",
+  abstract  = "OBJECTIVES: Recently, genome-wide association analyses have
+               identified single nucleotide polymorphisms in the IRGM gene
+               (rs1000113 and rs4958847) as strong candidate susceptibility
+               factors for Crohn's disease (CD). The aim of our study was to
+               test whether these variants are associated with inflammatory
+               bowel disease (IBD) in adult- and childhood-onset Italian
+               patients. METHODS: Allele and genotype frequencies of rs1000113
+               and rs4958847 were determined in 823 CD (265 younger than 19
+               years at diagnosis), 353 ulcerative colitis (UC) (130 younger
+               than 19 years at diagnosis), and 578 controls. Genotype
+               distributions were examined both within IBD clinical
+               sub-phenotypes and CARD15 genotypes. RESULTS: rs1000113 and
+               rs4958847 were both associated with adult-onset (P=2 x 10(-4);
+               P=2.5 x 10(-3), respectively) and childhood-onset (P=4 x 10(-4);
+               P=8 x 10(-3), respectively) CD cohorts. Similarly, the genotype
+               frequencies remained significantly different for both variants
+               (adult rs1000113, P=1 x 10(-4); rs4958847, P=1 x 10(-3);
+               pediatric rs1000113, P=2.3 x 10(-4); rs4958847, P=9.6 x 10(-3)).
+               At logistic regression, the rs4958847 polymorphism was
+               associated with fistulizing behavior (P=0.037, OR=1.54,
+               CI=1.02-2.31) and perianal fistulas (P=0.045, OR=1.55,
+               CI=1.01-2.38). Conversely, no association with UC and
+               sub-phenotypes was shown. CONCLUSIONS: We replicated the
+               previously reported associations between CD and rs1000113 and
+               rs4958847, confirming that IRGM is a susceptibility locus only
+               for CD, either adult- or early-onset in the Italian population;
+               furthermore, we have also shown its influence on specific
+               clinical features (fistulizing disease).",
+  journal   = "Am. J. Gastroenterol.",
+  publisher = "Ovid Technologies (Wolters Kluwer Health)",
+  volume    =  104,
+  number    =  1,
+  pages     = "110--116",
+  month     =  jan,
+  year      =  2009,
+  language  = "en"
+}
+
+@ARTICLE{Eglinton2012-ls,
+  title     = "Clinical and genetic risk factors for perianal Crohn's disease
+               in a population-based cohort",
+  author    = "Eglinton, T W and Roberts, R and Pearson, J and Barclay, M and
+               Merriman, T R and Frizelle, F A and Gearry, R B",
+  abstract  = "OBJECTIVES: Perianal Crohn's disease (CD) affects around
+               one-quarter of CD patients and represents a distinct disease
+               phenotype. The objective of this study was to investigate a
+               large population-based cohort of inflammatory bowel disease
+               (IBD) patients to identify clinical and genetic risk factors for
+               perianal CD. METHODS: Data were collected in the Canterbury IBD
+               database, estimated to include 91\% of all patients with IBD in
+               Canterbury, New Zealand. Genotyping was performed for selected
+               loci previously demonstrated to be associated with CD. Patients
+               with perianal disease were then compared with both CD patients
+               without perianal disease and healthy controls to assess the
+               presence of potential phenotypic, environmental, and genetic
+               risk factors. RESULTS: Of the 715 CD patients in the database,
+               190 (26.5\%) had perianal disease. In all, 507 patients with
+               genotype data available were analyzed. Perianal disease was
+               associated with younger age at diagnosis (P < 0.0001),
+               complicated intestinal disease (P < 0.0001), and ileal disease
+               location (P = 0.002). There was no association with gender,
+               ethnicity, smoking, or breast feeding. Genotype analysis
+               revealed an association with the neutrophil cytosolic factor 4
+               (NCF4) gene compared with both non-perianal CD patients (odds
+               ratio (OR): 1.47; 95\% confidence interval (CI): 1.08-1.99) and
+               healthy controls (OR: 1.47; 95\% CI: 1.10-1.95). There was no
+               association identified with other genes, including IBD5 (OR:
+               0.91; 95\% CI: 0.69-1.20), tumor necrosis factor $\alpha$ (OR:
+               1.04; 95\% CI: 0.56-1.85), and IRGM (immunity-related guanosine
+               triphosphatase protein type M) (OR: 1.21; 95\% CI: 0.80-1.82).
+               CONCLUSIONS: This study suggests that younger age at diagnosis,
+               complicated disease behavior, and ileal disease location are
+               risk factors for perianal CD. In addition, this paper represents
+               the first report of an association of the NCF4 gene with
+               perianal disease.",
+  journal   = "Am. J. Gastroenterol.",
+  publisher = "Ovid Technologies (Wolters Kluwer Health)",
+  volume    =  107,
+  number    =  4,
+  pages     = "589--596",
+  month     =  apr,
+  year      =  2012,
+  language  = "en"
+}
+
+@ARTICLE{Gasche2000-qh,
+  title     = "A simple classification of crohn's disease: Report of the
+               working party for the world congresses of gastroenterology,
+               Vienna 1998",
+  author    = "Gasche, Christoph and Scholmerich, Jurgen and Brynskov, Jorn and
+               D'Haens, Geert and Hanauer, Stephen B and Irvine, Jan E and
+               Jewell, Derek P and Rachmilewitz, Daniel and Sachar, David B and
+               Sandborn, William J and Sutherland, Lloyd R",
+  journal   = "Inflamm. Bowel Dis.",
+  publisher = "Oxford University Press (OUP)",
+  volume    =  6,
+  number    =  1,
+  pages     = "8--15",
+  month     =  feb,
+  year      =  2000,
+  language  = "en"
+}
+
+@ARTICLE{Brochard2022-hx,
+  title     = "Natural history of perianal Crohn's disease: Long-term follow-up
+               of a population-based cohort",
+  author    = "Brochard, Charl{\`e}ne and Rabilloud, Marie-Laure and Hamonic,
+               St{\'e}phanie and Bajeux, Emma and Pagenault, Ma{\"e}l and
+               Dabadie, Alain and Gerfaud, Agathe and Viel, Jean-Fran{\c c}ois
+               and Tron, Isabelle and Robaszkiewicz, Michel and Bretagne,
+               Jean-Fran{\c c}ois and Siproudhis, Laurent and Bouguen,
+               Guillaume and {Groupe ABERMAD}",
+  abstract  = "BACKGROUND AND AIMS: The natural history of perianal Crohn's
+               disease (PCD) remains poorly described and is mainly based on
+               retrospective studies from referral centers. The aim of this
+               study was to assess the incidence, outcomes and predictors of
+               the onset of PCD. METHODS: All incident cases of patients
+               diagnosed with possible CD were prospectively registered from
+               1994 to 1997 in Brittany, a limited area in France. At
+               diagnosis, the clinical features of perianal disease were
+               recorded. All patient charts were reviewed from the diagnosis to
+               the last clinic visit in 2015. RESULTS: Among the 272 out of 331
+               incident CD patients followed up, 51 (18.7\%) patients had PCD
+               at diagnosis. After a mean follow-up of 12.8 years, 93 (34\%)
+               patients developed PCD. The cumulative probabilities of perianal
+               CD occurrence were 22\%, 29\%, and 32\% after 1 year, 5 years,
+               and 10 years, respectively. The cumulative probabilities of anal
+               ulceration were 14\%, and 19\% after 1 year and 10 years,
+               respectively. Extraintestinal manifestations were associated
+               with the occurrence of anal ulceration. The cumulative
+               probabilities of fistulizing PCD were 11\%, 16\%, and 19\% after
+               1 year, 5 years, and 10 years, respectively. Extraintestinal
+               manifestations, rectal involvement and anal ulceration were
+               predictors of fistulizing PCD. The cumulative probability of
+               developing anal stricture was 4\% after 10 years. CONCLUSIONS:
+               PCD is frequently observed during CD, in approximately one-third
+               of patients. These data underline the need for targeted
+               therapeutic research on primary perianal lesions (proctitis,
+               anal ulceration) to avoid the onset of fistulizing perianal
+               disease.",
+  journal   = "Clin. Gastroenterol. Hepatol.",
+  publisher = "Elsevier BV",
+  volume    =  20,
+  number    =  2,
+  pages     = "e102--e110",
+  month     =  feb,
+  year      =  2022,
+  keywords  = "Natural History; Outcomes; Perianal Crohn's Disease; Population
+               Based",
+  language  = "en"
+}
+
+@misc{genepwr-docs,   
+    title = {genpwr: Power Calculations Under Genetic Model Misspecification
+},   
+    url = {https://cran.r-project.org/web/packages/genpwr/index.html},   
+    author = {Camille Moore},   
+    year = {13/10/2022},   
+    note = {Accessed on 25/10/2023} 
+}
+@misc{hibag-models-docs,   
+    title = {HIBAG - HLA Genotype Imputation with Attribute Bagging
+},   
+    url = {https://hibag.s3.amazonaws.com/hlares_index.html},   
+    author = {Xiuwen Zheng and Bruce S. Weir},   
+    year = {01/03/2017},   
+    note = {Accessed on 25/10/2023} 
+}
+@misc{hla-nomenclature-4digit,   
+    title = {Full List of Class I Proteins},   
+    url = {https://hla.alleles.org/proteins/class1.html},   
+    author = {Anthony Nolan Research Institute },   
+    year = {06/10/2023},   
+    note = {Accessed on 24/10/2023} 
+}
+@misc{hla-nomenclature,   
+    title = {Nomenclature for Factors of the HLA System},   
+    url = {https://hla.alleles.org/nomenclature/naming_prev.html},   
+    author = {Anthony Nolan Research Institute },   
+    year = {20/09/2019},   
+    note = {Accessed on 24/10/2023} 
+}
+@ARTICLE{Robinson2013-wv,
+  title     = "The {IMGT/HLA} database",
+  author    = "Robinson, James and Halliwell, Jason A and McWilliam, Hamish and
+               Lopez, Rodrigo and Parham, Peter and Marsh, Steven G E",
+  abstract  = "It is 14 years since the IMGT/HLA database was first released,
+               providing the HLA community with a searchable repository of
+               highly curated HLA sequences. The HLA complex is located within
+               the 6p21.3 region of human chromosome 6 and contains more than
+               220 genes of diverse function. Of these, 21 genes encode
+               proteins of the immune system that are highly polymorphic. The
+               naming of these HLA genes and alleles and their quality control
+               is the responsibility of the World Health Organization
+               Nomenclature Committee for Factors of the HLA System. Through
+               the work of the HLA Informatics Group and in collaboration with
+               the European Bioinformatics Institute, we are able to provide
+               public access to these data through the website
+               http://www.ebi.ac.uk/imgt/hla/. Regular updates to the website
+               ensure that new and confirmatory sequences are dispersed to the
+               HLA community and the wider research and clinical communities.
+               This article describes the latest updates and additional tools
+               added to the IMGT/HLA project.",
+  journal   = "Nucleic Acids Res.",
+  publisher = "Oxford University Press (OUP)",
+  volume    =  41,
+  number    = "Database issue",
+  pages     = "D1222--7",
+  month     =  jan,
+  year      =  2013,
+  copyright = "http://creativecommons.org/licenses/by-nc/3.0",
+  language  = "en"
+}
+
+@ARTICLE{Shiina2009-wt,
+  title     = "The {HLA} genomic loci map: expression, interaction, diversity
+               and disease",
+  author    = "Shiina, Takashi and Hosomichi, Kazuyoshi and Inoko, Hidetoshi
+               and Kulski, Jerzy K",
+  abstract  = "The human leukocyte antigen (HLA) super-locus is a genomic
+               region in the chromosomal position 6p21 that encodes the six
+               classical transplantation HLA genes and at least 132 protein
+               coding genes that have important roles in the regulation of the
+               immune system as well as some other fundamental molecular and
+               cellular processes. This small segment of the human genome has
+               been associated with more than 100 different diseases, including
+               common diseases, such as diabetes, rheumatoid arthritis,
+               psoriasis, asthma and various other autoimmune disorders. The
+               first complete and continuous HLA 3.6 Mb genomic sequence was
+               reported in 1999 with the annotation of 224 gene loci, including
+               coding and non-coding genes that were reviewed extensively in
+               2004. In this review, we present (1) an updated list of all the
+               HLA gene symbols, gene names, expression status, Online
+               Mendelian Inheritance in Man (OMIM) numbers, including new
+               genes, and latest changes to gene names and symbols, (2) a
+               regional analysis of the extended class I, class I, class III,
+               class II and extended class II subregions, (3) a summary of the
+               interspersed repeats (retrotransposons and transposons), (4)
+               examples of the sequence diversity between different HLA
+               haplotypes, (5) intra- and extra-HLA gene interactions and (6)
+               some of the HLA gene expression profiles and HLA genes
+               associated with autoimmune and infectious diseases. Overall, the
+               degrees and types of HLA super-locus coordinated gene expression
+               profiles and gene variations have yet to be fully elucidated,
+               integrated and defined for the processes involved with normal
+               cellular and tissue physiology, inflammatory and immune
+               responses, and autoimmune and infectious diseases.",
+  journal   = "J. Hum. Genet.",
+  publisher = "Springer Science and Business Media LLC",
+  volume    =  54,
+  number    =  1,
+  pages     = "15--39",
+  month     =  jan,
+  year      =  2009,
+  language  = "en"
+}
+
+@ARTICLE{Marsh2010-mq,
+  title     = "Nomenclature for factors of the {HLA} system, 2010",
+  author    = "Marsh, S G E and Albert, E D and Bodmer, W F and Bontrop, R E
+               and Dupont, B and Erlich, H A and Fern{\'a}ndez-Vi{\~n}a, M and
+               Geraghty, D E and Holdsworth, R and Hurley, C K and Lau, M and
+               Lee, K W and Mach, B and Maiers, M and Mayr, W R and M{\"u}ller,
+               C R and Parham, P and Petersdorf, E W and Sasazuki, T and
+               Strominger, J L and Svejgaard, A and Terasaki, P I and Tiercy, J
+               M and Trowsdale, J",
+  journal   = "Tissue Antigens",
+  publisher = "Wiley",
+  volume    =  75,
+  number    =  4,
+  pages     = "291--455",
+  month     =  apr,
+  year      =  2010,
+  language  = "en"
+}
+
+@ARTICLE{Matzaraki2017-za,
+  title     = "The {MHC} locus and genetic susceptibility to autoimmune and
+               infectious diseases",
+  author    = "Matzaraki, Vasiliki and Kumar, Vinod and Wijmenga, Cisca and
+               Zhernakova, Alexandra",
+  journal   = "Genome Biol.",
+  publisher = "Springer Science and Business Media LLC",
+  volume    =  18,
+  number    =  1,
+  month     =  dec,
+  year      =  2017,
+  language  = "en"
+}
+
+@ARTICLE{Ayers2011-bc,
+  title     = "Penalized-regression-based multimarker genotype analysis of
+               Genetic Analysis Workshop 17 data",
+  author    = "Ayers, Kristin L and Mamasoula, Chrysovalanto and Cordell,
+               Heather J",
+  journal   = "BMC Proc.",
+  publisher = "Springer Science and Business Media LLC",
+  volume    =  5,
+  number    = "S9",
+  pages     = "S92",
+  month     =  dec,
+  year      =  2011,
+  language  = "en"
+}
+
 @ARTICLE{Tabangin2009-gs,
   title     = "The effect of minor allele frequency on the likelihood of
                obtaining false positives",
