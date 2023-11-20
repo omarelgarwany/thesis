@@ -1,86 +1,101 @@
 %!TEX root = ../thesis.tex
 %*******************************************************************************
-%****************************** Third Chapter **********************************
+%****************************** Fifth Chapter **********************************
 %*******************************************************************************
-\chapter{My fifth chapter}
+\chapter{Future Directions}
 
 % **************************** Define Graphics Path **************************
 \ifpdf
-    \graphicspath{{Chapter3/Figs/Raster/}{Chapter3/Figs/PDF/}{Chapter3/Figs/}}
+    \graphicspath{{Chapter5/Figs/Raster/}{Chapter5/Figs/PDF/}{Chapter5/Figs/}}
 \else
-    \graphicspath{{Chapter3/Figs/Vector/}{Chapter3/Figs/}}
+    \graphicspath{{Chapter5/Figs/Vector/}{Chapter5/Figs/}}
 \fi
 
-\section{First section of the third chapter}
-And now I begin my third chapter here \dots
+\section{Context and future directions of alternative splicing regulation in innate immunity}
+In chapter 1, I analysed genetic and gene expression data from macrophages, an important and highly responsive cell type in innate immunity, exposed to a wide range of stimuli. I have particularly focussed on the genetic regulation of an understudied layer of gene expresion: alternative splicing. I have linked sQTLs to immune-mediated disease complex via colocalisation analysis and demonstrated several examples of how IMD risk loci may dysregulate alternative splicing of a number of genes (\textit{PTPN2}, \textit{DENND1B} and \textit{LRRK2}) in macrophages. In over half of the colocalisation events, it appears that low-usage splice junction may play a role in IMD risk, as evident in the example of an IBD-associated locus that increases the usage of a rare \textit{PTPN2} splice junction. \\
 
-And now to cite some more people~\citet{Rea85,Ancey1996}
+Although this work is an initial step towards uncovering the important role of alternative splicing in complex diseases, several avenues need to be explored in order to understand the complex landscape of alternative splicing in different biological contexts and in complex disease risk. In my view, efforts should focus on three main objectives: 
+\begin{itemize}
+    \item Before hypotheses can be generated about the role of particular gene isoforms (e.g. the role of \textit{PTPN2-205}) in macrophage response and disease risk, accurate characterisation of these isoforms needs to be established in both physiological conidtions and in response to environmental stimuli. This is particularly true for examples where subtle changes in isoform proportions is hypothesised to play a role in disease risk. Current short-read-based RNA-seq methods as well as alternative splicing quantification methods are not able to precisely quantify low-usage isoforms with certainty. In my analysis, I used Leafcutter, which quantifies intron usage ratios, but it doesn't provide complete isoform-level quantification. Arguably, precise isoform-level measurement is only attainable via long-read RNA-sequencing.
+    \item Second, the function of different gene isoforms needs to be understood. Establishing the presence of particular isoforms and their differential splicing upon macrophage stimulation is not enough to understand their exact role in innate immune response. 
+    \item Third, the determinants of isoform expression need to be established. The choice of alternative splice sites as well as their activation and/or suppression is determined by complex cis- and trans-acting factors. How do these factors respond to external stimuli and how do they guide the choice of alternative splice sites and how do they regulate the expression of different isoforms? 
+\end{itemize}
 
-\subsection{First subsection in the first section}
-\dots and some more 
+\subsection{Long-read sequencing}
+Large-scale efforts to identify splicing variants of genes such as GENCODE, RefSeq and APRIS have improved our understanding of the diversity of the transcriptome. The same cannot be said about the tissue, cell-type and biological context distribution of splice variants. Long-read RNA-seq (LR RNA-seq) is one of the most promising technologies for studying the distribtion of splice variants. Although LR RNA-seq methods have been slowly developing over the last decade, recent experimental developments and reduced cost make the study of alternative splicing in depth at the single cell level feasible and cost-effective. Until recently, low-throughput, high cost, and higher error rate of LRS technologies have been a major obstacles facing LR RNA-seq, and rendering many of them unsuitable for single-cell RNA-seq studies. \\
 
-\subsection{Second subsection in the first section}
-\dots and some more \dots
+A recent LR RNA-seq library preparation method developed by Al Khafaji et al leverages the circular nature of SMRT-sequencing, Pacbio's proprietary sequencing method which greatly increases its accuracy. In previous Pacbio RNA-seq methods, SMRT-sequencing accuracy increases with more circular sequencing passes of the same cDNA molecule. However, due to the relative short length of most RNA molecules (and their reverse-transcribed cDNAs), most transcripts were "over-sequenced". Although this achieved acceptable sequencing accuracy, it came at the cost of high throughput. Higher throughput and low cost was achieved by concatenating multiple cDNA molecules from different transcripts, which achieved a balance between multiple circular sequencing passes, cost and accuracy. As a result, this method was successfully applied to generate up to 60 million full-length reads per sample \cite{mas-seq-app-note,AlKhafaji2021-af}.\\
 
-\subsubsection{First subsub section in the second subsection}
-\dots and some more in the first subsub section otherwise it all looks the same
-doesn't it? well we can add some text to it \dots
+Other LR RNA-seq competitors have also developed similar methods. For example, Oxford Nanopore Technologies (ONT) developed a single-cell RNA-seq library preparation method that enables full-length sequencing of both reverse-transcribed cDNA molcules as well as direct sequencing of RNA molequles. Direct RNA sequencing (DRS) is a particularly exciting development as it enables the detection of native epigenetic markers such as methylation. However, DRS methods still suffer from inaccurate basecalling, and the high input RNA requirements \cite{Jain2022-sc}.
 
-\subsection{Third subsection in the first section}
-\dots and some more \dots
 
-\subsubsection{First subsub section in the third subsection}
-\dots and some more in the first subsub section otherwise it all looks the same
-doesn't it? well we can add some text to it and some more and some more and
-some more and some more and some more and some more and some more \dots
+\subsection{Lack of understanding of functional impact}
+Splicing QTL studies successfully identify genetic variation associated with variation in isoform usage or relative usage of splice junctions. Although useful to implicate alternative splicing in complex disease risk, it does not yet provide a deep understanding of the functional consequences of implicated alternative splicing events. The biggest hurdle is understanding the function of each gene's splice variants.\\
 
-\subsubsection{Second subsub section in the third subsection}
-\dots and some more in the first subsub section otherwise it all looks the same
-doesn't it? well we can add some text to it \dots
+Traditionally, gene knockout and knockdown studies have tremendously improved our understanding of different genes. This understanding has been aided by the development of technologies such as RNA interference (RNAi) and more recently CRISPR-Cas9 KO and KD methods. Following gene KO, any number of desired cellular assays can be applied to understand the functional effect of knocking out the gene under investigation (e.g. cell survival, proliferation, migration, defence against pathogens, or any particular function of interest). Optimisation of the targeting capabilities of these methods has led to a targeting efficiency of up to 80\%. However, most of the available methods target overall mRNA levels, and do not differentiate between different gene isoforms.\\
 
-\section{Second section of the third chapter}
-and here I write more \dots
+More recently, RNAi- and CRISPR-based methods have been modified to enable them to target either individual exons or individual exon-exon junctions. For example, Schertzer et al. developed a CRISPR-Cas13d system coupled with a guide RNA that targets different types of alternative splicing events including exon skipping, and alternative acceptor and donor splice sites. gRNAs that target all splicing events within a specifig isoform under investigation can be constructued with the aim of targeting a specific isoform. This strategy can be coupled with cellular functional assays to understand the impact of targeting different types of splicing events as well as specfific isoforms. As a newly developed method, it remains to be seen how feasible it is to use this method in large scale isoform essentiality scans. Similar to other RNA targeting system, CRISPR-Cas13d still suffers from sequence-dependent targeting inefficiency. Moreover, Schertzer et al. only tested the efficiency of their method on HEK293 cell lines rather than primary cells, another limitation of RNA targeting systems. Still, this method represents a significant advance compared to previous attempts to target specific gene isoforms, which targeted specific types of splicing events (most commonly exon casettes), and/or were not scalable. 
 
-\section{The layout of formal tables}
-This section has been modified from ``Publication quality tables in \LaTeX*''
- by Simon Fear.
 
-The layout of a table has been established over centuries of experience and 
-should only be altered in extraordinary circumstances. 
+\subsection{Regulators of alternative splicing}
+Defining the role of alternative splicing regulators in defining cell identity and their role in different biological contexts is crucial to understanding the context-specificity of alternative splicing. RNA-binding proteins (RBP) are major alternative splicing regulators that bind to cis-acting splicing regulatory elements on pre-mRNA to either suppress or activate splicing. In addition to their role in regulating alternative splicing, RBPs have been shown to regulate gene expression, and transcript polyadenylation, transport, localisation and translation. Additionally, mutations in genes coding for RBPs have been linked to several Mendelian and complex diseases \cite{Nussbacher2015-zl,Castello2013-ml}. Therefore, methods to characterise RBPs and their binding targets in different physiological contexts have been developed \cite{Wang2012-ni,Wang2013-fb,Van_Nostrand2016-ky}. Of particular interest are high-throughput methods that are able to identify transcriptome-wide RNA binding sites for particular RBPs of interest such as eCLIP \cite{Van_Nostrand2016-ky}. In the context of macrophages, for example, RBPs such as TTP, HUR, TIAR and hnRNP K have been shown to regulate macrophage response to LPS stimulation \cite{Ostareck2019-rp}. Moreover, RBPs that play tissue-specific roles in tissue-resident macrophages, such as RBP-J, have been identified \cite{Kang2020-xl}. Knocking out RBP-J in colonic macrophages resulted in reduced macrophage-Th17 cross-talk, which in turn disrupted the ability of macrophages to clear bacterial pathogens. \\
 
-When formatting a table, remember two simple guidelines at all times:
+More systematically, macrophage splicing regulatory networks have been identified for 10 distinct splicing factors. Knocking out each of these factors revelaed a vast network of genes whose splicing patterns become profoundly dysregulated. Additionally, the impacted genes were different between naive macrophages and macrophages challenged with \textit{Salmonella}. What remains missing in this puzzle is a mechanism whereby these splicing factors control this vast number of splicing choices. Wagner et al. have ruled out the possibility of gene downregulation via the differential inclusion of poison exons as a possible mode of regulation exerted by splicing factors. They have speculated that higher order interactions between the 10 splicing factors and other regulators of innate immune response may be behind the extensive regulatory roles of splicing factors. In any case, the systematic identification of the targets of as many splicing factors as possible is key to better understand the splicing regulatory networks that dictate innate immune response \cite{Wagner2016-kl}. A second puzzle is how does genetic variation perturb innate immunity splicing networks. This will likely be a more substantial challenge as most RBPs are known to recognise short degenerate RNA motifs that cannot be easily predicted from sequence features alone \cite{Cereda2014-ty}. In this regard, trans-sQTL mapping can be useful. Trans-sQTL mapping can identify trans-acting genetic variants associated with individual variation in splicing of distant genes. The power of trans-sQTL mapping can be greatly increased by testing only genetic variants that likely impact the expression of a bona fide set of splicing factors. Such an "informed" trans-sQTL mapping analysis assumes that variants that affect the \textit{cis} expression of splicing factors will affect, in \textit{trans}, the splicing patterns of distant genes. Identifying a set of splicing factor whose expression is affected in cis is a two-fold problem. First, the splicing factors themselves are not easy to identify, but focussing on the ones identified by Wagner et al (ref \cite{Wagner2016-kl}) is a good start. It is worth noting that it is plausible that many important splicing factors may be missed by following this hypothesis-driven approach. Seoncd, the "correct" variants need to be identified in the correct context, where MacroMap significant eQTL variants could be reasonabe candidates of trans-sQTL effects. \\ 
 
-\begin{enumerate}
-  \item Never, ever use vertical rules (lines).
-  \item Never use double rules.
-\end{enumerate}
+Even less is known about the dynamics of splicing regulation by RBPs in macrophages. The established role of splicing in neuro-developmental disease has prompted some investigations into how some established RBPs subtly control splicing in their target exons and introns. Interestingly, some RBPs control alternative splicing in a dose-sensitive manner. For example, MBNL1 affects the splicing of several MBNL1 target exons in a manner that is proportional to the concentration of MBNL1 \cite{Wagner2016-kl}. In future studies, it will be interesting to see if splicing targets of innate immune response genes respond to different dosages of splicing factor concentrations, and if that plays a role in determining the severity of immune response. \\
 
-These guidelines may seem extreme but I have
-never found a good argument in favour of breaking them. For
-example, if you feel that the information in the left half of
-a table is so different from that on the right that it needs
-to be separated by a vertical line, then you should use two
-tables instead. Not everyone follows the second guideline:
-
-There are three further guidelines worth mentioning here as they
-are generally not known outside the circle of professional
-typesetters and subeditors:
-
-\begin{enumerate}\setcounter{enumi}{2}
-  \item Put the units in the column heading (not in the body of
-          the table).
-  \item Always precede a decimal point by a digit; thus 0.1
-      {\em not} just .1.
-  \item Do not use `ditto' signs or any other such convention to
-      repeat a previous value. In many circumstances a blank
-      will serve just as well. If it won't, then repeat the value.
-\end{enumerate}
-
-A frequently seen mistake is to use `\textbackslash begin\{center\}' \dots `\textbackslash end\{center\}' inside a figure or table environment. This center environment can cause additional vertical space. If you want to avoid that just use `\textbackslash centering'
+% A complete list of macrophage-specific RBPs and their splicing targets are by no means available yet. More remains to be understood about how these and other RBPs contribute to innate immune response by regulating different stages of gene expression and post-transcriptional modificiations including alternative splicing.
 
 
 
 
+% \subsection{Establishing causality of alternative splicing events implicated in IMDs}
+% Statistical colocalisation is a widely used to link disease-associated signals to molecular QTL signals. I used colocalisation evidence to implcate sQTLs in IMD risk. However, colocalisation evidence is often not conclusive. In many cases, colocalisation analysis often implicates several molecular QTLs. For example, even within MacroMap, a single-cell-type resource, there was strong colocalisation evidence for both eQTLs and sQTLs for a large proportion of tested IMD loci. This raises questions about how these different moelcular QTLs contribute to a given IMD-associated signal. Different causal relationship models may account for these lines evidence. Pleiotropy, whereby the same causal variant affects multiple traits independently (horizontal pleiotropy) or via mediation (vertical pleiotropy) is a plausible scenario.\\
+
+% In the context of sQTLs and eQTLs, vertical pleiotropy can be interepreted in two ways. First, the genetic effect of the underlying genetic variant on splicing may be mediated via its effect on gene expression. This may the result of an eQTL effect that increases or depletes a particular gene transcript lead to both an eQTL and sQTL. Second, the genetic effect of the underlying genetic variant on gene expression may be mediated its effect on splicing. For example, an sQTL that leads to an increased production of a non-functional transcript may cause different RNA surveillance mechanisms to increase or decrease overall levels of gene expression. 
+\section{Sub-phenotype GWAS}
+In chapters 2 and 3, I turned my focus to another problem in population genetics, namely how genetic variation affects disease outcomes. I started this work by exploring the genetic determinants of perianal CD in two well-phenotyped IBD cohorts. My main research aim was to understand its genetic architecture, and particularly if it revealed specific biological pathways that may shed the light on the distinct pathogenesis of perianal CD. I was motivated by broader interest in answering the question of whether disease susceptibility and sub-phenotypes are driven by the same or by distinct dysregulated pathways. A natural follow-up question is how the same sub-phenotype may arise in different contexts, and whether the occurence of the same sub-phenotype within the general population is driven by the same genetic underpinnings that drive it within a disease population. In my view, these two important aspects of disease sub-phenotypes are important to understand.  
+
+
+\subsection{The burden of sporadic perianal manifestations is likely under-appreciated}
+My choice to focus on sporadic perianal disease (pAD) was driven by its phenotypic similarity to perianal CD. The most burdensome feature of both is the development of perianal fistulas. Compared to CD-associated perianal manifestations, sporadic perianal manifestations are less well-studied. This is reflected, for example, in conflicting estimates for sporadic perianal fistula prevalence. Hokannen et al \cite{Hokkanen2019-ov} reports a 1-2 per 10,000 prevalence in the UK based on the THIN database, which contains primary care data on approximately 6\% of the UK population. Moreover, Garcia-Olmo et al. \cite{Garcia-Olmo2019-ql} reported a prevalence of 1.69 per 10,000 in Europe based on a meta-analysis of six epidemiological studies. Based on these estimates, the UKBB is expected to report approximately 50-100 pAD cases. The real number of UKB perianal fistula cases as indicated by ICD-10 codes K60.3-K60.5 was surprisingly much higher (> 2,200 cases). A similarly high number of anal fissure and fistula patients were found in FinnGen (N=6,600 for the K60-equivalent FinnGen code K11\_FISSANAL). This large number of UKB anal fistulas is unexpected as UKB participants are generally known to be more “health-conscious” than the general population. Previous work even cautions against generalising prevalence estimates from UKB as they are generally considered \textit{lower} than general population estimates \cite{Fry2017-ug}. \\
+
+Data source differences may partially explain this discrepancy. The UK population estimate by Hokannen et al is based on primary healthcare records, which does not include patients who receive a diagnosis in hospital settings. In the European estimate, only a single Finnish study from the late 1980s reported anal fistula prevalence based on hospital records. The UKB and FinnGen clinical data are entirely based on hospital inpatient episodes, where pAD may be more frequently diagnosed. Overall, the burden of sporadic pAD is likely under-estimated. \\
+
+\subsection{Perianal manifestations: different mechanisms in different contexts?}
+The finding that none of the pAD-associated index variants did not replicate in the pCD GWAS was surprising. Given the phenotypic similarity between the two phenotypes, albeit in different contexts, it is reasonable that a shared genetic background exists. The interpretation of lack of replication should, however, be interpreted with caution. It is worth noting that there is a substantial difference in statistical power between the two meta-analysis (11,216 pAD cases versus 3,967 pCD cases). It is true that the pCD meta-analysis is not well-powered to detect the pAD associations at a genome-wide significant level. But their association with pCD did not even pass a more lenient replication threshold, which makes the "distinct-genetics" hypothesis at least plausible. Additionally, it is unclear how the composition of the constitutent cohorts in each GWAS affects the discovery if genome-wide association signals. Over half the IBD-BR patients with pCD manifestations report fistulas, but the proportion of UKB pAD cases with fistulas is only 37\%. The lack of more granular data for both UKIBDGC and FinnGen makes an overall comparison more difficult. Moreover, the pCD case cohort includes a large number of perianal abscess, a phenotype that was not included in the pAD meta-analysis. Overall, these compositional differences cannot be completely ruled out as factors that may contribute to the apparently distinct genetic underpinnings of pCD and pAD.\\
+
+
+With these limitations in mind, disorders that exhibit phenotypic similarity do not always share molecular and/or genetic similarity and vice versa. In line with this, Zhou et al. \cite{Zhou2018-tp} integrated protein-protein interaction data with GWAS data for thousands of ICD codes to re-define clusters of ICD codes that likely share molecular and genetic profiles. They found that clusters of seemingly unrelated illnesses are often more related than expected (e.g. Alzheimer's disease and lipoprotein deficiencies converge on \textit{APOE}), and diseases traditionally classified within the same category exhibit diversity at the molecular level. Thus, it is reasonable that pAD and pCD diverge at the molecular and genetic levels despite substantial overlap at the clinical level. 
+
+\subsection{The shared genetics of pAD and haemorrhoids needs to be explored}
+
+The enrichment of pAD cases in a number of lower intestinal conditions is particularly revealing regarding the nature of the disease. Of particular interest is the of pAD cases enrichment in harmorrhoids cases, as well as a strong and significant genetic correlation between pAD and haemorrhoids, confirmed in a largely independent dataset. The co-occurence of a number of ano-rectal disorders including haemorrhoids, anal fissures and fistulas, and rectal prolapse is recognised in clinical practice, and many of them typically require only conservative treatment \cite{Felt-Bersma2009-am,Foxx-Orenstein2014-el}. But my analysis suggests that they likely share underlying genetic predisposition as well. In future studies, characterising the relationship between haemorrhoids and pAD is warranted. I attempted to understand this relationship by showing that the effect sizes of several pAD-associated variants are significantly smaller than their effects on haemorrhoids. But this is not sufficient to rule out that their effect on pAD risk is not mediated via their effect on haemorrhoids risk. But this is not sufficient. Gaining a more complete understanding of the relationship between haemorrhoids and pAD requires applying methods that systematically discover shared and distinct genetic variants in genetically correlated groups of disorders. These methods have been previously applied to psychiatric disorders, which are known to exhibit high degrees of genetic correlation \cite{Grotzinger2022-ak}.  
+
+
+% % Little is known about differences between perianal manifestations within CD and in its sporadic forms. 
+
+% % Our uncertainty about the burden of sporadic perianal disease 
+% % The under-appreciated burden of sporadic pAD A surprising observation is that sporadic pAD has higher prevalence in the UKBB than expected. Most estimates suggest  
+% \subsection{How pAD/haemorrhoids/perianal abscess potentially shared genetic architecture should be explored}
+% \subsection{Linking CD genetic architecture to pCD via PRS of IBD risk variants}
+% \subsection{Growth of pCD promises to reveal more genome-wide significant loci}
+% Power calculation at different MAFs
+% \subsection{Comment on HLA-DRB1*01:03 and its associations with CD severity}
 
 
 
+% \subsection{Future directions}
+
+% \subsection{Splice-switching therapeutics}
+% \subsection{It's not only macrophages}
+
+% \subsubsection{Also T-cells and GTEx}
+% \subsubsection{Functional annotation of splice variants}
+% \section{Macromap}
+
+% \subsection{Discussion of restults}
+
+% \subsection{Limitations}
+
+% \subsection{From iPSC-derived macrophages to monocyte-derived and tissue-residing}
