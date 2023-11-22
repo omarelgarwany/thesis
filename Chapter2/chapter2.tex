@@ -105,20 +105,88 @@ In all of my subsequent analyses, I included the first three genotypic principal
 \end{figure}
 
 
-\subsection{Genome-wide summary statistics preprocessing}
-GWAS summary statistics were downloaded from either the GWAS catalogue \cite{Buniello2019-wb} or from UK BioBank GWAS summary statistics (\cite{Zhou2018-jh}; Supplementary Table S2). Summary statistics were formatted using a custom script so that each file contains at least: the chromosome and position (GRCh38) of each associated variant, effect size, and standard error. 
 
-\subsection{Identification of genome-wide significant loci from IMD GWAS summary statistics and colocalisation analysis}
-To define genome-wide significant loci, I identified all variants that passed the genome-wide significance P-value threshold $< 5\times10^{-8}$ in each downloaded GWAS summary statistics file. I ordered these SNPs from the lowest to the highest P-value and then iterated over each of them. At each iteration, I defined a 1 Mbp window centred around the SNP. If a SNP falls within a locus that has been defined in a previous iteration, it is not used to define a new locus. 
+In order to link the IMD genome-wide significant loci identified in the previous step to effector genes, I performed statistical colocalisation between IMD-associated loci and sQTLs from all MacroMap conditions. Colocalisation analysis is a statistical approach that uses summary statistics from two association studies in order to make an inference about whether the two association signals are likely to be driven by a shared causal variant. In this regard, five different hypothesis regarding the relationship between the two association signals are tested:
+\begin{itemize}
+  \item $H_{0}$: none of the two signals are associated with their corresponding traits
+  \item $H_{1}$: only the first signal is associated with its corresponding trait
+  \item $H_{2}$: only the second signal is associated with it corresponding trait
+  \item $H_{3}$: the two signals are associated with their corresponding traits, with different underlying genetic variants
+  \item $H_{4}$: the two signals are associated with their corresponding traits, and share a single underlying genetic variant.
+\end{itemize}
+Certainty about each of these hypotheses is quantified as a posterior probability. Therefore, colocalisation analysis outputs five different posterior probabilities: $PP_{0}$, $PP_{1}$, $PP_{2}$, $PP_{3}$, and $PP_{4}$. Statistical colocalisation is implemented in the R package \Verb+coloc v5.1.2+.\\
 
-For each genome-wide significant locus, I first identified the set of all genes whose TSS falls within the locus. I then performed pairwise colocalisation tests for all the intron usage ratios (within each of these genes) and the GWAS association signal. I performed these colocalisation tests within each of the 24 conditions. I matched variants between the sQTL and GWAS association signals by position on GRCh38 only since not all GWAS studies provided the effect alleles. I performed colocalisation analysis using the R package coloc v5.1.131 and I discarded GWAS-intron pairs that have < 2 variants in common. Only SNPs in common between each GWAS study and MacroMap's genotypic data are considered. This procedure output a list of tested introns per GWAS per condition. The same procedure was used for GTEx sQTLs. Locus plots for the colocalisation were produced using the locuscomparer R package \cite{Liu2019-fv}. Heatmaps for visualising PP4 values were generated using the ComplexHeatmap R packages \cite{Gu2016-oc}.
+% To maximise the ability of \Verb+coloc+ to identify effector genes, I downloaded summary statistics from GTEx v8, a large compendium of expression and splicing quantitative trait loci (eQTLs and sQTLs) mapped from RNA-seq samples obtained from 49 human tissues, ranging in sample sizes from 73-706 individuals. eQTLs and sQTLs were mapped in a 1mbp window centred around the transcript start site (TSS) of each gene (cis-eQTLs and cis-sQTLs) using genotyped or imputed variants with MAF $\geq$ 0.01.
 
+Within each genome-wide significant locus, I identified a list of genes and splice junctions to be tested. To achieve this, for each locus I defined a 1 mbp window around the index variant at each locus, and created a set of splice junctions whose respective gene TSS is located within this window. Next, I performed colocalisation analysis between the IMD summary statistics and each sQTLs summary statistics for each gene in the window. I used the \Verb+coloc.abf()+, which takes as input effect sizes and standard errors of each variant from the IMD  and sQTL being tested. Importantly, \Verb+coloc.abf()+ does not require the effect sizes to be aligned to the same effect allele, as the Bayes Factor calculation implemented in \Verb+coloc+ relies on the $Z^{2}$ statistic to compute the posterior probabilities. Finally, I used the default priors implemented in \Verb+coloc.abf()+: prior probability a SNP is associated with IMD=$10^{-4}$, prior probability a SNP is associated with sQTL=$10^{-4}$.
 \subsection{Condition-specificity analysis using mash}
 I tested the condition-specificity of sQTLs using mashR v0.2.57 \cite{Urbut2019-gf}. mashR is an adaptive shrinkage framework that can be used to compare effect size estimates in a multi-tissue or multi-condition association study. It outputs shrunk effect size estimates in addition to a statistic indicating if effect sizes between two conditions are significantly different from each other (local false sign rate; LFSR). I used this framework to test if a given sQTL effect is a "response sQTL", meaning that its effect size is significantly different in a stimulated macrophage condition from unstimulated macrophages. mashR requires training data to learn the correlation structure in the data from a set of canonical and data-driven covariance matrices (i.e. adaptive). The data-driven matrices are usually derived from the strongest QTL associations in the data. mashR then uses a randomly sampled set of QTL association to learn the mixture component of the provided covariance matrices. I use the lead sQTL SNP per gene (for genes with an FDR < 0.05) as our strong subset, and $10^6$ randomly sampled sQTL associations as the random subset (effect sizes and standard errors). Mash can also be trained using a baseline condition, against which other conditions are compared (I used Ctrl\_24 as a baseline condition). The learned model can be used to recalculate "posterior" summary statistics for any desired set of sQTL associations by providing their effect sizes and standard errors. In my analysis, I recomputed effect sizes and LFSR for two sets of sQTL effects: 
 \begin{enumerate}
 \item Lead SNP for significant sQTLs (FDR < 0.05) per sGene within each stimulated condition. I used this to estimate the number of sGenes with at least one response sQTL (Figure \ref{fig:sqtl}b).
 \item Lead SNP for colocalised genes (PP4 $\geq$ 0.75) in the condition in which the colocalisation was detected. I used this to estimate the proportion of colocalised genes with a response sQTL within each stimulated condition (Figure \ref{fig:coloc_cum_response_sqtl}). 
 \end{enumerate}
+\subsection{Genome-wide summary statistics preprocessing}
+GWAS summary statistics used for the colocalisation analysis were downloaded from either the GWAS catalogue \cite{Buniello2019-wb} or from UK BioBank GWAS summary statistics (\cite{Zhou2018-jh}; Table \ref{tab:gws_studies}). Summary statistics were formatted using a custom script so that each file contains at least: the chromosome and position (GRCh38) of each associated variant, effect size, and standard error. 
+
+\begin{table}
+
+  \caption{\label{tab:gws_studies}GWAS studies used in the colocalisation analysis. Study accession for GWAS summary statistics downloaded from the GWAS catalogue are shown. Phenotype IDs for the UK Biobank summary statistics are also shown (obtained from https://pheweb.org/UKB-SAIGE/pheno/). PMID = PubMed ID. }
+  \centering
+  \begin{tabular}[t]{|>{\raggedright\arraybackslash}p{6em}|>{\raggedright\arraybackslash}p{6em}|>{\raggedright\arraybackslash}p{6em}|>{\raggedleft\arraybackslash}p{6em}|>{\raggedright\arraybackslash}p{6em}|}
+  \hline
+  Trait & Journal & Publication Date & PMID & Study Accession\\
+  \hline
+  Atopic dermatitis & Nat Genet & 19/10/2015 & 26482879 & GCST003184\\
+  \hline
+  Allergic asthma & Nat Genet & 21/05/2018 & 29785011 & GCST007563\\
+  \hline
+  Allergy & Nat Genet & 30/10/2017 & 29083406 & GCST005038\\
+  \hline
+  Ankylosing spondylitis & Nat Genet & 01/07/2013 & 23749187 & GCST005529\\
+  \hline
+  Asthma & Nat Commun & 15/04/2020 & 32296059 & GCST010043\\
+  \hline
+  Childhood onset asthma & Am J Hum Genet & 28/03/2019 & 30929738 & GCST007800\\
+  \hline
+  Crohn's disease & Nat Genet & 09/01/2017 & 28067908 & GCST004132\\
+  \hline
+  Celiac disease & Nat Genet & 06/11/2011 & 22057235 & GCST005523\\
+  \hline
+  Diverticulosis and diverticulitis & UK BIOBANK & 24/10/2018 & 30104761 & 562\\
+  \hline
+  Fasciitis & UK BIOBANK & 24/10/2018 & 30104761 & 728.7\\
+  \hline
+  Multiple sclerosis & Nat Genet & 01/11/2013 & 24076602 & GCST005531\\
+  \hline
+  Osteoarthritis & Nat Genet & 21/01/2019 & 30664745 & GCST007093\\
+  \hline
+  Osteoarthrosis & UK BIOBANK & 24/10/2018 & 740 & \\
+  \hline
+  Contracture of palmar fascia & UK BIOBANK & 24/10/2018 & 30104761 & 728.71\\
+  \hline
+  Primary biliary cirrhosis & Nat Genet & 01/10/2012 & 22961000 & GCST005581\\
+  \hline
+  Psoriasis & Nat Genet & 01/12/2012 & 23143594 & GCST005527\\
+  \hline
+  Rheumatoid arthritis & Nature & 25/12/2013 & 24390342 & GCST002318\\
+  \hline
+  Primary sclerosing cholangitis & Nat Genet & 19/12/2016 & 27992413 & GCST004030\\
+  \hline
+  Systemic lupus erythematosus & Nat Commun & 17/07/2017 & 28714469 & GCST007400\\
+  \hline
+  Systemic sclerosis & Nat Commun & 31/10/2019 & 31672989 & GCST009131\\
+  \hline
+  Ulcerative colitis & Nat Genet & 09/01/2017 & 28067908 & GCST004133\\
+  \hline
+  \end{tabular}
+  \end{table}
+
+\subsection{Identification of genome-wide significant loci from IMD GWAS summary statistics and colocalisation analysis}
+To define genome-wide significant loci, I identified all variants that passed the genome-wide significance P-value threshold $< 5\times10^{-8}$ in each downloaded GWAS summary statistics file. I ordered these SNPs from the lowest to the highest P-value and then iterated over each of them. At each iteration, I defined a 1 Mbp window centred around the SNP. If a SNP falls within a locus that has been defined in a previous iteration, it is not used to define a new locus. 
+
+For each genome-wide significant locus, I first identified the set of all genes whose TSS falls within the locus. I then performed pairwise colocalisation tests for all the intron usage ratios (within each of these genes) and the GWAS association signal. I performed these colocalisation tests within each of the 24 conditions. I matched variants between the sQTL and GWAS association signals by position on GRCh38 only since not all GWAS studies provided the effect alleles. I performed colocalisation analysis using the R package coloc v5.1.131 and I discarded GWAS-intron pairs that have < 2 variants in common. Only SNPs in common between each GWAS study and MacroMap's genotypic data are considered. This procedure output a list of tested introns per GWAS per condition. The same procedure was used for GTEx sQTLs. Locus plots for the colocalisation were produced using the locuscomparer R package \cite{Liu2019-fv}. Heatmaps for visualising PP4 values were generated using the ComplexHeatmap R packages \cite{Gu2016-oc}.
+
+\subsection{Colocalisation analysis}
 \subsection{Colocalisation between significant sQTLs and eQTLs}
 I performed statistical colocalisation between all significant sQTLs (FDR < 0.05) and eQTLs from the same genes to investigate whether the sQTL and eQTL signals within sGenes are likely to be driven by the same causal variant. I only colocalised the intron with the highest association P-value per sGene.
 \newpage
@@ -126,7 +194,7 @@ I performed statistical colocalisation between all significant sQTLs (FDR < 0.05
 
 \subsection{MacroMap: a resource for studying macrophage transcriptome}
 
-Induced pluripotent stem cell lines (iPSC) from 209 healthy unrelated individuals, generated as part of the HipSci project \cite{Kilpinen2017-qm}, were differentiated into iPSC-derived macrophages (experimental protocol described in Supplementary note in Panousis et al. 2023). RNA was harvested from macrophage precursors at day 0 (Prec\_D0) and day 2 (Prec\_D2). \linebreak
+Induced pluripotent stem cell lines (iPSC) from 209 healthy unrelated individuals, generated as part of the HipSci project \cite{Kilpinen2017-qm}, were differentiated into iPSC-derived macrophages (experimental protocol described in Panousis et al. 2023 \cite{macromap-eqtl}). RNA was harvested from macrophage precursors at day 0 (Prec\_D0) and day 2 (Prec\_D2). \linebreak
 Naïve macrophages were exposed to a panel of 10 stimuli, and RNA was obtained and processed 6 and 24 hours after stimulation (in addition to unstimulated controls; Ctrl\_6 and Ctrl\_24), resulting in a total of 24 different conditions. I quantified alternative splicing from split reads (reads mapping across two splice junctions) using Leafcutter, which quantifies alternative splicing as intron usage ratios \cite{Li2018-ll}. I derived an intron usage ratio matrix for each of the 24 conditions and used this for differential splicing analysis and sQTL mapping.\\
 
 \begin{figure}[H]
@@ -264,7 +332,7 @@ I next sought to understand the relationship between the sQTL and eQTL signals a
   \caption{Total number of loci tested for colocalisation (left) and proportion of genome-wide significant loci that share a single causal variant (PP4 $\geq$ 0.75) with an eQTL only, an sQTL only or both (right).}
   \label{fig:macromap_esqtl_total_loci}   
 \end{figure}
-I then aimed to identify IMD-associated loci that were likely linked to alternative splicing changes in macrophages. To this end, I used statistical colocalisation analysis between sQTL and GWAS association signals (using R package coloc; more details in Methods). Since macrophages play a major role in innate immune defence, I focussed on 21 IMD GWAS summary statistics to quantify the probability of a sQTL sharing a causal variant with genetic association signals. IMD GWAS summary statistics were downloaded from the GWAS catalogue \cite{Buniello2019-wb} (See methods for how GWAS loci were defined and Supplementary Table for a complete list of downloaded GWASes). In order to compare the colocalisation yield between eQTLs and sQTLs, I also obtained colocalisation results from eQTLs mapped from the same dataset and colocalised with the same GWAS loci.\\
+I then aimed to identify IMD-associated loci that were likely linked to alternative splicing changes in macrophages. To this end, I used statistical colocalisation analysis between sQTL and GWAS association signals (using R package coloc; more details in Methods). Since macrophages play a major role in innate immune defence, I focussed on 21 IMD GWAS summary statistics to quantify the probability of a sQTL sharing a causal variant with genetic association signals. IMD GWAS summary statistics were downloaded from the GWAS catalogue \cite{Buniello2019-wb} (See methods for how GWAS loci were defined and Table \ref{tab:gws_studies} for a complete list of downloaded GWASes). In order to compare the colocalisation yield between eQTLs and sQTLs, I also obtained colocalisation results from eQTLs mapped from the same dataset and colocalised with the same GWAS loci.\\
 
 
 Across all 21 IMDs, 1,528 GWAS loci were tested against 4490 genes across all conditions (34,128 introns). I identified 707 unique genes (1,337 introns) with an sQTL signal in at least one condition that likely shares a causal variant with an IMD risk locus (PP4 $\geq$ 0.75; Figure \ref{fig:coloc_cum_response_sqtl}a). Approximately, 60\% of these genes passed the colocalisation threshold in a single condition only. However, these should not be interpreted as condition-specific colocalisations as the PP4 values could be close to the colocalisation threshold in other conditions. Therefore, I compared the effect sizes of the colocalised sQTL across all condition using mash. I observed that 68 (9.6\%) of the colocalisaed genes implicated a response sQTL, indicating that the genetic effects of these variants on alternative splicing could not be detected in unstimulated macrophages. Based on hierarchical clustering of LFSR values, Prec\_D2, IL4\_6 and IL4\_24 had the fewest response sQTLs that colocalised with GWAS signals, while sLPS\_6, CIL\_6 and LIL10\_6 (all stimulated with LPS) yielded the most, recapitulating results from the differential splicing analysis (Figure \ref{fig:coloc_cum_response_sqtl}). \\
@@ -301,7 +369,7 @@ The observation that over half of colocalised sQTL introns are lowly used and th
 \end{figure}
 To demonstrate how sQTLs for lowly-used introns can dysregulate alternative splicing and predispose to IMDs, I further investigated a \textit{PTPN2} sQTL that implicates a lowly-used intron that colocalised with an inflammatory bowel disease (IBD) associated risk locus at 18p11.21. Multiple lines of evidence, including coding variants associated with monogenic IBD \cite{Parlato2020-lh,Pike2018-wn} and mouse knock-out models \cite{Spalinger2018-mb,Spalinger2022-xj}, have suggested \textit{PTPN2} is the effector gene at 18p11.21, though this remains to be established. It is not yet known if and how common IBD-associated SNPs affect the expression of \textit{PTPN2}. \\
 
-I observed that the lead IBD SNP at 18p11.21 (rs80626450; 18-12818923-G-A) is associated with higher risk of IBD and with increased usage of intron 1-2 of the non-canonical transcript \textit{PTPN2-205} (chr18:12,817,365-chr18:12,818,944; Figure \ref{fig:ptpn2_manhattan_heatmap}b and  Figure \ref{fig:ptpn2_sashimi}). rs80626450 is located 21 base pairs downstream of the donor splice site of exon 1 of \textit{PTPN2-205}, and is the lead SNP for both the sQTL and IBD association signals, strongly suggesting its involvement in the aberrant splicing event at this locus. The \textit{PTPN2} sQTL signal colocalised (PP4 $\geq$ 0.9) with the IBD signal in 13 conditions, but did not colocalise with any eQTLs mapped from the same data (eQTLs mapped in Panousis et. al. 2023). Despite the relative rarity of this transcript, I detected this colocalisation using GTEx sQTL summary statistics \cite{The_GTEx_Consortium2020-gg}, where this sQTL signal was also colocalised with the IBD locus (PP4 $\geq$ 0.9) in 14 tissues, including whole blood (Supplementary Table 3 and Supplementary Figure \ref{fig:ptpn2_gtex}), indicating that this rare splicing event can be reliably detected in a large number of tissues from an independent dataset. \\ 
+I observed that the lead IBD SNP at 18p11.21 (rs80626450; 18-12818923-G-A) is associated with higher risk of IBD and with increased usage of intron 1-2 of the non-canonical transcript \textit{PTPN2-205} (chr18:12,817,365-chr18:12,818,944; Figure \ref{fig:ptpn2_manhattan_heatmap}b and  Figure \ref{fig:ptpn2_sashimi}). rs80626450 is located 21 base pairs downstream of the donor splice site of exon 1 of \textit{PTPN2-205}, and is the lead SNP for both the sQTL and IBD association signals, strongly suggesting its involvement in the aberrant splicing event at this locus. The \textit{PTPN2} sQTL signal colocalised (PP4 $\geq$ 0.9) with the IBD signal in 13 conditions, but did not colocalise with any eQTLs mapped from the same data (eQTLs mapped in Panousis et. al. 2023). Despite the relative rarity of this transcript, I detected this colocalisation using GTEx sQTL summary statistics \cite{The_GTEx_Consortium2020-gg}, where this sQTL signal was also colocalised with the IBD locus (PP4 $\geq$ 0.9) in 14 tissues, including whole blood (Figure \ref{fig:ptpn2_gtex}), indicating that this rare splicing event can be reliably detected in a large number of tissues from an independent dataset. \\ 
 
 \begin{figure}[H]
   \centering
@@ -328,11 +396,11 @@ The directions of effects of rs80626450 on intron usage and IBD risk (for exampl
 IMD-sQTL colocalisations in disease-relevant cell types can reveal how genetic variation dysregulates biological pathways that enable the cell to perform its normal functions.
 For example, I found that two IBD-associated loci colocalised with sQTL signals for genes that interact with the RAB GTPase Rab35. Rab GTPases are a diverse set of molecules that regulate different aspects of vesicle-mediated transport, with over 70 RAB GTPAses discovered so far \cite{Sigismund2021-cu}. RAB GTPases are activated by Guanine Exchange Factors (GEF), and subsequently recruit effector proteins, including proteins required for vesicle uncoating, movement, tethering and fusion, which enables cargo trafficking across cell compartments and membranes \cite{Yoneyama2005-ba}.\\
 
-IBD-associated loci at 12q12 and 1q31.3 colocalise with \textit{LRRK2} and \textit{DENND1B} sQTLs in 5 and 21 conditions, respectively (PP4 $\geq$ 0.75; Supplementary Table 4 and 5; Figure \ref{fig:dennd1b}). \textit{DENND1B} is a GEF that activates Rab35, while Rab35 was shown to be a bona fide substrate for \textit{LRRK2} \cite{Steger2016-yl,Bae2018-pu}, although the exact effect \textit{LRRK2} has on Rab35 is still debated \cite{Bae2018-pu,Bonet-Ponce2020-ri,Lee2021-ff}. Rab35 regulates endosomal recycling of both integrins and cadherins, effectively maintaining a balance between cell adhesion and cell migration. Moreover, evidence suggests that endosomal recycling in epithelial cells helps maintain apical and basolateral polarity, and that Rab35 plays a role in maintaining this polarity \cite{Mrozowska2016-lm,Kinoshita2020-yl}. The fact that both LRRK2 and \textit{DENND1B} interact with Rab35 suggests that endosomal recycling is frequently dysregulated by common IBD-associated variation. \\
+IBD-associated loci at 12q12 and 1q31.3 colocalise with \textit{LRRK2} and \textit{DENND1B} sQTLs in 5 and 21 conditions, respectively (PP4 $\geq$ 0.75; Figure \ref{fig:dennd1b}). \textit{DENND1B} is a GEF that activates Rab35, while Rab35 was shown to be a bona fide substrate for \textit{LRRK2} \cite{Steger2016-yl,Bae2018-pu}, although the exact effect \textit{LRRK2} has on Rab35 is still debated \cite{Bae2018-pu,Bonet-Ponce2020-ri,Lee2021-ff}. Rab35 regulates endosomal recycling of both integrins and cadherins, effectively maintaining a balance between cell adhesion and cell migration. Moreover, evidence suggests that endosomal recycling in epithelial cells helps maintain apical and basolateral polarity, and that Rab35 plays a role in maintaining this polarity \cite{Mrozowska2016-lm,Kinoshita2020-yl}. The fact that both LRRK2 and \textit{DENND1B} interact with Rab35 suggests that endosomal recycling is frequently dysregulated by common IBD-associated variation. \\
 
 Two \textit{DENND1B} splice junctions with different donor splice sites colocalise with the IBD-associated signal 1q31.3 (chr1:197,715,074-197,772,868 and chr1:197,715,074-197,735,586). The first splice junction is located in the coding sequence of the canonical transcript of \textit{DENND1B} (\textit{DENND1B-211}), while the second is part of the 5' untranslated region of another protein-coding transcript (\textit{DENND1B-201}). Lead sQTL SNPs for both transcripts have opposite directions of effect in different stimulation conditions where the colocalisations are detected (effect size and PP4 for \textit{DENND1B} splice junction chr1:197,715,074-197,772,868 is shown in Figure \ref{fig:lrrk2_dennd1b}) . This suggests that the effect of the risk-increasing allele on relative transcript abundances is highly context-dependent. \\
 
-Unlike \textit{DENND1B}, all \textit{LRRK2} sQTLs with high colocalisation probabilities (PP4 $\geq$ 0.75 in 5 conditions) had consistent directions of effects in the conditions where the colocalisation was detected. For example, the \textit{LRRK2} sQTL with the highest colocalisation probability was observed in LIL10\_24 (PP4=0.975), where the risk-increasing allele of the lead GWAS SNP (rs76904798) decreases the usage of an \textit{LRRK2} splice junction (chr12:40,316,403-40,319,988; beta=-0.75), and also increases the risk of IBD (beta=0.105). This indicates that decreased usage of this splice junction increases risk of IBD, and conversely that inclusion of this splice junction may have a protective effect against IBD (Supplementary Figure \ref{fig:lrrk2_dennd1b}). \\
+Unlike \textit{DENND1B}, all \textit{LRRK2} sQTLs with high colocalisation probabilities (PP4 $\geq$ 0.75 in 5 conditions) had consistent directions of effects in the conditions where the colocalisation was detected. For example, the \textit{LRRK2} sQTL with the highest colocalisation probability was observed in LIL10\_24 (PP4=0.975), where the risk-increasing allele of the lead GWAS SNP (rs76904798) decreases the usage of an \textit{LRRK2} splice junction (chr12:40,316,403-40,319,988; beta=-0.75), and also increases the risk of IBD (beta=0.105). This indicates that decreased usage of this splice junction increases risk of IBD, and conversely that inclusion of this splice junction may have a protective effect against IBD (Figure \ref{fig:lrrk2_dennd1b}). \\
 
 \begin{figure}[H]
   \centering
@@ -346,10 +414,10 @@ Although I demonstrate how \textit{LRRK2} and \textit{DENND1B} contribute to a d
 \newpage
 \section{Discussion}
 
-\begin{itemize}
-  \item Differential splicing and response to pathogens - what we know - what needs to be done - cataolguing all isoforms
-  \item Why PTPN2 GTEx sQTL is colocalised - explain that they may contain macrophages
-\end{itemize}
+% \begin{itemize}
+%   \item Differential splicing and response to pathogens - what we know - what needs to be done - cataolguing all isoforms
+%   \item Why PTPN2 GTEx sQTL is colocalised - explain that they may contain macrophages
+% \end{itemize}
 In this work, I mapped splicing QTLs in iPSC-derived macrophages to understand how splicing is genetically controlled in macrophages under 10 different environmental contexts. I found thousands of genes with significant sQTL effects across our array of conditions, and that a considerable proportion of these genes have different effect sizes upon stimulation and were thus defined as response sQTLs.\\
 
 The primary motivation behind several QTL mapping efforts is to understand the transcriptomic consequences of disease-associated genetic variation. Recently, Mostafavi et al. 2022 (ref 8) suggested that eQTL and GWAS studies are powered to discover systematically different types of variants, and that this may partially explain the limited colocalisation between eQTLs and GWAS risk loci. More than half of the IMD-associated risk loci that I tested likely share a single causal variant with either an eQTL or sQTL, with sQTLs solely contributing half of these loci, which clearly demonstrates the added value of sQTLs. This echoes previous work that showed the promise of sQTLs in closing the colocalisation gap \cite{Mu2021-ar,Kim-Hellmuth2020-gz,Liu2018-fh}. Mostafavi et al. (ref \cite{Mostafavi2022-tg}) proposed that systematic differences between GWAS and eQTL association signals are behind this colocalisation gap. Along the same lines, I attribute the large number of sQTL colocalisations to three important features of the discovered sQTLs that make them likely to colocalise with GWAS association signals. First, unlike eQTL variants, sQTL variants tend to be located around intron splice sites, rather than TSS of genes (Figure \ref{fig:intron_tss}), closer to intronic GWAS association signals that do not colocalise with eQTL signals. Indeed, 63.4\% of the lead SNPs in the GWAS loci that I tested were intronic variants. Second, sQTL signals largely do not colocalise with eQTL signals, suggesting that they are driven by distinct genetic associations (Figure \ref{fig:esqtl}). Third, I show that a considerable number of colocalisation events implicate unannotated introns that are lowly used across transcripts. These subtle changes in intron usage are unlikely to be reflected in overall levels of gene expression levels and may therefore remain undetected in eQTL studies. \\

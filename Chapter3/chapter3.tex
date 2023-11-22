@@ -64,19 +64,22 @@ To avoid contamination of controls with lower digestive tract disorders that may
 \begin{table}[H]
   \caption{pAD control set exclusion criteria. All ICD-10 codes had corresponding ICD-9 codes except K56 K62 and K63. For those, ICD-9 codes were obtained manually by inspecting level-2 ICD-10 codes and searching for their corresponding level-2 ICD-9 codes.}
   \label{table:ukbb_ctrl_excl_criteria}
-  \begin{tabular}{|p{0.1\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|p{0.1\linewidth}|}
+  \fontsize{10}{11}\selectfont
+
+  \begin{tabular}{|p{0.1\linewidth}|p{0.25\linewidth}|p{0.1\linewidth}|p{0.25\linewidth}|p{0.06\linewidth}|}
   \hline
-  ICD-10 code & ICD-10 meaning                                            & ICD-9 code                          & ICD-9 meaning     & N                                                                                                                                                          \\ \hline
-  K55         & Vascular disorders of intestine                           & 557                                 & Vascular insufficiency of intestine       & 2923                                                                                                                                  \\ \hline
+  \textbf{ICD-10 code} & \textbf{ICD-10
+   meaning}                                            & \textbf{ICD-9 code}                          & \textbf{ICD-9 meaning}     & \textbf{N}                                                                                                                                                          \\ \hline
+  K55         & Vascular disorders of intestine                           & 557                                 & Vascular insufficiency of intestine       & 2,923                                                                                                                                  \\ \hline
   K56         & Paralytic ileus and intestinal obstruction without hernia & 5600, 5601, 5602, 5603, 5608A, 5608, 5609 & Intussusception, Paralytic ileus, Volvulus, Impaction of intestine,Other specified intestinal obstruction, Unspecified intestinal obstruction & 9257                              \\ \hline
-  K57         & Diverticular disease of intestine                         & 562                                 & Diverticula of intestine              &     61519                                                                                                                                  \\ \hline
+  K57         & Diverticular disease of intestine                         & 562                                 & Diverticula of intestine              &     61,519                                                                                                                                  \\ \hline
   K58         & Irritable bowel syndrome                                  & 5641                                & Irritable bowel syndrome          & 12418                                                                                                                                          \\ \hline
-  K59         & Other functional intestinal disorders                     & 564                                 & Functional digestive disorders not elsewhere classified      & 30087                                                                                                               \\ \hline
-  K60         & Fissure and fistula of anal and rectal regions            & 565                                 & Anal fissure and fistula     & 5079                                                                                                                                               \\ \hline
-  K61         & Abscess of anal and rectal regions                        & 566                                 & Abscess of anal and rectal regions              &     2178                                                                                                                        \\ \hline
-  K62         & Other diseases of anus and rectum                         & 5690, 5691, 5692, 5693, 5694            & Anal and rectal polyp, Rectal prolapse, Stenosis of rectum and anus, Hemorrhage of rectum and anus, Other specified disorders of rectum and anus            & 39191                \\ \hline
-  K63         & Other diseases of intestine                               & 5695, 5696, 5697, 5698, 5699            & Abscess of intestine, Colostomy and enterostomy complications, Complications of intestinal pouch, Other specified disorders of intestine, Unspecified disorder of intestine & 33307 \\ \hline
-  K64         & Hemorrhoids and perianal venous thrombosis                & 455                                 & Hemorrhoids & 19060\\ \hline
+  K59         & Other functional intestinal disorders                     & 564                                 & Functional digestive disorders not elsewhere classified      & 30,087                                                                                                               \\ \hline
+  K60         & Fissure and fistula of anal and rectal regions            & 565                                 & Anal fissure and fistula     & 5,079                                                                                                                                               \\ \hline
+  K61         & Abscess of anal and rectal regions                        & 566                                 & Abscess of anal and rectal regions              &     2,178                                                                                                                        \\ \hline
+  K62         & Other diseases of anus and rectum                         & 5690, 5691, 5692, 5693, 5694            & Anal and rectal polyp, Rectal prolapse, Stenosis of rectum and anus, Hemorrhage of rectum and anus, Other specified disorders of rectum and anus            & 39,191                \\ \hline
+  K63         & Other diseases of intestine                               & 5695, 5696, 5697, 5698, 5699            & Abscess of intestine, Colostomy and enterostomy complications, Complications of intestinal pouch, Other specified disorders of intestine, Unspecified disorder of intestine & 33,307 \\ \hline
+  K64         & Hemorrhoids and perianal venous thrombosis                & 455                                 & Hemorrhoids & 19,060\\ \hline
 
   \end{tabular}
   \end{table}
@@ -159,7 +162,7 @@ After downloading the two haemorrhoids summary statistics, I preprocessed both o
 
 
 \subsection{Colocalisation analysis}
-In order to link the meta-analysis genome-wide significant loci to effector genes, I performed statistical colocalisation with a set of expression and splicing QTLs from the Genotype Expression Project (GTEx v8). Colocalisation analysis is a statistical approach that uses summary statistics from two association studies in order to make an inference whether the two association signal are likely to be driven by a shared causal variant. In this regard, five different hypothesis regarding the relationship between the two association signals are tested:
+In order to link the meta-analysis genome-wide significant loci to effector genes, I performed statistical colocalisation with a set of expression and splicing QTLs from the Genotype Expression Project (GTEx v8). Colocalisation analysis is a statistical approach that uses summary statistics from two association studies in order to make an inference about whether the two association signals are likely to be driven by a shared causal variant. In this regard, five different hypothesis regarding the relationship between the two association signals are tested:
 \begin{itemize}
   \item $H_{0}$: none of the two signals are associated with their corresponding traits
   \item $H_{1}$: only the first signal is associated with its corresponding trait
@@ -167,11 +170,11 @@ In order to link the meta-analysis genome-wide significant loci to effector gene
   \item $H_{3}$: the two signals are associated with their corresponding traits, with different underlying genetic variants
   \item $H_{4}$: the two signals are associated with their corresponding traits, and share a single underlying genetic variant.
 \end{itemize}
-Certainty about each of these hypotheses is quantified as a posterior probability. Therefore, colocalisation analysis outputs four different posterior probabilities: $PP_{0}$, $PP_{1}$, $PP_{2}$, $PP_{3}$, and $PP_{4}$. Statistical colocalisation is implemented in the R package \Verb+coloc v5.1.2+.
+Certainty about each of these hypotheses is quantified as a posterior probability. Therefore, colocalisation analysis outputs five different posterior probabilities: $PP_{0}$, $PP_{1}$, $PP_{2}$, $PP_{3}$, and $PP_{4}$. Statistical colocalisation is implemented in the R package \Verb+coloc v5.1.2+.\\
 
-To maximise the ability of \Verb+coloc+ to identify effector genes, I downloaded summary statistics from GTEx v8, a large compendium of expression and splicing quantitative trait loci (eQTLs and sQTLs) mapped from RNA-seq samples obtained from 49 human tissues, ranging in sample sizes from 73-706 individuals. eQTLs and sQTLs were mapped in a 1mbp window centred around the transcript start site (TSS) of each gene (cis-eQTLs and cis-sQTLs) using genotyped or imputed variants with MAF $\geq$ 0.01.
+To maximise the ability of \Verb+coloc+ to identify effector genes, I downloaded summary statistics from GTEx v8, a large compendium of expression and splicing quantitative trait loci (eQTLs and sQTLs) mapped from RNA-seq samples obtained from 49 human tissues, ranging in sample sizes from 73-706 individuals. eQTLs and sQTLs were mapped in a 1mbp window centred around the transcript start site (TSS) of each gene (cis-eQTLs and cis-sQTLs).\\
 
-Within each of the meta-analysis genome-wide significant loci, I identified a list of genes and splice junctions for eQTL and sQTL colocalisation, respectively. To achieve this, for each locus I defined a 1 mbp window around the index variant at each locus, and created a set of genes and splice junctions whose respective TSS are located within this window. Next, I performed colocalisation analysis between the meta-analysis summary statistics and each eQTLs and sQTLs summary statistics for each gene in the window. I used the \Verb+coloc.abf()+, which takes as input effect sizes and standard errors of each variant from the meta-analysis and gene or splice junction being tested. Importantly, \Verb+coloc.abf()+ does not require the effect sizes to be aligned to the same effect allele, as the Bayes Factor calculation implemented in \Verb+coloc+ relies on the $Z^{2}$ statistic to compute the posterior probabilities. Finally, I used the default priors implemented in \Verb+coloc.abf()+: prior probability a SNP is associated with pAD=$10^{-4}$, prior probability a SNP is associated with the eQTL/sQTL=$10^{-4}$.
+Within each genome-wide significant locus, I identified a list of genes and splice junctions for eQTL and sQTL colocalisation, respectively. To achieve this, for each locus I defined a 1 mbp window around the index variant at each locus, and created a set of genes and splice junctions whose respective TSS are located within this window. Next, I performed colocalisation analysis between the meta-analysis summary statistics and each eQTLs and sQTLs summary statistics for each gene in the window. I used the \Verb+coloc.abf()+, which takes as input effect sizes and standard errors of each variant from the meta-analysis and gene or splice junction being tested. Importantly, \Verb+coloc.abf()+ does not require the effect sizes to be aligned to the same effect allele, as the Bayes Factor calculation implemented in \Verb+coloc+ relies on the $Z^{2}$ statistic to compute the posterior probabilities. Finally, I used the default priors implemented in \Verb+coloc.abf()+: prior probability a SNP is associated with pAD=$10^{-4}$, prior probability a SNP is associated with the eQTL/sQTL=$10^{-4}$.
 
 \begin{table}[H]
 
@@ -242,7 +245,7 @@ Within each of the meta-analysis genome-wide significant loci, I identified a li
     \label{table:gws}
     \begin{tabular}[t]{|l|l|l|l|l|l|l|}
       \hline
-      Chromosome & Position (b38) & Effect Allele & Odds Ratio & P-value & MAF (UKBB) & MAF (1000GP)\\
+      Chromosome & Position (b38) & Effect Allele & Odds Ratio & P-value & \makecell{MAF\\ UKBB} & \makecell{MAF\\ 1000GP}\\
       \hline
       3 & 52,992,368 & T & 1.13 (1.08 - 1.17) & $1.5\times10^{-8}$ & 0.42 & 0.44\\
       \hline
@@ -337,7 +340,7 @@ After I filtered out variants with MAF < 0.01, a total of 9,054,355 variants rem
   \label{table:gws_finngen}
   \begin{tabular}[t]{|l|l|l|l|l|l|l|}
   \hline
-  Chromosome & Position (b38) & Effect Allele & Odds Ratio & P-value & MAF (Finngen) & MAF (1000GP)\\
+  Chromosome & Position (b38) & Effect Allele & Odds Ratio & P-value & \makecell{MAF\\ FinnGen} & \makecell{MAF\\ 1000GP}\\
   \hline
   1 & 39,817,036 & T & 1.14 (1.09 - 1.19) & $7.2\times10^{-10}$ & 0.21 & 0.22\\
   \hline
@@ -411,7 +414,7 @@ I found that MAF was nearly perfectly correlated in NFE and FE in all seven pAD-
   \label{table:replication_ukbb_in_finngen}
   \begin{tabular}[t]{llllll}
   \toprule
-  Index variant & P-value UKBB & FinnGen P-value & OR UKBB & OR FinnGen & $P_{het}$\\
+  Index variant & \makecell{P-value\\ UKBB} & \makecell{P-value\\ FinnGen} & \makecell{OR\\ UKBB} & \makecell{OR\\ FinnGen} & $P_{het}$\\
   \midrule
   3:52992368\_C\_T & $1.5\times10^{-08}$ & $1.2\times10^{-03}$ & 1.13 (1.08 - 1.17) & 1.06 (1.02 - 1.1) & $0.03$\\
   6:31044486\_G\_C & $2.2\times10^{-08}$ & $5.7\times10^{-02}$ & 1.13 (1.08 - 1.18) & 1.04 (1 - 1.07) & $1.9\times10^{-03}$\\
@@ -437,7 +440,7 @@ I found that MAF was nearly perfectly correlated in NFE and FE in all seven pAD-
     \label{table:replication_finngen_in_ukbb}
     \begin{tabular}[t]{llllll}
     \toprule
-    Index variant & P-value UKBB & FinnGen P-value & OR UKBB & OR FinnGen & $P_{het}$\\
+    Index variant & \makecell{P-value\\ UKBB} & \makecell{P-value\\ FinnGen} & \makecell{OR\\ UKBB} & \makecell{OR\\ FinnGen} & $P_{het}$\\
     \midrule
     1:39817036\_C\_T & $1.6\times10^{-06}$ & $7.2\times10^{-10}$ & 1.13 (1.08 - 1.19) & 1.14 (1.09 - 1.19) & $0.77$\\
     6:1771278\_C\_T & $1.5\times10^{-04}$ & $6.7\times10^{-09}$ & 0.91 (0.87 - 0.96) & 0.9 (0.87 - 0.93) & $0.63$\\
@@ -460,52 +463,40 @@ I found that MAF was nearly perfectly correlated in NFE and FE in all seven pAD-
 
     \begin{table}[H]
 
-      \caption{\label{tab:table:meta_gws}Meta-analysis genome-wide significant loci (P-value < $5\times10^{-8}$), showing the index variant at each locus, the meta-analysis P-value, and the odds ratio in the UKBB, FinnGen, and meta-analysis. 95\% confidence intervals are shown for each odds ratio value. The last column shows the P-value of the effect size heterogeneity test, where $P_{het} < 4\times10^{-3}$ suggests evidence of heterogeneity of effects. The six loci that failed the LD decay test are highlighted in bold.}
       \centering
-      \fontsize{10}{12}\selectfont
-      \begin{tabular}[t]{llllll}
+
+      \caption{\label{tab:table:meta_gws}Meta-analysis genome-wide significant loci (P-value < $5\times10^{-8}$), showing the index variant at each locus, the meta-analysis P-value, and the odds ratio in UKBB, FinnGen, and in the meta-analysis. 95\% confidence intervals are shown for each odds ratio value. MAF is shown for UKBB and FinnGen. The last column shows the P-value of the effect size heterogeneity test, where $P_{het} < 4\times10^{-3}$ suggests evidence of heterogeneity of effects. The six loci that failed the LD decay test are highlighted in bold.}
+      \fontsize{8.5}{11}\selectfont
+      \begin{adjustwidth}{-.5in}{-.5in}  
+
+      \begin{tabular}[t]{p{0.15\textwidth}llllp{0.07\textwidth}p{0.07\textwidth}p{0.02\textwidth}}
+
       \toprule
-      Index variant & \makecell{Meta-analysis\\ P-value} & \makecell{OR\\ UKBB} & \makecell{OR\\ FinnGen} & \makecell{OR\\ Meta-analysis} & $P_{het}$\\
+      Index variant & \makecell{Meta-analysis\\P-value} & \makecell{OR\\UKBB} & \makecell{OR\\FinnGen} & \makecell{OR\\ Meta-analysis} & \makecell{MAF\\UKBB} & \makecell{MAF\\FinnGen} & $P_{het}$\\
       \midrule
-      \textbf{1:39809417\_A\_T} & $7.4\times10^{-15}$ & 1.13 (1.08 - 1.19) & 1.14 (1.09 - 1.19) & 1.14 (1.1 - 1.17) & 0.84\\
-      \addlinespace
-      \textbf{1:39836225\_G\_C} & $4.1\times10^{-08}$ & 1.09 (1.04 - 1.15) & 1.11 (1.06 - 1.16) & 1.1 (1.07 - 1.14) & 0.63\\
-      \addlinespace
-      3:53034026\_C\_T & $7.5\times10^{-10}$ & 1.13 (1.08 - 1.17) & 1.07 (1.03 - 1.11) & 1.09 (1.06 - 1.12) & 0.05\\
-      \addlinespace
-      5:64868326\_TTTC\_T & $2.0\times10^{-08}$ & 0.89 (0.85 - 0.93) & 0.94 (0.91 - 0.98) & 0.92 (0.89 - 0.95) & 0.05\\
-      \addlinespace
-      6:1775202\_G\_A & $1.0\times10^{-11}$ & 0.91 (0.87 - 0.95) & 0.9 (0.87 - 0.93) & 0.9 (0.88 - 0.93) & 0.80\\
-      \addlinespace
-      6:31121854\_C\_T & $4.2\times10^{-08}$ & 1.11 (1.07 - 1.16) & 1.06 (1.02 - 1.1) & 1.08 (1.05 - 1.11) & 0.08\\
-      \addlinespace
-      6:31253340\_T\_C & $3.8\times10^{-08}$ & 1.1 (1.06 - 1.15) & 1.07 (1.03 - 1.1) & 1.08 (1.05 - 1.11) & 0.24\\
-      \addlinespace
-      \textbf{6:133008360\_T\_A} & $2.7\times10^{-08}$ & 1.12 (1.07 - 1.19) & 1.1 (1.05 - 1.15) & 1.11 (1.07 - 1.15) & 0.47\\
-      \addlinespace
-      6:133260944\_G\_A & $4.7\times10^{-08}$ & 1.11 (1.06 - 1.17) & 1.08 (1.04 - 1.13) & 1.1 (1.06 - 1.13) & 0.42\\
-      \addlinespace
-      \textbf{6:133267939\_T\_C} & $4.5\times10^{-08}$ & 1.09 (1.05 - 1.14) & 1.07 (1.03 - 1.11) & 1.08 (1.05 - 1.11) & 0.42\\
-      \addlinespace
-      7:2524404\_G\_A & $4.1\times10^{-08}$ & 1.14 (1.07 - 1.22) & 1.13 (1.06 - 1.2) & 1.14 (1.09 - 1.19) & 0.76\\
-      \addlinespace
-      8:70735125\_A\_G & $3.9\times10^{-11}$ & 0.83 (0.77 - 0.9) & 0.82 (0.76 - 0.89) & 0.83 (0.78 - 0.87) & 0.94\\
-      \addlinespace
-      8:70993166\_AAGTT\_A & $1.2\times10^{-10}$ & 0.83 (0.77 - 0.9) & 0.82 (0.75 - 0.88) & 0.82 (0.78 - 0.87) & 0.75\\
-      \addlinespace
-      \textbf{9:21995045\_T\_G} & $4.3\times10^{-08}$ & 1.41 (1.25 - 1.59) & NA & 1.41 (1.25 - 1.6) & 1.00\\
-      \addlinespace
-      9:22124505\_A\_T & $2.1\times10^{-08}$ & 0.9 (0.86 - 0.93) & 0.95 (0.91 - 0.98) & 0.92 (0.9 - 0.95) & 0.05\\
-      \addlinespace
-      \textbf{10:61661180\_A\_G} & $2.0\times10^{-08}$ & 1.09 (1.04 - 1.14) & 1.08 (1.05 - 1.12) & 1.09 (1.06 - 1.12) & 0.90\\
-      \addlinespace
-      11:10356352\_C\_A & $1.3\times10^{-13}$ & 0.88 (0.84 - 0.92) & 0.91 (0.87 - 0.94) & 0.89 (0.87 - 0.92) & 0.27\\
-      \addlinespace
-      12:114235969\_T\_C & $4.2\times10^{-10}$ & 1.07 (1.03 - 1.12) & 1.11 (1.07 - 1.15) & 1.09 (1.06 - 1.12) & 0.20\\
+      \textbf{1:39809417\_A\_T} & $7.4\times10^{-15}$ & 1.13 (1.08 - 1.19) & 1.14 (1.09 - 1.19) & 1.14 (1.1 - 1.17) & 0.25 & 0.22 & 0.84\\
+      \textbf{1:39836225\_G\_C} & $4.1\times10^{-08}$ & 1.09 (1.04 - 1.15) & 1.11 (1.06 - 1.16) & 1.1 (1.07 - 1.14) & 0.19 & 0.17 & 0.63\\
+      3:53034026\_C\_T & $7.5\times10^{-10}$ & 1.13 (1.08 - 1.17) & 1.07 (1.03 - 1.11) & 1.09 (1.06 - 1.12) & 0.42 & 0.38 & 0.05\\
+      5:64868326\_TTTC\_T & $2.0\times10^{-08}$ & 0.89 (0.85 - 0.93) & 0.94 (0.91 - 0.98) & 0.92 (0.89 - 0.95) & 0.34 & 0.35 & 0.05\\
+      6:1775202\_G\_A & $1.0\times10^{-11}$ & 0.91 (0.87 - 0.95) & 0.9 (0.87 - 0.93) & 0.9 (0.88 - 0.93) & 0.28 & 0.43 & 0.80\\
+      6:31121854\_C\_T & $4.2\times10^{-08}$ & 1.11 (1.07 - 1.16) & 1.06 (1.02 - 1.1) & 1.08 (1.05 - 1.11) & 0.43 & 0.34 & 0.08\\
+      6:31253340\_T\_C & $3.8\times10^{-08}$ & 1.1 (1.06 - 1.15) & 1.07 (1.03 - 1.1) & 1.08 (1.05 - 1.11) & 0.50 & 0.42 & 0.24\\
+      \textbf{6:133008360\_T\_A} & $2.7\times10^{-08}$ & 1.12 (1.07 - 1.19) & 1.1 (1.05 - 1.15) & 1.11 (1.07 - 1.15) & 0.17 & 0.16 & 0.47\\
+      6:133260944\_G\_A & $4.7\times10^{-08}$ & 1.11 (1.06 - 1.17) & 1.08 (1.04 - 1.13) & 1.1 (1.06 - 1.13) & 0.22 & 0.20 & 0.42\\
+      \textbf{6:133267939\_T\_C} & $4.5\times10^{-08}$ & 1.09 (1.05 - 1.14) & 1.07 (1.03 - 1.11) & 1.08 (1.05 - 1.11) & 0.49 & 0.55 & 0.42\\
+      7:2524404\_G\_A & $4.1\times10^{-08}$ & 1.14 (1.07 - 1.22) & 1.13 (1.06 - 1.2) & 1.14 (1.09 - 1.19) & 0.11 & 0.09 & 0.76\\
+      8:70735125\_A\_G & $3.9\times10^{-11}$ & 0.83 (0.77 - 0.9) & 0.82 (0.76 - 0.89) & 0.83 (0.78 - 0.87) & 0.09 & 0.06 & 0.94\\
+      8:70993166\_AAGTT\_A & $1.2\times10^{-10}$ & 0.83 (0.77 - 0.9) & 0.82 (0.75 - 0.88) & 0.82 (0.78 - 0.87) & 0.08 & 0.05 & 0.75\\
+      \textbf{9:21995045\_T\_G} & $4.3\times10^{-08}$ & 1.41 (1.25 - 1.59) & NA (NA - NA) & 1.41 (1.25 - 1.6) & 0.02 & NA & 1.00\\
+      9:22124505\_A\_T & $2.1\times10^{-08}$ & 0.9 (0.86 - 0.93) & 0.95 (0.91 - 0.98) & 0.92 (0.9 - 0.95) & 0.49 & 0.43 & 0.05\\
+      \textbf{10:61661180\_A\_G} & $2.0\times10^{-08}$ & 1.09 (1.04 - 1.14) & 1.08 (1.05 - 1.12) & 1.09 (1.06 - 1.12) & 0.68 & 0.56 & 0.90\\
+      11:10356352\_C\_A & $1.3\times10^{-13}$ & 0.88 (0.84 - 0.92) & 0.91 (0.87 - 0.94) & 0.89 (0.87 - 0.92) & 0.71 & 0.72 & 0.27\\
+      12:114235969\_T\_C & $4.2\times10^{-10}$ & 1.07 (1.03 - 1.12) & 1.11 (1.07 - 1.15) & 1.09 (1.06 - 1.12) & 0.48 & 0.53 & 0.20\\
       \bottomrule
       \end{tabular}
-      \end{table}
-      
+    \end{adjustwidth}
+
+      \end{table}   
 
   %   Why performed meta-analysis? 
   %   \begin{itemize}
@@ -547,14 +538,51 @@ Although the other 11 index variants did not show a significant association with
 
 Two conclusion can be made from this analysis. First, despite a much larger sample size in favour of the haemorrhoids cohorts, only three pAD-associated index variants were also associated with haemorrhoids, even with a relatively lenient threshold for association. Second, despite their nominal association with haemorrhoids, these three variants (and indeed all other variants) had a consistently smaller effect size on HaemExclpAD than pADExclHaem, and for 3:53034026\_C\_T that difference in effect size was significant. More importantly, this pattern was observed for all 12 index variants, despite the lack of power to detect a significant heterogeneity of effects. Performing a similar 'disentaglment' analysis in both FinnGen and UKBB, and subsequently identifying which variants have a significantly larger effect size in pADExclHaem than HaemExclpAD is a plausible way to validate this pattern. Such validation would more strongly establish these variants as bona fidae pAD-associated variants, with a significantly smaller effect size on haemorrhoids.\\
 
-
+\subsection{Replication of pAD-associated variants in the pCD meta-analysis}
+In order to understand the relationshop between between the genetic underpinnings of sporadic perianal manifestations and perianal manifestations witin the context of pCD, I attempted to replicate the 12 pAD-associated variants in the pCD meta-analysis (P-value < $4\times10^{-3}$ for 12 variants). I found no evidence that any of the 12 variants replicated in the pCD meta-analysis. However, it is worth noting that the pCD meta-analysis is much less powered to detect the effects that were detected in the pAD meta-analysis due to its smaller sample size. For a variant with a MAF of 0.49, the pCD meta-analysis has 75\% power to detect a variant with odds ratio > 1.1 at a significance level of $4\times10^{-3}$. Although two variants fell within this MAF value (6:31253340\_T\_C and 9:22124505\_A\_T), neither of them passed the replication P-value threshold. This suggests that they are either not associated with pCD or that their effect sizes are too small to detect with the statistical power of the pCD meta-analysis. 
+\begin{table}[H]
+  \caption{Replication of the 12 pAD-associated variants in the pCD meta-analysis. P-values and odds ratios and their 95\% cofidence intervals from the pCD meta-analysis summary statistics are shown. None of the variants passed the replication threshold (P-value < $4\times10^{-3}$ for 12 variants).}
+  \label{table:pcd_replication}
+  \centering\begingroup\fontsize{10}{12}\selectfont
+  
+  \begin{tabular}[t]{|r|r|l|l|r|r|}
+  \hline
+  Chromosome & Position (b38) & Effect Allele & Odds Ratio & P-value & MAF\\
+  \hline
+  3 & 53,034,026 & T & 1.02 (0.96 - 1.08) & 0.58 & 0.42\\
+  \hline
+  5 & 64,868,326 & T & 0.98 (0.92 - 1.04) & 0.52 & 0.33\\
+  \hline
+  6 & 1,775,202 & A & 1 (0.94 - 1.07) & 0.92 & 0.28\\
+  \hline
+  6 & 31,121,854 & T & 0.98 (0.93 - 1.04) & 0.58 & 0.42\\
+  \hline
+  6 & 31,253,340 & C & 1.03 (0.97 - 1.09) & 0.34 & 0.49\\
+  \hline
+  6 & 133,260,944 & A & 1.05 (0.98 - 1.13) & 0.16 & 0.22\\
+  \hline
+  7 & 2,524,404 & A & 1.06 (0.96 - 1.17) & 0.25 & 0.11\\
+  \hline
+  8 & 70,735,125 & G & 0.94 (0.84 - 1.04) & 0.23 & 0.09\\
+  \hline
+  8 & 70,993,166 & A & 0.95 (0.85 - 1.06) & 0.38 & 0.09\\
+  \hline
+  9 & 22,124,505 & T & 0.93 (0.88 - 0.99) & 0.03 & 0.49\\
+  \hline
+  11 & 10,356,352 & A & 0.99 (0.93 - 1.06) & 0.81 & 0.30\\
+  \hline
+  12 & 114,235,969 & C & 0.96 (0.91 - 1.02) & 0.24 & 0.47\\
+  \hline  
+  \end{tabular}
+  \endgroup{}
+  \end{table}
 
 \subsection{Identification of effector genes via colocalisation analysis} \label{sec:coloc}
 Many GWAS loci that have been uncovered over the last 15 years are located in non-coding regions. This complicates the task of understanding their downstream effects and linking them to effector genes. Over the last ten years, large-scale studies that map genetic variants associated with transcriptomic variation have improved our understanding of the downstream effects of disease-associated genetic variants. For example, the Gentype Expression Project (GTEx) has mapped genetic variants associated with individual variation in overall levels of gene expression (eQTL) and splicing (sQTL). Additionally, statistical methods that are able to integrate association signals from different studies have been applied to GWAS and QTL data in order to investigate which effector genes likely underpin disease-associated GWAS signals. Colocalisation analysis, for example, quantifies the probability that two association signals are driven by a single causal variant ($PP_{4}$) and can therefore be used to compare GWAS and QTL association signals (more details in the Methods section).\\
 
 I carried out colocalisation analysis between the 12 pAD-associated loci and eQTL and sQTL signals from GTEx v8 in a 1 mbp window centered around each locus' index variant. Across all 49 GTEx tissues, I performed the colocalisation with a total of 293 genes and all their splice junctions (see Methods for the number of genes and splice junctions tested at each locus).\\
 
-The most informative output of colocalisation analysis is $PP_{4}$, the posterior probability of two association signals sharing a single underlying variant. Overall, I found high-confidence colocalisation evidence for seven loci, where at least one eQTL or sQTL colocalised with the association signal ($PP_{4}$ > 0.8; Table \ref{table:coloc_res}). All seven loci had at least a single colocalisation with an sQTL (12 sQTL genes), while five loci colocalised with at least one eQTL signal (eight eQTL genes), implicating a total of 15 genes. At many loci where both an eQTL and sQTL colocalisation were detected, distinct eQTL and sQTL genes were implicated. Moreover, QTLs in different tissues often implicated different genes. For example, the locus at index variant 7:2524404\_G\_A colocalised with two different genes (\textit{BRAT1} in the liver and thyroid gland, and \textit{LFNG} in the skin and whole blood). In fact, only three of the seven colocalised loci implicated a single gene, and only one locus implicated the same gene with high confidence in multiple tissues (index variant 5:64868326\_TTTC\_T). The pleiotropic nature of genetic effects on gene expression is well documented in GTEx \cite{Ribeiro2021-xj}, and even in other organisms \cite{Brem2002-zj,Schadt2003-ei}. This pleiotropy is often attributed to the widespread gene co-expression patterns, whereby the expression of multiple genes is controlled by a single locus, sometimes termed "QTL hotspots" \cite{Tian2016-hy}. Co-expressed genes are often found to be functionally related via shared biological pathways \cite{Van_Dam2017-vm,Westra2013-mm}. To explore this, I performed a gene set enrichment analysis in four databases: Reactome \cite{Gillespie2022-jr}, the Gene Ontlogy (GO) Molecular Function database, GO Cellular Component and GO Biological processes \cite{Thomas2022-nb}. I did not find any significantly enriched pathways in any of the the three GO databases or the Reactome database. Notably, 6 of the 17 genes were not found in the Reacome database, reflecting the lack of knowledge of their biological functions. 
+Overall, I found high-confidence colocalisation evidence for seven loci, where at least one eQTL or sQTL colocalised with the association signal ($PP_{4}$ > 0.8; Table \ref{table:coloc_res}). All seven loci had at least a single colocalisation with an sQTL (12 sQTL genes), while five loci colocalised with at least one eQTL signal (eight eQTL genes), implicating a total of 15 genes. At many loci where both an eQTL and sQTL colocalisation were detected, distinct eQTL and sQTL genes were implicated. Moreover, QTLs in different tissues often implicated different genes. For example, the locus at index variant 7:2524404\_G\_A colocalised with two different genes (\textit{BRAT1} in the liver and thyroid gland, and \textit{LFNG} in the skin and whole blood). In fact, only three of the seven colocalised loci implicated a single gene, and only one locus implicated the same gene with high confidence in multiple tissues (index variant 5:64868326\_TTTC\_T). The pleiotropic nature of genetic effects on gene expression is well documented in GTEx \cite{Ribeiro2021-xj}, and even in other organisms \cite{Brem2002-zj,Schadt2003-ei}. This pleiotropy is often attributed to the widespread gene co-expression patterns, whereby the expression of multiple genes is controlled by a single locus, sometimes termed "QTL hotspots" \cite{Tian2016-hy}. Co-expressed genes are often found to be functionally related via shared biological pathways \cite{Van_Dam2017-vm,Westra2013-mm}. To explore this, I performed a gene set enrichment analysis in four databases: Reactome \cite{Gillespie2022-jr}, the Gene Ontlogy (GO) Molecular Function database, GO Cellular Component and GO Biological processes \cite{Thomas2022-nb}. I did not find any significantly enriched pathways in any of the the three GO databases or the Reactome database. Notably, 6 of the 15 genes were not found in the Reacome database, reflecting the lack of knowledge of their biological functions. 
 
 
 \begin{longtable}[t]{l>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}}
@@ -590,7 +618,9 @@ Index SNP & Tissues (eQTL) & Tissues (sQTL)\\
 \end{longtable}
   Only one locus consistently implicated a single gene across various tissues and with both eQTL and sQTL colocalisation evidence (\textit{CWC27}; index variant 5:64868326\_TTTC\_T; $PP_{4}$ > 0.8). The protective allele of the index variant (odds ratio=0.91) increases the expression of \textit{CWC27} (eQTL effect size in testis=0.29; Figure \ref{fig:cwc27_testis}), and also changes usage of five \textit{CWC27} splice junctions in testis. \textit{CWC27} codes for a splicesomoal complex component. Although little is known about its role in commom complex disease, rare \textit{CWC27} variants are known to be associated with retinitis pigmentosa with or without skeletal symptoms. Indeed, Xu et al. \cite{Xu2017-tf} performed whole-exome sequencing of ten individuals from seven unrelated families, nine of which suffered from retinitis pigmentosa, either alone or with a range of structural disorders such as bradydactyly, short stature, and craniofacial defects. In all seven families, rare protein-truncating variants in CWC27 were found, establishing \textit{CWC27} as the effector gene for this group of rare disorders.\\
 
-  It is not obvious how pAD-assciated \textit{CWC27} variants and rare \textit{CWC27} mutations that cause skeletal abnormalities converge on the same molecular pathways. However, I found that another colocalised gene, \textit{LFNG}, is associated with skeletal abnormalities. Two reports have shown that missense variants in \textit{LFNG} are associated with spondylocostal dysostosis, a congenital disorder characterised by short neck, short stature and scoliosis \cite{Otomo2019-os,Sparrow2006-vq}. \textit{LFNG} codes for a member of the glycosyltransferase family and plays an important role in vertebral formation during embryogenesis \cite{Serth2003-kn}. Notably, the two reported variants affected the active site of the protein product, rendering it functionally inactive. A compelling hypothesis that emerges from the loss-of-function evidence of these two genes is that genes important for normal musculskeletal development may also implicated in pAD pathogenesis. Most relevant literature cites the cryptoglandular theory to account for the origin of anal fistulas, whereby perianal abscess that starts in the proctodeal glands extends to form fistulas \cite{Wlodarczyk2021-xw}. But little is known so far about how genetic predisposition affects this progression and which biological pathways are responsible for this progression. In this regard, the implication of \textit{CWC27} and \textit{LFNG} as effector genes hints at a possible role for pathways responsible for normal skeletal development, but more robust genetic evidence is needed to identify effector genes, especially at the remaining loci, where colocalisation evidence implicates multiple genes.
+  It is not obvious how pAD-assciated \textit{CWC27} variants and rare \textit{CWC27} mutations that cause skeletal abnormalities converge on the same molecular pathways. However, I found that another colocalised gene, \textit{LFNG}, is associated with skeletal abnormalities. Two reports have shown that missense variants in \textit{LFNG} are associated with spondylocostal dysostosis, a congenital disorder characterised by short neck, short stature and scoliosis \cite{Otomo2019-os,Sparrow2006-vq}. \textit{LFNG} codes for a member of the glycosyltransferase family and plays an important role in vertebral formation during embryogenesis \cite{Serth2003-kn}. Notably, the two reported variants affected the active site of the protein product, rendering it functionally inactive. Additionally, the pAD-associated signal at 3:53034026\_C\_T colocalised with very high confidence with a \textit{SFMBT1} eQTL in the transverse colon. \textit{SFMBT1} has been linked to idiopathic normal pressure hydrocephalus (iNPH), a late-onset structural disorder characterised by enlarged cerebral ventricles and increased accumulation of the cerebrospinal fluid in the brain.  Cerebral ventricles are a network of channels responsible for circulating the cerebrospinal fluid. Copy number variants in intron 2 of \textit{SFMBT1} have been linked to iNPH in Finnish, Norwegian and Japanese populations \cite{Korhonen2018-fc,Sato2016-yj}. Although it is not understood how \textit{SFMBT1} variants cause iNPH, the SFMBT1 protein has been detected in anatomical structures involved in CSF circulation, including smooth muscle cells of arteries \cite{Kato2011-xj}. The most well-characterised function of \textit{SFMBT1} is its transcriptional repressor activity. The expression of \textit{SFMBT1} has been found to halt the myogenic differentiation of progenitor myoblasts into muscle cells \cite{Lin2013-ga}. \\
+  
+  A compelling hypothesis emerges from the evidence that links \textit{CWC27}, \textit{LFNG} and \textit{SFMBT1} loss-of-function variants to structural or skeletal disorders. Most relevant literature cites the cryptoglandular theory to account for the origin of anal fistulas, whereby perianal abscess that starts in the proctodeal glands extends to form fistulas \cite{Wlodarczyk2021-xw}. But little is known so far about how genetic predisposition affects this progression and which biological pathways are responsible for this progression. In this regard, the implication of \textit{CWC27}, \textit{LFNG} and \textit{SFMBT1} as effector genes hints at a possible role for pathways responsible for normal skeletal development. These dysregulated pathways might be responsible for the development, extension, and branching of fistulas. However, more robust genetic evidence is needed to identify effector genes, especially at the loci where colocalisation evidence implicates multiple genes.
 
 
   \begin{figure}[H]
@@ -603,7 +633,7 @@ Index SNP & Tissues (eQTL) & Tissues (sQTL)\\
 
 
 
-
+\newpage
 \section{Discussion}
 In this chapter, I have performed several analysis to map genetic variants associated with perianal disease (pAD), defined as anal and rectal fissures and fistulas. I have leveraged two large-scale national biobanks, UKBB and FinnGen, with a total of 11,216 cases and 585,420 controls. First, I performed a separate UKBB GWAS and found seven genome-wide significant loci, that I subjected to a number of post-GWAS quality checks to ensure their veracity. Next, I downloaded FinnGen GWAS summary statistics for the same phenotype and performed similar post-GWAS quality checks. I also attempted to cross-replicate each GWAS' findings, and found that three of the seven UKBB loci replicated in FinnGen, while all FinnGen loci replicated in the UKBB. Interestingly, all the UKBB loci that failed to replicate in FinnGen were located in the MHC region, which is known to be highly polymorphic and exhibits complex LD patterns that tend to be population-specific. \\
 
@@ -620,4 +650,4 @@ Despite the increased power afforded by meta-analysis, several limitations shoul
 
 I observed that pAD cases are highly enriched in haemorrhoids compared to pAD controls (38\% versus 6\% respectively), which may suggest that there may be shared genetic effects underlying both pAD and haemorrhoids. I therefore performed an analysis where I disentangled the effects of the pAD-associated variants on both diseases. This analysis showed that the effects of these variants were stronger and more significant on pAD than haemorrhoids despite a large difference in statistical power in favour of haemorrhoids. However, this analysis was limited to UKBB participant, and it is plausible that better powered GWAS of haemorrhoids may reveal that a larger proportion of the 12 pAD-associated variants are also associated with haemorrhoids. Indeed, when I replicated the index variants in the largest haemorrhoids GWAS (Zheng et al. \cite{Zheng2021-ss}), I found that six of the 12 variants showed genome-wide significant association (P-value < $5\times10^{-8}$). However, similar to the UKBB analysis, they all had a concordant but smaller effect sizes on haemorrhoids than pAD. A compelling interpretation of this shared genetic risk is that pAD may be a more severe form or manifestation of haemorrhoids, with the same genetic variants underlying both and with stronger effect sizes on pAD. But this observation may not be true for all haemorrhoids-associated loci. Over 100 haemorrhoids-associated loci were identified by Zheng et al., and it is plausible that most of these loci will not be associated with pAD if a genome-wide significant comparison of effect sizes was performed between the two diseases. Therefore, any conclusions made regarding the difference in effect sizes should be limited to these 12 loci.\\
 
-Finally, I aimed to identify effector genes at each locus using colocalisation analysis. Although I identified several genes that colocalised with high confidence, evidence at most loci was conflicting, implicating several genes in several tissues. The role of these genes in many of the tissues where the colocalistions were detected, such as testis, thyroid and liver, was difficult to interpret given our knowledge of the pathogenesis of pAD. Although I showed evidence that two of these genes, \textit{LFNG} and \textit{CWC27}, were necessary for normal skeletal development, this does not constitute sufficient evidence for a novel insight into pAD pathogenesis. To this end, more follow-up work should be conducted to better interpret these loci. First, more robust methods need to be employed to establish a causal link between these loci and effector genes (e.g. Mendelian Randomisation methods \cite{Sanderson2022-nm}). Additionally, QTL studies from more relevant tissues need to be used. As discussed in \ref{sec:coloc}, it is well-known that genetic variants affect the expression of different genes in different tissues. Therefore, QTLs derived from anorectal tissues will provide the best colocalisation and mendelian randomisation evidence for effector genes. However, the anal region is composed of several tissues and cell types, and it is plausible that colocalisation with single-cell QTLs derived from anorectal biopsies will also potentially implicate different genes in different cell types. Therefore, the first step to identify the most likely effector genes is to identify the most relevant cell type via a heritability enrichment analysis (e.g. LDSC-SEG \cite{Finucane2018-mx}). In conclusion, establishing a bona fide set of effector genes for these loci in relevant tissues will provide much stronger evidence that points to biological pathways implicated by pAD loci effector genes. 
+Finally, I aimed to identify effector genes at each locus using colocalisation analysis. Although I identified several genes that colocalised with high confidence, evidence at most loci was conflicting, implicating several genes in several tissues. The role of these genes in many of the tissues where the colocalistions were detected, such as testis, thyroid and liver, was difficult to interpret given our knowledge of the pathogenesis of pAD. Although I showed evidence that three of these genes, \textit{LFNG}, \textit{CWC27}, and \textit{SFMBT1} were necessary for normal musculoskeletal development, this does not confidently constitute sufficient evidence for a novel insight into pAD pathogenesis. To this end, more follow-up work should be conducted to better interpret these loci. First, more robust methods need to be employed to establish a causal link between pAD-associated loci and effector genes (e.g. Mendelian Randomisation methods \cite{Sanderson2022-nm}). Additionally, QTL studies from more relevant tissues need to be used. As discussed in \ref{sec:coloc}, it is well-known that genetic variants affect the expression of different genes in different tissues. Therefore, QTLs derived from anorectal tissues will provide the best colocalisation and mendelian randomisation evidence for effector genes. However, the anal region is composed of several tissues and cell types, and it is plausible that colocalisation with single-cell QTLs derived from anorectal biopsies will also potentially implicate different genes in different cell types. Therefore, the first step to identify the most likely effector genes is to identify the most relevant cell type via a heritability enrichment analysis (e.g. LDSC-SEG \cite{Finucane2018-mx}). In conclusion, establishing a bona fide set of effector genes for these loci in relevant tissues will provide much stronger evidence that points to biological pathways implicated by pAD loci effector genes. 
