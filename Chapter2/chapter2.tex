@@ -123,7 +123,7 @@ GWAS summary statistics used for the colocalisation analysis were downloaded fro
 
 \begin{table}
 
-  \caption[GWAS studies used in the colocalisation analysis with MacroMap sQTLs]{\label{tab:gws_studies}GWAS studies used in the colocalisation analysis. Study accession for GWAS summary statistics downloaded from the GWAS catalogue are shown. Phenotype IDs for the UK Biobank summary statistics are also shown (obtained from https://pheweb.org/UKB-SAIGE/pheno/). PMID = PubMed ID. }
+  \caption[GWAS studies used in the colocalisation analysis with MacroMap QTLs]{\label{tab:gws_studies}GWAS studies used in the colocalisation analysis. Study accession for GWAS summary statistics downloaded from the GWAS catalogue are shown. Phenotype IDs for the UK Biobank summary statistics are also shown (obtained from https://pheweb.org/UKB-SAIGE/pheno/). PMID = PubMed ID. }
   \centering
   \begin{tabular}[t]{|>{\raggedright\arraybackslash}p{6em}|>{\raggedright\arraybackslash}p{6em}|>{\raggedright\arraybackslash}p{6em}|>{\raggedleft\arraybackslash}p{6em}|>{\raggedright\arraybackslash}p{6em}|}
   \hline
@@ -153,7 +153,7 @@ GWAS summary statistics used for the colocalisation analysis were downloaded fro
   \hline
   Osteoarthritis & Nat Genet & 21/01/2019 & 30664745 & GCST007093\\
   \hline
-  Osteoarthrosis & UK BIOBANK & 24/10/2018 & 740 & \\
+  Osteoarthrosis & UK BIOBANK & 24/10/2018 & & 740\\
   \hline
   Contracture of palmar fascia & UK BIOBANK & 24/10/2018 & 30104761 & 728.71\\
   \hline
@@ -229,7 +229,7 @@ Although UMAPs are useful to visualise general patterns in the data, they are le
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.7\textwidth]{cond_corr}
-  \caption[Correlation heatmap of intron usage ratios]{Heatmap showing Pearson correlation coefficient values between all 24 conditions. Usage ratios of the top 20,000 variable introns (highest variants across all conditions) were $log_{10}$ transformed and the mean usage was calculated across samples within each condition. Pairwise correlation coefficients were then calculated between the means of log transformed ratios.}
+  \caption[Correlation heatmap of intron usage ratios]{Heatmap showing Pearson correlation coefficient values between all 24 conditions. Usage ratios of the top 20,000 variable introns (highest variance across all conditions) were $log_{10}$ transformed and the mean usage was calculated across samples within each condition. Pairwise correlation coefficients were then calculated between the means of log transformed ratios.}
   \label{fig:cond_corr}   
 \end{figure}
 
@@ -244,7 +244,7 @@ The large number of differentially spliced genes motivated me to understand whic
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{Vector/ds.png}
-  \caption[Number of differentially spliced genes and volcano plot of differentially spliced genes in sLPS\_6]{(Left) Number of differentially spliced genes between naive and stimulated macrophages after 6 hours (yellow) and 24 hours (blue) (Right) Volcano plot showing differentially spliced genes 6 hours after sLPS stimulation, with log effect size on the x-axis (for each gene the intron with the largest absolute effect size is shown) and -log10 of adjusted P-value on the y-axis. Colours indicate the direction of intron usage change (blue indicating reduced usage and red indicating greater usage in stimulated cells versus naive cells). Genes that belong to the "vesicle-mediated transport" REACTOME pathway are indicated.}
+  \caption[Number of differentially spliced genes and volcano plot of differentially spliced genes in sLPS\_6]{(Left) Number of differentially spliced genes between naive and stimulated macrophages after 6 hours (yellow) and 24 hours (blue) (Right) Volcano plot showing differentially spliced genes 6 hours after sLPS stimulation, with log effect size on the x-axis (for each gene the intron with the largest absolute effect size is shown) and -log10 of adjusted P-value on the y-axis. Colours indicate the direction of intron usage change (blue indicating reduced usage and red indicating greater usage in stimulated cells versus naive cells). Some genes that belong to the "vesicle-mediated transport" REACTOME pathway are indicated.}
   \label{fig:ds}   
 \end{figure}
 Stimulation with LPS led to the differential splicing of genes in the cytokine signalling pathway (84 genes; P-value=$9.1\times10^{-8}$), the vesicle-mediated transport pathway (68 genes; P-value=$10^{-6}$), and the class I MHC mediated antigen processing and presentation pathway (47 genes; P-value=$7.95\times10^{-6}$; Figure \ref{fig:ds_sLPS_6_vs_Ctrl_6}). Within genes that belong to the vesicle-mediated transport pathway, several genes that code for members of the RAB protein family were differentially spliced upon stimulation (including \textit{RAB1B, RAB4A, RAB9A, RAB11A, RAB13, RAB14} and \textit{RABEPK}; Figure \ref{fig:ds}). RAB proteins are GTPases that coordinate membrane trafficking by regulating the formation, movement and fusion of vesicles with their destination membrane \cite{Stenmark2009-ju}. For example, I observed greater usage of the first exon of a non-canonical transcript of \textit{RAB13} (\textit{RAB13-205}), and lower usage of the canonical first exon (\textit{RAB13-201}; difference in percentage spliced in ($\Delta$PSI)=0.046 and -0.05, respectively). The alternative usage of the first exon may also be reflected at the level of protein products as the two annotated transcripts that start with these two alternative first exons have different amino acids sequences (203 and 122 amino acids respectively). Although this finding suggests that stimulation with LPS leads to an alternative \textit{RAB13} isoforms being expressed by macrophages, little is known about the particular functions of these isoforms. \textit{RAB13} has been previously shown to coordinate the formation of actin filaments through which vesicles are transported across the cell \cite{Sakane2012-km}, but the functional characterisation of the different isoforms of \textit{RAB13} are still lacking.\\
@@ -342,7 +342,7 @@ Across all 21 IMDs, 1,528 GWAS loci were tested against 4490 genes across all co
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{coloc_cum_response_sqtl}
-  \caption[Condition-specificity of colocalised sQTLs]{Cumulative number of genes with a GWAS-sQTL (PP4 $\geq$ 0.75) across different conditions, with unstimulated conditions shown in grey on the left (left). Heatmap and hierarchical clustering of LFSR values for all the colocalised sQTL effects (PP4 $\geq$ 0.75) across all 21 IMDs. On top of the heatmap is a barplot showing the proportion of colocalised sQTL effects that are response sQTLs (LFSR < 0.05) (c) Proportion of genome-wide significant loci that share a single causal variant (PP4 $\geq$ 0.75) with an eQTL only, an sQTL only or both (right).}
+  \caption[Condition-specificity of colocalised sQTLs]{(left) Cumulative number of genes with a GWAS-sQTL (PP4 $\geq$ 0.75) across different conditions, with unstimulated conditions shown in grey on the left. (right) Heatmap and hierarchical clustering of LFSR values for all the colocalised sQTL effects (PP4 $\geq$ 0.75) across all 21 IMDs. On top of the heatmap is a barplot showing the proportion of colocalised sQTL effects that are response sQTLs (LFSR < 0.05)}
   \label{fig:coloc_cum_response_sqtl}   
 \end{figure}
 I then compared how many tested loci colocalised with each type of molecular QTL and found that 50.4\% (771/1,528) of tested loci were likely to share a single causal variant with either an eQTL, sQTL or both. Recently, Mountjoy et al. 2021 (ref: \cite{Mountjoy2021-fc}) colocalised 50.7\% of tested GWAS loci with protein and expression QTLs from 92 tissues and cell types. In comparison, this high colocalisation yield from a single cell type shows the promise of profiling the transcriptome of a relevant cell type in understanding the effects of GWAS loci. Moreover, unlike other tissue-level QTL maps, interpreting these colocalisations in the context of macrophages potentially aids the interpretation and functional follow-up of these loci. \\
@@ -358,7 +358,7 @@ Approximately half of the colocalised loci (385 loci or 25.2\% of tested loci) c
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{low_sj}
-  \caption[Intron usage of colocalised introns]{(a) Distribution of mean intron usage ratio for colocalised introns, showing a peak close to 0, and (b) coloured by annotation in GENCODE v27, showing an enrichment of unannotated introns among introns with low mean usage ratio (c) Number of samples in which the intron is supported by at least one split read (y-axis) shown against the mean intron usage ratio of each sample (x-axis). Red vertical line at mean intron usage ration  = 0.1.}
+  \caption[Intron usage of colocalised introns]{(a) Distribution of mean intron usage ratio for colocalised introns, showing a peak close to 0, and (b) coloured by annotation in GENCODE v27, showing an enrichment of unannotated introns among introns with low mean usage ratio (c) Number of samples in which the intron is supported by split reads (y-axis) shown against the mean intron usage ratio of each sample (x-axis). Red vertical line at mean intron usage ratio  = 0.1.}
   \label{fig:low_sj}   
 \end{figure}
 I next sought to characterise the colocalised sQTL introns, by asking how often colocalised sQTL splicing events are used in observed transcripts. There is ample evidence that aberrant splicing underpins several inherited diseases such as Spinal Muscular Atrophy and Duchenne Muscular Dystrophy \cite{Symoens2011-ew,Abramowicz2018-by,Sanz2017-re}, but it is unclear to what extent lowly-observed splicing events contribute to complex diseases. To evaluate this role, I assessed the usage of introns that were implicated in IMD risk via colocalisation analysis. \\
@@ -381,7 +381,7 @@ I observed that the lead IBD SNP at 18p11.21 (rs80626450; 18:12818923\_G\_A) is 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.9\textwidth]{ptpn2_sashimi}
-  \caption[\textit{PTPN2} RNA-seq coverage plot]{RNA-seq coverage of the intron cluster where the \textit{PTPN2} sQTL effect is detected in sLPS\_6. Bars represent the number of reads and arcs represent the usage of different introns (only five splice junction ratios are shown for clarity and the colocalised sQTL splice junction is indicated in a red box). Canonical transcript \textit{PTPN2-201} and non-canonical transcript \textit{PTPN2-205} are shown underneath, with blue boxes representing introns and the position of rs80262450 on \textit{PTPN2-205} is shown by the green line.}
+  \caption[\textit{PTPN2} RNA-seq coverage plot]{RNA-seq coverage of the intron cluster where the \textit{PTPN2} sQTL effect is detected in sLPS\_6. Bars represent the number of reads and arcs represent the usage of different introns (only five splice junctions are shown for clarity and the colocalised sQTL splice junction is indicated in a red box). Canonical transcript \textit{PTPN2-201} and non-canonical transcript \textit{PTPN2-205} are shown underneath, with blue boxes representing introns and the position of rs80262450 on \textit{PTPN2-205} is shown as a green line.}
   \label{fig:ptpn2_sashimi}   
 \end{figure}
 
@@ -397,7 +397,7 @@ The directions of effects of rs80626450 on intron usage and IBD risk suggest tha
 \begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{dennd1b}
-  \caption[Colocalisation of \textit{DENND1B} and \textit{LRRK2} sQTLs with IBD-associated loci]{(a) Diagram showing different stages of endocytosis and endosomal recycling. Rab35 and two of its interactors LRRK2 and \textit{DENND1B} are shown on a recycling endosome. Regional Manhattan plots of the two IBD-associated loci (created with BioRender.com) (b) 1q31.1 and \textit{DENND1B} sQTL in naïve and stimulated macrophages (LIL10\_24) and (c) 12q12 and \textit{LRRK2} sQTL in naive and stimulated macrophages (CIL\_24) showing high colocalisation evidence with the IBD-associated locus in the stimulated condition sQTL, but not in the naïve condition sQTL.}
+  \caption[Colocalisation of \textit{DENND1B} and \textit{LRRK2} sQTLs with IBD-associated loci]{(a) Diagram showing different stages of endocytosis and endosomal recycling. Rab35 and two of its interactors \textit{LRRK2} and \textit{DENND1B} are shown on a recycling endosome (created with BioRender.com). Regional Manhattan plots of the two IBD-associated loci are also shown (b) IBD-associated locus 1q31.1 and \textit{DENND1B} sQTL in naïve and stimulated macrophages (LIL10\_24) and (c) IBD-associated locus  12q12 and \textit{LRRK2} sQTL in naive and stimulated macrophages (CIL\_24). Panels b and c show high colocalisation evidence with the IBD-associated loci in the stimulated conditions, but not in the naïve conditions.}
   \label{fig:dennd1b}   
 \end{figure}
 IMD-sQTL colocalisations in disease-relevant cell types can reveal how genetic variation dysregulates biological pathways that enable the cell to perform its normal functions.

@@ -62,7 +62,7 @@ To avoid contamination of controls with lower digestive tract disorders that may
 
 
 \begin{table}[H]
-  \caption[UKBB pAD control exclusion criteria]{pAD control set exclusion criteria. All ICD-10 codes had corresponding ICD-9 codes except K56 K62 and K63. For those, ICD-9 codes were obtained manually by inspecting level-2 ICD-10 codes and searching for their corresponding level-2 ICD-9 codes.}
+  \caption[UKBB pAD control exclusion criteria]{pAD control set exclusion criteria. All ICD-10 codes had corresponding ICD-9 codes except K56, K62 and K63. For those, ICD-9 codes were obtained manually by inspecting level-2 ICD-10 codes and searching for their corresponding level-2 ICD-9 codes.}
   \label{table:ukbb_ctrl_excl_criteria}
   \fontsize{10}{11}\selectfont
 
@@ -302,7 +302,7 @@ Within each genome-wide significant locus, I identified a list of genes and spli
   \begin{figure}[H] 
     \centering    
     \includegraphics[width=0.8\textwidth]{ukbb_ld_decay_mhc}
-    \caption[LD decay plots for the pAD-associated MHC loci in the UKBB analysis]{LD decay plots showing association P-values for the four genome-wide significant loci in the MHC locus (x-axis) and each variant's $R^{2}$ with the index variant, derived from NFE in 1000GP (y-axis). Red dots and titles indicate the index variant in each locus. Blue dots indicate each index variant's LD friends, and the red horizontal line indicates genome-wide significance level (P-value < $5\times10^{-8}$). The black line is fitted to the origin (0,0), and to the point (1,$-log_{10}(P_{index\_variant})$), and shows the expected association strength given the LD with the index variant.}
+    \caption[LD decay plots for the pAD-associated MHC loci in the UKBB analysis]{LD decay plots showing association P-values for the four genome-wide significant loci in the MHC region (x-axis) and each variant's $R^{2}$ with the index variant, derived from NFE in 1000GP (y-axis). Red dots and titles indicate the index variant in each locus. Blue dots indicate each index variant's LD friends, and the red horizontal line indicates genome-wide significance level (P-value < $5\times10^{-8}$). The black line is fitted to the origin (0,0), and to the point (1,$-log_{10}(P_{index\_variant})$), and shows the expected association strength given the LD with the index variant.}
     \label{fig:ukbb_ld_decay_mhc}
     \end{figure}
   First, one of MHC index variants at the two overlapping MHC loci did not tag any LD friends and therefore the correlation between P-value and $R^{2}$ could not be assessed (6:31113288\_T\_C in Figure \ref{fig:ukbb_ld_decay_mhc}). It is unclear whether the absence of LD friends for 6:31113288\_T\_C suggests that it is a truly independent variant, or whether it is driven by a mismatch between the LD patterns in UKBB and 1000GP. Such a mismatch may lead to an underestimation of LD between the index variant and its LD friends. To answer this question, I recalculated the LD values in 1000GP using only British individuals (GBR; N=90), and found that the index variant did not tag any LD friends in 1000GP GBR as well (Figure \ref{fig:ukbb_ld_decay_nfe_vs_gbr}). Given that 6:31113288\_T\_C is well-imputed (INFO=0.99) and common and that it is not well-tagged in both the NFE and GBR subpopulations in 1000GP, it is unlikely that the its association is driven by British-ancestry-specific LD. However, it is important to note that this does not rule out possible subpopulation stratification at this locus, which could potentially drive this association. 
@@ -336,7 +336,7 @@ After I filtered out variants with MAF < 0.01, a total of 9,054,355 variants rem
 
 \begin{table}[htb]
   \centering\begingroup\fontsize{10}{12}\selectfont
-  \caption[pAD-associated variants from the downloaded FinnGen GWAS summary statistics]{Genome-wide significant index variants in the FinnGen GWAS. Odds ratio and their 95\% confidence intervals are shown. Minor allele frequencies (MAF) in UKBB and 1000GP (FE) are shown in the last two columns.}
+  \caption[pAD-associated variants from the downloaded FinnGen GWAS summary statistics]{Genome-wide significant index variants in the FinnGen GWAS. Odds ratio and their 95\% confidence intervals are shown. Minor allele frequencies (MAF) in FinnGen and 1000GP (FE) are shown in the last two columns.}
   \label{table:gws_finngen}
   \begin{tabular}[t]{|l|l|l|l|l|l|l|}
   \hline
@@ -412,7 +412,7 @@ I found that two UKBB non-MHC index variants replicated in FinnGen (FinnGen P-va
 \begin{table}[H]
   \centering\begingroup\fontsize{10}{12}\selectfont
   
-  \caption[Replication of the UKBB genome-wide significant index variants in FinnGen]{Replication of the UKBB genome-wide significant index variants in FinnGen. Odds ratio and their 95\% confidence intervals are shown for both cohorts. The heterogeneity of effect P-value is shown in the last column. Only two index variants passed the replication threshold (3:52992368\_C\_T  and 11:10356352\_C\_A)}
+  \caption[Replication of the UKBB genome-wide significant index variants in FinnGen]{Replication of the UKBB genome-wide significant index variants in FinnGen. Odds ratio and their 95\% confidence intervals are shown for both cohorts. The heterogeneity of effect P-value is shown in the last column. Only two index variants passed the replication threshold (3:52992368\_C\_T  and 11:10356352\_C\_A; P-value < $7\times10^{-3}$ for seven variants).}
   \label{table:replication_ukbb_in_finngen}
   \begin{tabular}[t]{llllll}
   \toprule
@@ -438,7 +438,7 @@ I found that two UKBB non-MHC index variants replicated in FinnGen (FinnGen P-va
 
   \begin{table}[H]
     \centering\begingroup\fontsize{10}{12}\selectfont
-    \caption[Replication of the FinnGen genome-wide significant index variants in the UKBB]{Replication of the FinnGen genome-wide significant index variants in UKBB. Odds ratio and their 95\% confidence  intervals are shown for both cohorts. The heterogeneity of effect P-value is shown in the last column.}
+    \caption[Replication of the FinnGen genome-wide significant index variants in the UKBB]{Replication of the FinnGen genome-wide significant index variants in UKBB. Odds ratio and their 95\% confidence  intervals are shown for both cohorts. The heterogeneity of effect P-value is shown in the last column. All three variants passed the replication threshold (P-value < 0.017 for three variants).}
     \label{table:replication_finngen_in_ukbb}
     \begin{tabular}[t]{llllll}
     \toprule

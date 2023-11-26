@@ -87,7 +87,7 @@ I used METAL to perform a fixed-effects meta-analysis between IBD-BR and UKIBDGC
 There was a total of 8,473,930 overlapping variants across the meta-analysed summary statistics, and an additional 1,645,123 variants that were unique to one of the studies, 42.7\% of which were indels. Given that 16\% of variants were unique to one of cohorts, I did not remove them from their respective summary statistics file. It is important to note, however, that this choice may favour variants that are available in all studies. 
 
 \begin{table}[H]
-  \caption{Number of SNPs and indels in each of the three GWAS summary statistics.}
+  \caption[Number of SNPs and indels in each of the three GWAS summary statistics]{Number of SNPs and indels in each of the three GWAS summary statistics.}
   \centering
   \begin{tabular}[t]{lrrr}
   \toprule
@@ -218,7 +218,7 @@ pCD+ patients were less likely to be actively prescribed a number of CD medicati
 pCD+ patients were enriched for extra-intestinal manifestation compared to pCD- patients (26.3\% versus 19.6\%; P-value $<$ 0.05). Enteropathic arthritis was the most most prevalent extraintestinal manifestation among pCD+ patients, followed by serious infections and psoriasis. In total, six extraintestinal manifestations showed significant enrichment in pCD+ versus pCD- patients (P-value $<$ 0.005; Table  \ref{table:drug_eim}).\\ %The association between extraintestinal manifestations was stronger in female participants, possibly since extraintestinal manifestations were more prevalent in female participants overall (odds ratio=1.3 in males versus 1.6 in females). 
 \begin{table}
   \centering
-  \caption[Drug intake and extraintestinal manifestations in IBD-BR]{Drug intake and extraintestinal manifestations in pCD+ and pCD- patients in the IBD-BR. Percentage of patients are shown between parentheses. Significant differences between pCD+ and pCD- were assesed using a $\chi^{2}$ test and the P-value is shown in the last column.}
+  \caption[Drug intake and extraintestinal manifestations in IBD-BR]{Drug intake and extraintestinal manifestations in pCD+ and pCD- patients in the IBD-BR. Percentage of patients are shown between parentheses. Significant differences between pCD+ and pCD- were assesed using a $\chi^{2}$ test and P-values are shown in the last column.}
   \label{table:drug_eim}
   \begin{tabular}[t]{llll}
   \toprule
@@ -320,7 +320,7 @@ pCD+ patients were enriched for extra-intestinal manifestation compared to pCD- 
     \begin{figure}[htb] 
       \centering    
       \includegraphics[width=1.0\textwidth]{fig2}
-      \caption[pCD prevalence temporal trend from 1980 till 2020]{Prevalence per year of CD diagnosis, partitioned into two-year groups. 95\% confidence intervals around point estimates are calculated using a bootstrap procedure, whereby participants where resampled 1,000 times within each two-year group.}
+      \caption[pCD prevalence temporal trend from 1980 till 2020]{pCD prevalence per year of CD diagnosis, partitioned into two-year groups. 95\% confidence intervals around point estimates are calculated using a bootstrap procedure, whereby participants where resampled 1,000 times within each two-year group.}
       \label{fig:pcd_prev}
       \end{figure}
  
@@ -501,7 +501,7 @@ I used METAL to perform a fixed-effects meta-analysis between summary statistics
     \begin{figure}[H] 
       \centering    
       \includegraphics[width=1.0\textwidth]{fig3}
-      \caption[LD decay plot of the 6p21.32 locus]{Association P-value for all variants in a 1mbp window around rs115378818 (P-value < $5\times10^{-4}$) on the x-axis, and $R^{2}$ of variants with the index variant on the y-axis (derived from 1000GP). Horizontal red-line indicates the genome-wide significance threshold (P-value = $5\times10^{-8}$).}
+      \caption[LD decay plot of the 6p21.32 locus]{Association P-value for all variants in the genome-wide significant locus at 6p21.32 (P-value < $5\times10^{-4}$) on the x-axis, and $R^{2}$ of variants with the index variant on the y-axis (derived from 1000GP). Blue dots indicate the index variant's LD friends, and the red horizontal line indicates genome-wide significance level (P-value < $5\times10^{-8}$). The black line is fitted to the origin (0,0), and to the point (1,$-log_{10}(P_{index\_variant})$), and shows the expected association strength given the LD with the index variant.}
       \label{fig:ld_pval_plot}
       \end{figure}
 
@@ -514,7 +514,7 @@ The IBD-BR provides information about the type of perianal involvement each pati
 \begin{figure}[H] 
   \centering    
   \includegraphics[width=1.0\textwidth]{pcd_def_or_plot}
-  \caption[Effect sizes of genome-wide significant SNPs with different pCD definitions]{Odds ratios of all four genome-wide significant SNPs in pCD cohorts defined with different case inclusion criteria.}
+  \caption[Effect sizes of genome-wide significant SNPs with different pCD definitions]{Odds ratios of all four genome-wide significant SNPs in pCD cohorts where IBD-BR pCD+ cases defined with different case inclusion criteria.}
   \label{fig:pcd_def_or_plot}
   \end{figure}
 
@@ -529,7 +529,7 @@ Across all variants in the locus, I compared the $\chi^{2}$ statistics observed 
 \begin{figure}[H] 
   \centering    
   \includegraphics[width=0.8\textwidth]{Vector/meta_chisq_plot}
-  \caption[$\chi^{2}$ of genome-wide significant SNPs with different pCD definitions]{Association P-value for all variants in a 1mbp window around rs115378818 (P-value < $5\times10^{-4}$) on the x-axis, and $R^{2}$ of variants with the index variant rs115378818 on the y-axis (derived from 1000GP). The blue line indicates the line that passess through the points (0,0) and ($\chi^{2}_{Broad,n}$,$\chi^{2}_{observed}$).}
+  \caption[$\chi^{2}$ of genome-wide significant SNPs with different pCD definitions]{Association P-value for all variants in the genome-wide signficant locus around rs115378818 (P-value < $5\times10^{-4}$) on the x-axis, and $R^{2}$ of variants with the index variant rs115378818 on the y-axis (derived from 1000GP). The blue line indicates the line that passess through the points (0,0) and ($\chi^{2}_{Broad,n}$,$\chi^{2}_{observed}$).}
   \label{fig:meta_def_comparison}
   \end{figure}
 \subsection{pCD is nominally associated with HLA allele DRB1*01:03}
